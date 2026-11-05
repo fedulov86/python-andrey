@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 9. Проект: «Собери звёзды»</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m4-9">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 4 · урок 9 из 10</span>
+  <h1>Проект: «Собери звёзды»</h1>
+  <p class="lead">2–3 дня · первая настоящая игра</p>
+</div>
+<article class="body">
+<h4>Что за игра</h4>
+<p>Игрок управляет черепашкой стрелками. На поле появляется звезда. Если черепашка доползла до звезды, игрок получает очко, и звезда прыгает в новое случайное место. На всё есть 30 секунд.</p>
+
+<h4>Что должна уметь программа</h4>
+<ol>
+  <li>Тёмный фон, черепашка-игрок, звезда в случайном месте.</li>
+  <li>Управление стрелками.</li>
+  <li>Если черепашка близко к звезде — +1 очко, звезда переезжает.</li>
+  <li>Счёт сверху экрана.</li>
+  <li>Таймер 30 секунд. Когда время вышло — «Игра окончена» и итоговый счёт.</li>
+</ol>
+
+<h4>Как узнать, что черепашка поймала звезду</h4>
+<p><code>hero.distance(star)</code> возвращает расстояние между двумя черепашками. Если оно меньше 20, значит они встретились.</p>
+
+<h4>Начало, дальше сам</h4>
+<div class="code"><div class="code-bar"><span>m4_urok9.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38</span><code><span class="t-k">from</span> turtle <span class="t-k">import</span> *
+<span class="t-k">import</span> random
+
+<span class="t-f">bgcolor</span>(<span class="t-s">"black"</span>)
+score = <span class="t-n">0</span>
+
+hero = <span class="t-f">Turtle</span>()
+hero.<span class="t-m">shape</span>(<span class="t-s">"turtle"</span>)
+hero.<span class="t-m">color</span>(<span class="t-s">"lime"</span>)
+hero.<span class="t-m">penup</span>()
+
+star = <span class="t-f">Turtle</span>()
+star.<span class="t-m">shape</span>(<span class="t-s">"circle"</span>)
+star.<span class="t-m">color</span>(<span class="t-s">"gold"</span>)
+star.<span class="t-m">penup</span>()
+
+<span class="t-k">def</span> move_star():
+    star.<span class="t-m">goto</span>(random.<span class="t-m">randint</span>(-<span class="t-n">250</span>, <span class="t-n">250</span>), random.<span class="t-m">randint</span>(-<span class="t-n">200</span>, <span class="t-n">200</span>))
+
+<span class="t-k">def</span> check():
+    <span class="t-k">global</span> score
+    <span class="t-k">if</span> hero.<span class="t-m">distance</span>(star) &lt; <span class="t-n">20</span>:
+        score += <span class="t-n">1</span>
+        <span class="t-f">print</span>(<span class="t-s">"Очки:"</span>, score)
+        move_star()
+
+<span class="t-k">def</span> go_up():
+    hero.<span class="t-m">setheading</span>(<span class="t-n">90</span>)
+    hero.<span class="t-m">forward</span>(<span class="t-n">20</span>)
+    check()
+
+<span class="t-c"># дальше: go_down, go_left, go_right</span>
+
+<span class="t-f">onkey</span>(go_up, <span class="t-s">"Up"</span>)
+<span class="t-f">listen</span>()
+move_star()
+
+<span class="t-f">done</span>()</code></pre></div>
+<p>Сначала доделай управление и сбор звёзд (пункты 1–3), поиграй. Потом выведи счёт на экран черепашкой-писателем и добавь таймер.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай игру по пунктам 1–5.</li>
+  <li>Дай поиграть двум людям. Узнай, что им понравилось и что мешало.</li>
+  <li class="star">Добавь врага: красный круг, который сам ездит по полю на таймере. Если черепашка его коснулась — минус 3 очка.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Игра «Собери звёзды» готова">Игра «Собери звёзды» готова</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m4-8.html"><small>← урок 8</small><span class="pt">Таймер</span></a><a class="nx" href="../lessons/m4-10.html"><small>урок 10 →</small><span class="pt">Проверь себя</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

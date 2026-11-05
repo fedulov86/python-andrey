@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 2. Черепашка и for</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m3-2">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 3 · урок 2 из 11</span>
+  <h1>Черепашка и for</h1>
+  <p class="lead">Фигуры в три строчки</p>
+</div>
+<article class="body">
+<h4>Квадрат в три строчки</h4>
+<p>Квадрат — это 4 раза «вперёд и повернуть». Теперь это можно записать циклом:</p>
+<div class="code"><div class="code-bar"><span>m3_urok2.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7</span><code><span class="t-k">from</span> turtle <span class="t-k">import</span> *
+
+<span class="t-k">for</span> i <span class="t-k">in</span> <span class="t-f">range</span>(<span class="t-n">4</span>):
+    <span class="t-f">forward</span>(<span class="t-n">100</span>)
+    <span class="t-f">left</span>(<span class="t-n">90</span>)
+
+<span class="t-f">done</span>()</code></pre></div>
+<p>Было 8 строчек, стало 2 внутри цикла.</p>
+
+<h4>Любой многоугольник</h4>
+<p>Черепашка, обойдя фигуру, всегда поворачивается на 360 градусов в сумме. Поэтому для фигуры с <code>n</code> углами нужно поворачивать на <code>360 / n</code>:</p>
+<div class="code"><div class="code-bar"><span>m3_urok2.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9</span><code><span class="t-k">from</span> turtle <span class="t-k">import</span> *
+
+n = <span class="t-f">int</span>(<span class="t-f">input</span>(<span class="t-s">"Сколько углов? "</span>))
+
+<span class="t-k">for</span> i <span class="t-k">in</span> <span class="t-f">range</span>(n):
+    <span class="t-f">forward</span>(<span class="t-n">80</span>)
+    <span class="t-f">left</span>(<span class="t-n">360</span> / n)
+
+<span class="t-f">done</span>()</code></pre></div>
+<p>Введи 3 — получится треугольник, 6 — шестиугольник, 50 — почти круг.</p>
+
+<h4>Узор из фигур</h4>
+<p>Если после каждого квадрата чуть-чуть поворачивать, получится узор:</p>
+<div class="code"><div class="code-bar"><span>m3_urok2.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</span><code><span class="t-k">from</span> turtle <span class="t-k">import</span> *
+
+<span class="t-f">speed</span>(<span class="t-n">0</span>)
+<span class="t-f">color</span>(<span class="t-s">"purple"</span>)
+
+<span class="t-k">for</span> i <span class="t-k">in</span> <span class="t-f">range</span>(<span class="t-n">36</span>):
+    <span class="t-f">circle</span>(<span class="t-n">80</span>)
+    <span class="t-f">left</span>(<span class="t-n">10</span>)
+
+<span class="t-f">done</span>()</code></pre></div>
+<p><code>speed(0)</code> — самая быстрая скорость черепашки.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Нарисуй циклом пятиугольник и восьмиугольник.</li>
+  <li>Нарисуй звезду циклом: 5 раз вперёд и поворот на 144.</li>
+  <li>Сделай узор из 12 квадратов, каждый повёрнут на 30 градусов.</li>
+  <li class="star">Спроси число лучей и нарисуй «солнце»: из центра много линий во все стороны.
+    <details class="hint"><summary>Подсказка</summary><div><p>Каждый луч: вперёд, назад, повернуть на <code>360 / n</code>.</p></div></details></li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Рисую циклами">Рисую циклами</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m3-1.html"><small>← урок 1</small><span class="pt">for — повторить</span></a><a class="nx" href="../lessons/m3-3.html"><small>урок 3 →</small><span class="pt">Счётчик цикла</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

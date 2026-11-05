@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 2. Параметры</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m4-2">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 4 · урок 2 из 10</span>
+  <h1>Параметры</h1>
+  <p class="lead">Команда с настройками</p>
+</div>
+<article class="body">
+<h4>Команда с настройкой</h4>
+<p>У <code>forward(100)</code> в скобках число — сколько шагов пройти. Это <b>параметр</b>: настройка, которую передают команде. Своим функциям тоже можно давать параметры.</p>
+<div class="code"><div class="code-bar"><span>m4_urok2.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6</span><code><span class="t-k">def</span> greet(name):
+    <span class="t-f">print</span>(<span class="t-s">"Привет,"</span>, name)
+    <span class="t-f">print</span>(<span class="t-s">"Рад тебя видеть!"</span>)
+
+greet(<span class="t-s">"Андрей"</span>)
+greet(<span class="t-s">"папа"</span>)</code></pre></div>
+<p class="out">Вывод:<br>Привет, Андрей<br>Рад тебя видеть!<br>Привет, папа<br>Рад тебя видеть!</p>
+<p><code>name</code> в скобках — это переменная внутри функции. При вызове <code>greet("Андрей")</code> в неё кладётся <code>"Андрей"</code>.</p>
+
+<h4>Квадрат любого размера</h4>
+<div class="code"><div class="code-bar"><span>m4_urok2.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</span><code><span class="t-k">from</span> turtle <span class="t-k">import</span> *
+
+<span class="t-k">def</span> square(size):
+    <span class="t-k">for</span> i <span class="t-k">in</span> <span class="t-f">range</span>(<span class="t-n">4</span>):
+        <span class="t-f">forward</span>(size)
+        <span class="t-f">left</span>(<span class="t-n">90</span>)
+
+square(<span class="t-n">50</span>)
+square(<span class="t-n">100</span>)
+square(<span class="t-n">150</span>)
+
+<span class="t-f">done</span>()</code></pre></div>
+
+<h4>Несколько параметров</h4>
+<p>Параметров может быть несколько, через запятую. Передавать их нужно в том же порядке.</p>
+<div class="code"><div class="code-bar"><span>m4_urok2.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</span><code><span class="t-k">from</span> turtle <span class="t-k">import</span> *
+
+<span class="t-k">def</span> square(size, pen_color):
+    <span class="t-f">color</span>(pen_color)
+    <span class="t-k">for</span> i <span class="t-k">in</span> <span class="t-f">range</span>(<span class="t-n">4</span>):
+        <span class="t-f">forward</span>(size)
+        <span class="t-f">left</span>(<span class="t-n">90</span>)
+
+square(<span class="t-n">60</span>, <span class="t-s">"red"</span>)
+square(<span class="t-n">120</span>, <span class="t-s">"blue"</span>)
+
+<span class="t-f">done</span>()</code></pre></div>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай функцию <code>triangle(size)</code> и нарисуй три треугольника разного размера.</li>
+  <li>Сделай функцию <code>polygon(n, size)</code>, которая рисует фигуру с <code>n</code> углами.</li>
+  <li>Сделай функцию <code>stars(n)</code>, которая печатает <code>n</code> звёздочек в строчку. Нарисуй ею лесенку.</li>
+  <li class="star">Сделай функцию <code>move(x, y)</code>, которая переносит черепашку в точку, не оставляя линии. Нарисуй ею 4 квадрата в разных углах экрана.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Понял параметры">Понял параметры</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m4-1.html"><small>← урок 1</small><span class="pt">Свои команды</span></a><a class="nx" href="../lessons/m4-3.html"><small>урок 3 →</small><span class="pt">return — ответ функции</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

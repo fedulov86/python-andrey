@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 8. Случайные числа</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m3-8">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 3 · урок 8 из 11</span>
+  <h1>Случайные числа</h1>
+  <p class="lead">Модуль random</p>
+</div>
+<article class="body">
+<h4>Неожиданность в игре</h4>
+<p>Если в игре всё всегда одинаково, играть скучно. Нужна случайность: кубик, случайный враг, неожиданный клад. В Python для этого есть модуль <code>random</code>.</p>
+<p>Модуль — это набор готовых команд. Чтобы ими пользоваться, модуль подключают в начале программы командой <code>import</code>:</p>
+<div class="code"><div class="code-bar"><span>m3_urok8.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4</span><code><span class="t-k">import</span> random
+
+dice = random.<span class="t-m">randint</span>(<span class="t-n">1</span>, <span class="t-n">6</span>)
+<span class="t-f">print</span>(<span class="t-s">"Выпало:"</span>, dice)</code></pre></div>
+<p><code>random.randint(1, 6)</code> — случайное целое число от 1 до 6, оба края входят. Запусти программу несколько раз: число каждый раз разное.</p>
+
+<h4>Случайный выбор</h4>
+<p><code>random.choice</code> выбирает случайный вариант из строки или списка. Списки будут в модуле 5, пока просто посмотри:</p>
+<div class="code"><div class="code-bar"><span>m3_urok8.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4</span><code><span class="t-k">import</span> random
+
+monster = random.<span class="t-m">choice</span>([<span class="t-s">"гоблин"</span>, <span class="t-s">"скелет"</span>, <span class="t-s">"дракон"</span>])
+<span class="t-f">print</span>(<span class="t-s">"На тебя напал"</span>, monster)</code></pre></div>
+
+<h4>Удача в бою</h4>
+<div class="code"><div class="code-bar"><span>m3_urok8.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</span><code><span class="t-k">import</span> random
+
+monster = <span class="t-n">40</span>
+
+<span class="t-k">while</span> monster &gt; <span class="t-n">0</span>:
+    <span class="t-f">input</span>(<span class="t-s">"Нажми Enter, чтобы ударить"</span>)
+    hit = random.<span class="t-m">randint</span>(<span class="t-n">5</span>, <span class="t-n">15</span>)
+    <span class="t-k">if</span> random.<span class="t-m">randint</span>(<span class="t-n">1</span>, <span class="t-n">10</span>) == <span class="t-n">10</span>:
+        hit = hit * <span class="t-n">2</span>
+        <span class="t-f">print</span>(<span class="t-s">"Критический удар!"</span>)
+    monster -= hit
+    <span class="t-f">print</span>(<span class="t-s">f"Урон </span><span class="t-i">{hit}</span><span class="t-s">, у монстра осталось </span><span class="t-i">{max(monster, 0)}</span><span class="t-s">"</span>)
+
+<span class="t-f">print</span>(<span class="t-s">"Победа!"</span>)</code></pre></div>
+<p><code>max(monster, 0)</code> выбирает большее из двух чисел, чтобы не показывать отрицательное здоровье.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Брось два кубика и выведи сумму.</li>
+  <li>Подбрось монетку 100 раз и посчитай, сколько раз выпал орёл.</li>
+  <li>Случайный пример: компьютер загадывает два числа от 1 до 10 и спрашивает их сумму.</li>
+  <li class="star">Черепашка рисует 50 кругов случайного размера в случайных местах.
+    <details class="hint"><summary>Подсказка</summary><div><p><code>penup()</code>, <code>goto(random.randint(-300, 300), random.randint(-200, 200))</code>, <code>pendown()</code>.</p></div></details></li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Умею делать случайности">Умею делать случайности</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m3-7.html"><small>← урок 7</small><span class="pt">Счётчики и суммы</span></a><a class="nx" href="../lessons/m3-9.html"><small>урок 9 →</small><span class="pt">Проект: «Угадай число»</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

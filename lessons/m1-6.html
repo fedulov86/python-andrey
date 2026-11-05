@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 6. Ввод с клавиатуры: input</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m1-6">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 1 · урок 6 из 11</span>
+  <h1>Ввод с клавиатуры: input</h1>
+  <p class="lead">Программа задаёт вопросы</p>
+</div>
+<article class="body">
+<h4>Программа, которая слушает</h4>
+<p>До сих пор твои программы только говорили: показывали то, что ты заранее написал. Но в игре важно, что делает игрок: какое имя он выбрал, куда пошёл, что купил. Для этого программа должна уметь <b>спрашивать</b>.</p>
+
+<h4>Команда input</h4>
+<p><code>input</code> по-английски значит «ввод». Эта команда делает три вещи:</p>
+<ol>
+  <li>Показывает вопрос, который написан в скобках.</li>
+  <li><b>Останавливает программу и ждёт</b>, пока человек напечатает ответ и нажмёт Enter.</li>
+  <li>Отдаёт этот ответ. Обычно его сразу кладут в переменную, чтобы потом использовать.</li>
+</ol>
+<div class="code"><div class="code-bar"><span>m1_urok6.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2</span><code>name = <span class="t-f">input</span>(<span class="t-s">"Как тебя зовут? "</span>)
+<span class="t-f">print</span>(<span class="t-s">"Приятно познакомиться, "</span> + name)</code></pre></div>
+<p class="out">Как тебя зовут? Андрей<br>Приятно познакомиться, Андрей</p>
+<p>Ответ «Андрей» напечатал человек, а программа положила его в коробку <code>name</code>. Если запустить программу ещё раз и ввести другое имя, будет другой ответ. Отвечать надо в нижнем окне Thonny. Пробел в конце вопроса нужен, чтобы ответ не прилип к знаку вопроса.</p>
+
+<h4>Ловушка: input всегда даёт текст</h4>
+<p>Что бы ни ввёл человек, даже цифры, <code>input</code> отдаёт <b>строку</b>. Ты уже знаешь из урока 5, что получится, если сложить строку с числом:</p>
+<div class="code"><div class="code-bar"><span>m1_urok6.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2</span><code>age = <span class="t-f">input</span>(<span class="t-s">"Сколько тебе лет? "</span>)
+<span class="t-f">print</span>(age + <span class="t-n">5</span>)       <span class="t-c"># ошибка! age — это строка "13", а не число 13</span></code></pre></div>
+<p>Чтобы превратить строку в число, есть команда <code>int</code> (от integer — «целое число»). Она берёт строку <code>"13"</code> и выдаёт число <code>13</code>:</p>
+<div class="code"><div class="code-bar"><span>m1_urok6.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3</span><code>age = <span class="t-f">input</span>(<span class="t-s">"Сколько тебе лет? "</span>)
+age = <span class="t-f">int</span>(age)       <span class="t-c"># превращаем строку в число</span>
+<span class="t-f">print</span>(<span class="t-s">"Через 5 лет тебе будет"</span>, age + <span class="t-n">5</span>)</code></pre></div>
+<p class="out">Сколько тебе лет? 13<br>Через 5 лет тебе будет 18</p>
+<p>Обычно это пишут в одну строчку: <code>age = int(input("Сколько тебе лет? "))</code>. Python сначала выполняет то, что внутри скобок: задаёт вопрос, а потом превращает ответ в число.</p>
+<p>Правило простое: если от игрока нужно <b>число</b>, оборачивай <code>input</code> в <code>int</code>. Если нужен текст, например имя, — не надо.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Спроси у игрока имя и любимый цвет. Выведи: «Андрей, твой меч будет синего цвета».</li>
+  <li>Калькулятор: спроси два числа и выведи их сумму, разность и произведение.</li>
+  <li>Спроси, сколько у игрока монет и сколько стоит один предмет. Выведи, сколько предметов он может купить.
+    <details class="hint"><summary>Подсказка</summary><div><p>Вспомни деление нацело из урока 4.</p></div></details></li>
+  <li class="star">Что будет, если на вопрос о возрасте ввести «тринадцать» словами? Прочитай ошибку и подумай, почему <code>int</code> не справился.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Программа задаёт вопросы">Программа задаёт вопросы</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m1-5.html"><small>← урок 5</small><span class="pt">Строки</span></a><a class="nx" href="../lessons/m1-7.html"><small>урок 7 →</small><span class="pt">f-строки</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

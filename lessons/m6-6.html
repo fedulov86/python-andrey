@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 6. Столкновения</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m6-6">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 6 · урок 6 из 12</span>
+  <h1>Столкновения</h1>
+  <p class="lead">Герой подобрал монету</p>
+</div>
+<article class="body">
+<h4>Касаются ли два спрайта</h4>
+<p>Почти в любой игре нужно знать, что два спрайта коснулись: герой подобрал монету, враг поймал героя. У актёров для этого есть <code>colliderect</code>:</p>
+<div class="code"><div class="code-bar"><span>m6_urok6.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32</span><code><span class="t-k">import</span> pgzrun
+<span class="t-k">import</span> random
+
+WIDTH = <span class="t-n">600</span>
+HEIGHT = <span class="t-n">400</span>
+
+hero = Actor(<span class="t-s">"hero"</span>, (<span class="t-n">300</span>, <span class="t-n">200</span>))
+coin = Actor(<span class="t-s">"coin"</span>, (<span class="t-n">100</span>, <span class="t-n">100</span>))
+
+<span class="t-k">def</span> move_coin():
+    coin.<span class="t-m">x</span> = random.<span class="t-m">randint</span>(<span class="t-n">30</span>, WIDTH - <span class="t-n">30</span>)
+    coin.<span class="t-m">y</span> = random.<span class="t-m">randint</span>(<span class="t-n">30</span>, HEIGHT - <span class="t-n">30</span>)
+
+<span class="t-k">def</span> update():
+    <span class="t-k">if</span> keyboard.<span class="t-m">left</span>:
+        hero.<span class="t-m">x</span> -= <span class="t-n">5</span>
+    <span class="t-k">if</span> keyboard.<span class="t-m">right</span>:
+        hero.<span class="t-m">x</span> += <span class="t-n">5</span>
+    <span class="t-k">if</span> keyboard.<span class="t-m">up</span>:
+        hero.<span class="t-m">y</span> -= <span class="t-n">5</span>
+    <span class="t-k">if</span> keyboard.<span class="t-m">down</span>:
+        hero.<span class="t-m">y</span> += <span class="t-n">5</span>
+
+    <span class="t-k">if</span> hero.<span class="t-m">colliderect</span>(coin):
+        move_coin()
+
+<span class="t-k">def</span> draw():
+    screen.<span class="t-m">fill</span>(<span class="t-s">"darkgreen"</span>)
+    coin.<span class="t-m">draw</span>()
+    hero.<span class="t-m">draw</span>()
+
+pgzrun.<span class="t-m">go</span>()</code></pre></div>
+<p><code>hero.colliderect(coin)</code> отвечает <code>True</code>, если картинки героя и монеты хоть чуть-чуть перекрываются. Тогда монета прыгает в случайное место.</p>
+
+<h4>Попал ли курсор в спрайт</h4>
+<p>Есть ещё <code>collidepoint</code>: проверяет, попадает ли точка в картинку. Пригодится в уроке про мышь.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Добавь врага, который стоит на месте. Если герой его коснулся — напечатай в Thonny «Ой!» через <code>print</code>.</li>
+  <li>Сделай так, чтобы враг медленно ехал вправо и, уехав за край, появлялся слева.</li>
+  <li class="star">Пусть при касании врага герой отскакивает назад, а не проходит сквозь него.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Понял столкновения">Понял столкновения</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m6-5.html"><small>← урок 5</small><span class="pt">Спрайты</span></a><a class="nx" href="../lessons/m6-7.html"><small>урок 7 →</small><span class="pt">Счёт и текст</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

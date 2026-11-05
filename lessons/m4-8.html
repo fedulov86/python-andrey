@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 8. Таймер</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m4-8">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 4 · урок 8 из 10</span>
+  <h1>Таймер</h1>
+  <p class="lead">Что-то двигается само</p>
+</div>
+<article class="body">
+<h4>Движение без нажатий</h4>
+<p>В играх многое двигается само: падают предметы, ходят враги. Для этого нужен <b>таймер</b>: «через столько-то миллисекунд вызови функцию».</p>
+<div class="code"><div class="code-bar"><span>m4_urok8.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</span><code><span class="t-k">from</span> turtle <span class="t-k">import</span> *
+
+<span class="t-f">shape</span>(<span class="t-s">"turtle"</span>)
+<span class="t-f">penup</span>()
+
+<span class="t-k">def</span> tick():
+    <span class="t-f">forward</span>(<span class="t-n">5</span>)
+    <span class="t-k">if</span> <span class="t-f">xcor</span>() &gt; <span class="t-n">300</span>:
+        <span class="t-f">goto</span>(-<span class="t-n">300</span>, <span class="t-n">0</span>)
+    <span class="t-f">ontimer</span>(tick, <span class="t-n">50</span>)
+
+tick()
+
+<span class="t-f">done</span>()</code></pre></div>
+<p><code>ontimer(tick, 50)</code> значит: «через 50 миллисекунд вызови <code>tick</code>». А <code>tick</code> в конце снова заводит таймер. Получается, что она вызывается 20 раз в секунду, и черепашка ползёт сама. Так устроены все игры: много раз в секунду программа чуть-чуть двигает всё на экране.</p>
+
+<h4>Переменная, которую меняет функция</h4>
+<p>Хочется считать, сколько кругов проползла черепашка. Но если внутри функции написать <code>laps = laps + 1</code>, Python выдаст ошибку. Он считает, что внутри функции свои переменные.</p>
+<p>Чтобы функция могла менять переменную снаружи, в начале функции пишут <code>global</code> и имя переменной:</p>
+<div class="code"><div class="code-bar"><span>m4_urok8.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18</span><code><span class="t-k">from</span> turtle <span class="t-k">import</span> *
+
+<span class="t-f">shape</span>(<span class="t-s">"turtle"</span>)
+<span class="t-f">penup</span>()
+laps = <span class="t-n">0</span>
+
+<span class="t-k">def</span> tick():
+    <span class="t-k">global</span> laps
+    <span class="t-f">forward</span>(<span class="t-n">5</span>)
+    <span class="t-k">if</span> <span class="t-f">xcor</span>() &gt; <span class="t-n">300</span>:
+        <span class="t-f">goto</span>(-<span class="t-n">300</span>, <span class="t-n">0</span>)
+        laps += <span class="t-n">1</span>
+        <span class="t-f">print</span>(<span class="t-s">"Кругов:"</span>, laps)
+    <span class="t-f">ontimer</span>(tick, <span class="t-n">50</span>)
+
+tick()
+
+<span class="t-f">done</span>()</code></pre></div>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай, чтобы черепашка ехала быстрее: меньше миллисекунд или больше шагов.</li>
+  <li>Сделай «мячик»: черепашка едет вправо, у края разворачивается и едет влево, и так всё время.</li>
+  <li>Соедини с уроком 6: черепашка всё время ползёт вперёд сама, а стрелки только меняют направление. Это начало «Змейки».</li>
+  <li class="star">После 5 кругов черепашка останавливается и пишет «Финиш!».</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Понял таймер">Понял таймер</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m4-7.html"><small>← урок 7</small><span class="pt">Клик мышью</span></a><a class="nx" href="../lessons/m4-9.html"><small>урок 9 →</small><span class="pt">Проект: «Собери звёзды»</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

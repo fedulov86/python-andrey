@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 9. Проект: викторина</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m2-9">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 2 · урок 9 из 10</span>
+  <h1>Проект: викторина</h1>
+  <p class="lead">2 дня · вопросы, очки и звания</p>
+</div>
+<article class="body">
+<h4>Что делаем</h4>
+<p>Викторину на тему, которую ты хорошо знаешь: игры, футбол, космос, Minecraft. Дай в неё сыграть папе или друзьям.</p>
+
+<h4>Что должна уметь программа</h4>
+<ol>
+  <li>Показать заставку с названием и спросить имя игрока.</li>
+  <li>Задать не меньше 5 вопросов. За правильный ответ +1 очко.</li>
+  <li>После каждого вопроса сказать, правильно или нет. Если нет — показать правильный ответ.</li>
+  <li>Понимать ответ с большой и маленькой буквы и с лишними пробелами.</li>
+  <li>В конце показать счёт и звание: например, 5 из 5 — «Гений», 3–4 — «Знаток», меньше — «Новичок».</li>
+</ol>
+
+<h4>Начало, дальше сам</h4>
+<div class="code"><div class="code-bar"><span>m2_urok9.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</span><code><span class="t-f">print</span>(<span class="t-s">"=== ВИКТОРИНА ПРО КОСМОС ==="</span>)
+name = <span class="t-f">input</span>(<span class="t-s">"Как тебя зовут? "</span>)
+score = <span class="t-n">0</span>
+
+answer = <span class="t-f">input</span>(<span class="t-s">"1. Какая планета самая большая? "</span>).<span class="t-m">strip</span>().<span class="t-m">lower</span>()
+<span class="t-k">if</span> answer == <span class="t-s">"юпитер"</span>:
+    <span class="t-f">print</span>(<span class="t-s">"Правильно!"</span>)
+    score += <span class="t-n">1</span>
+<span class="t-k">else</span>:
+    <span class="t-f">print</span>(<span class="t-s">"Нет, это Юпитер"</span>)
+
+<span class="t-c"># дальше вопросы 2, 3, 4, 5</span>
+
+<span class="t-f">print</span>(<span class="t-s">f"</span><span class="t-i">{name}</span><span class="t-s">, твой счёт: </span><span class="t-i">{score}</span><span class="t-s">"</span>)</code></pre></div>
+<p>Делай по шагам: написал один вопрос — запусти и проверь. Потом следующий.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай викторину по пунктам 1–5.</li>
+  <li>Дай сыграть двум людям. Запиши, где они запутались, и поправь.</li>
+  <li class="star">Добавь вопрос с вариантами ответа: «а, б, в». А на один вопрос засчитывай два варианта ответа, например «Юпитер» и «юпитер планета».</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Викторина готова и показана">Викторина готова и показана</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m2-8.html"><small>← урок 8</small><span class="pt">Черепашка выбирает</span></a><a class="nx" href="../lessons/m2-10.html"><small>урок 10 →</small><span class="pt">Проверь себя</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

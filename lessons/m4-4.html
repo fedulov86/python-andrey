@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 4. Рисуем функциями</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m4-4">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 4 · урок 4 из 10</span>
+  <h1>Рисуем функциями</h1>
+  <p class="lead">Сцена из своих команд</p>
+</div>
+<article class="body">
+<h4>Большой рисунок из маленьких команд</h4>
+<p>Сложный рисунок трудно нарисовать одним куском. Но его можно разбить на части: дом, дерево, солнце. Для каждой части — своя функция. Потом собираем из них сцену.</p>
+<div class="code"><div class="code-bar"><span>m4_urok4.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37</span><code><span class="t-k">from</span> turtle <span class="t-k">import</span> *
+
+<span class="t-f">speed</span>(<span class="t-n">0</span>)
+
+<span class="t-k">def</span> move(x, y):
+    <span class="t-f">penup</span>()
+    <span class="t-f">goto</span>(x, y)
+    <span class="t-f">pendown</span>()
+
+<span class="t-k">def</span> square(size):
+    <span class="t-k">for</span> i <span class="t-k">in</span> <span class="t-f">range</span>(<span class="t-n">4</span>):
+        <span class="t-f">forward</span>(size)
+        <span class="t-f">left</span>(<span class="t-n">90</span>)
+
+<span class="t-k">def</span> triangle(size):
+    <span class="t-k">for</span> i <span class="t-k">in</span> <span class="t-f">range</span>(<span class="t-n">3</span>):
+        <span class="t-f">forward</span>(size)
+        <span class="t-f">left</span>(<span class="t-n">120</span>)
+
+<span class="t-k">def</span> house(x, y, size):
+    move(x, y)
+    <span class="t-f">color</span>(<span class="t-s">"brown"</span>)
+    square(size)
+    move(x, y + size)
+    <span class="t-f">color</span>(<span class="t-s">"red"</span>)
+    triangle(size)
+
+<span class="t-k">def</span> sun(x, y):
+    move(x, y)
+    <span class="t-f">dot</span>(<span class="t-n">80</span>, <span class="t-s">"gold"</span>)
+
+house(-<span class="t-n">200</span>, -<span class="t-n">100</span>, <span class="t-n">100</span>)
+house(<span class="t-n">0</span>, -<span class="t-n">100</span>, <span class="t-n">60</span>)
+sun(<span class="t-n">200</span>, <span class="t-n">150</span>)
+
+<span class="t-f">hideturtle</span>()
+<span class="t-f">done</span>()</code></pre></div>
+<p>Посмотри: функция <code>house</code> внутри себя вызывает другие функции — <code>move</code>, <code>square</code>, <code>triangle</code>. Так и строят большие программы: из маленьких понятных кусочков.</p>
+
+<h4>Закрашенные фигуры</h4>
+<p>Чтобы фигура была закрашена, перед рисованием пишут <code>begin_fill()</code>, а после — <code>end_fill()</code>. Цвет заливки задаёт <code>fillcolor</code>:</p>
+<div class="code"><div class="code-bar"><span>m4_urok4.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</span><code><span class="t-k">from</span> turtle <span class="t-k">import</span> *
+
+<span class="t-f">fillcolor</span>(<span class="t-s">"yellow"</span>)
+<span class="t-f">begin_fill</span>()
+<span class="t-k">for</span> i <span class="t-k">in</span> <span class="t-f">range</span>(<span class="t-n">4</span>):
+    <span class="t-f">forward</span>(<span class="t-n">100</span>)
+    <span class="t-f">left</span>(<span class="t-n">90</span>)
+<span class="t-f">end_fill</span>()
+
+<span class="t-f">done</span>()</code></pre></div>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Добавь в сцену функцию <code>tree(x, y)</code>: коричневый ствол и зелёная крона.</li>
+  <li>Сделай дома закрашенными.</li>
+  <li>Нарисуй улицу: 5 домов разного размера в ряд, используя цикл и функцию <code>house</code>.</li>
+  <li class="star">Сделай функцию <code>cloud(x, y)</code> из нескольких белых кругов и поставь на небо голубой фон: <code>bgcolor("skyblue")</code>.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Нарисовал сцену функциями">Нарисовал сцену функциями</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m4-3.html"><small>← урок 3</small><span class="pt">return — ответ функции</span></a><a class="nx" href="../lessons/m4-5.html"><small>урок 5 →</small><span class="pt">Несколько черепашек</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

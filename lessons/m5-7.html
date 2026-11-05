@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 7. Карта мира</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m5-7">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 5 · урок 7 из 10</span>
+  <h1>Карта мира</h1>
+  <p class="lead">Комнаты, по которым можно ходить</p>
+</div>
+<article class="body">
+<h4>Мир из комнат</h4>
+<p>В текстовых играх мир состоит из комнат. В каждой комнате есть описание и выходы в другие комнаты. Это удобно хранить словарём, где каждая комната — тоже словарь.</p>
+<div class="code"><div class="code-bar"><span>m5_urok7.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</span><code>rooms = {
+    <span class="t-s">"зал"</span>: {
+        <span class="t-s">"text"</span>: <span class="t-s">"Большой зал замка. На стенах факелы."</span>,
+        <span class="t-s">"exits"</span>: {<span class="t-s">"север"</span>: <span class="t-s">"библиотека"</span>, <span class="t-s">"восток"</span>: <span class="t-s">"кухня"</span>},
+    },
+    <span class="t-s">"библиотека"</span>: {
+        <span class="t-s">"text"</span>: <span class="t-s">"Пыльные книги до потолка."</span>,
+        <span class="t-s">"exits"</span>: {<span class="t-s">"юг"</span>: <span class="t-s">"зал"</span>},
+    },
+    <span class="t-s">"кухня"</span>: {
+        <span class="t-s">"text"</span>: <span class="t-s">"Пахнет супом. Повар куда-то ушёл."</span>,
+        <span class="t-s">"exits"</span>: {<span class="t-s">"запад"</span>: <span class="t-s">"зал"</span>},
+    },
+}
+
+current = <span class="t-s">"зал"</span>
+
+<span class="t-k">while</span> <span class="t-k">True</span>:
+    room = rooms[current]
+    <span class="t-f">print</span>()
+    <span class="t-f">print</span>(room[<span class="t-s">"text"</span>])
+    <span class="t-f">print</span>(<span class="t-s">"Выходы:"</span>, <span class="t-s">", "</span>.<span class="t-m">join</span>(room[<span class="t-s">"exits"</span>]))
+
+    command = <span class="t-f">input</span>(<span class="t-s">"&gt; "</span>).<span class="t-m">strip</span>().<span class="t-m">lower</span>()
+    <span class="t-k">if</span> command == <span class="t-s">"выход"</span>:
+        <span class="t-k">break</span>
+    <span class="t-k">elif</span> command <span class="t-k">in</span> room[<span class="t-s">"exits"</span>]:
+        current = room[<span class="t-s">"exits"</span>][command]
+    <span class="t-k">else</span>:
+        <span class="t-f">print</span>(<span class="t-s">"Туда не пройти"</span>)</code></pre></div>
+
+<h4>Как это работает</h4>
+<ul>
+  <li>В переменной <code>current</code> лежит название комнаты, где сейчас игрок.</li>
+  <li><code>rooms[current]</code> достаёт словарь этой комнаты: текст и выходы.</li>
+  <li>Выходы — тоже словарь: направление и куда оно ведёт. Если игрок ввёл направление, которое есть в выходах, <code>current</code> меняется на новую комнату.</li>
+  <li><code>", ".join(...)</code> склеивает названия выходов через запятую.</li>
+</ul>
+<p>Нарисуй карту на бумаге: квадратики-комнаты и стрелки между ними. С ней гораздо проще писать словарь.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Добавь ещё 3 комнаты: подвал, башню, сад.</li>
+  <li>Добавь комнату «сокровищница». Когда игрок туда попадает, программа пишет «Ты победил!» и заканчивается.</li>
+  <li class="star">Сделай так, чтобы можно было писать коротко: «с», «ю», «з», «в».</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Сделал карту из комнат">Сделал карту из комнат</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m5-6.html"><small>← урок 6</small><span class="pt">Словари в деле</span></a><a class="nx" href="../lessons/m5-8.html"><small>урок 8 →</small><span class="pt">Проект RPG: мир и предметы</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

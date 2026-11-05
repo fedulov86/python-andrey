@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Из Scratch в Python</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-root="">
+<header class="top"><div class="top-in"><a class="logo" href="index.html">python_для_андрея</a><nav><a href="index.html">главная</a><a href="karta.html">модули</a><a href="scratch.html" aria-current="page">scratch→python</a><a href="dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">шпаргалка</span>
+  <h1>Из Scratch в Python</h1>
+  <p class="lead">Почти всё, что ты знаешь по Scratch, в Python тоже есть. Просто это пишется словами.</p>
+</div>
+<div class="tbl"><table>
+  <thead><tr><th>блок в scratch</th><th>в python</th><th>где учим</th></tr></thead>
+  <tbody>
+    <tr><td><span class="blk b-ev">когда щёлкнут по флажку</span></td><td>Кнопка ▶ или F5 в Thonny. Программа выполняется сверху вниз</td><td>м1 · урок 0</td></tr>
+    <tr><td><span class="blk b-look">сказать Привет!</span></td><td><code>print("Привет!")</code></td><td>м1 · урок 1</td></tr>
+    <tr><td><span class="blk b-var">задать счёт значение 0</span></td><td><code>score = 0</code></td><td>м1 · урок 3</td></tr>
+    <tr><td><span class="blk b-var">изменить счёт на 1</span></td><td><code>score += 1</code></td><td>м1 · урок 4</td></tr>
+    <tr><td><span class="blk b-op">объединить</span></td><td><code>"при" + "вет"</code></td><td>м1 · урок 5</td></tr>
+    <tr><td><span class="blk b-sense">спросить и ждать</span></td><td><code>answer = input("Вопрос? ")</code></td><td>м1 · урок 6</td></tr>
+    <tr><td><span class="blk b-look">идти 10 шагов</span> <span class="blk b-look">повернуть на 90</span></td><td><code>forward(10)</code>, <code>left(90)</code></td><td>м1 · урок 8</td></tr>
+    <tr><td><span class="blk b-ctl">если … то … иначе</span></td><td><code>if …:</code> / <code>else:</code></td><td>м2</td></tr>
+    <tr><td><span class="blk b-ctl">повторить 10 раз</span></td><td><code>for i in range(10):</code></td><td>м3</td></tr>
+    <tr><td><span class="blk b-ctl">повторять пока не</span></td><td><code>while …:</code></td><td>м3</td></tr>
+    <tr><td><span class="blk b-op">выдать случайное от 1 до 10</span></td><td><code>random.randint(1, 10)</code></td><td>м3</td></tr>
+    <tr><td><span class="blk b-look">свои блоки</span></td><td><code>def имя():</code></td><td>м4</td></tr>
+    <tr><td><span class="blk b-ev">когда клавиша нажата</span></td><td><code>onkey(функция, "Left")</code></td><td>м4</td></tr>
+    <tr><td><span class="blk b-var">список</span></td><td><code>items = ["меч", "щит"]</code></td><td>м5</td></tr>
+    <tr><td><span class="blk b-sense">касается спрайта?</span></td><td><code>hero.colliderect(coin)</code></td><td>м6</td></tr>
+  </tbody>
+</table></div>
+</main>
+<script src="assets/lessons.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

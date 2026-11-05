@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 4. Случайное из списка</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m5-4">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 5 · урок 4 из 10</span>
+  <h1>Случайное из списка</h1>
+  <p class="lead">random.choice и перемешивание</p>
+</div>
+<article class="body">
+<h4>Случайный элемент</h4>
+<p>В модуле 3 ты уже видел <code>random.choice</code>. Теперь понятно, что в скобках у неё был список. Она выбирает из него случайный элемент.</p>
+<div class="code"><div class="code-bar"><span>m5_urok4.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7</span><code><span class="t-k">import</span> random
+
+monsters = [<span class="t-s">"гоблин"</span>, <span class="t-s">"скелет"</span>, <span class="t-s">"волк"</span>, <span class="t-s">"дракон"</span>]
+loot = [<span class="t-s">"монета"</span>, <span class="t-s">"зелье"</span>, <span class="t-s">"старый ботинок"</span>, <span class="t-s">"алмаз"</span>]
+
+<span class="t-f">print</span>(<span class="t-s">"На тебя напал"</span>, random.<span class="t-m">choice</span>(monsters))
+<span class="t-f">print</span>(<span class="t-s">"Ты нашёл:"</span>, random.<span class="t-m">choice</span>(loot))</code></pre></div>
+
+<h4>Перемешать</h4>
+<p><code>random.shuffle</code> перемешивает список, как колоду карт:</p>
+<div class="code"><div class="code-bar"><span>m5_urok4.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5</span><code><span class="t-k">import</span> random
+
+cards = [<span class="t-s">"туз"</span>, <span class="t-s">"король"</span>, <span class="t-s">"дама"</span>, <span class="t-s">"валет"</span>]
+random.<span class="t-m">shuffle</span>(cards)
+<span class="t-f">print</span>(cards)</code></pre></div>
+
+<h4>Викторина со случайным порядком</h4>
+<p>Вопросы и ответы можно хранить в двух списках с одинаковыми номерами: вопрос номер 0 — ответ номер 0.</p>
+<div class="code"><div class="code-bar"><span>m5_urok4.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</span><code><span class="t-k">import</span> random
+
+questions = [<span class="t-s">"Самая большая планета?"</span>, <span class="t-s">"Ближайшая к Солнцу планета?"</span>, <span class="t-s">"Красная планета?"</span>]
+answers = [<span class="t-s">"юпитер"</span>, <span class="t-s">"меркурий"</span>, <span class="t-s">"марс"</span>]
+
+order = [<span class="t-n">0</span>, <span class="t-n">1</span>, <span class="t-n">2</span>]
+random.<span class="t-m">shuffle</span>(order)
+
+<span class="t-k">for</span> n <span class="t-k">in</span> order:
+    reply = <span class="t-f">input</span>(questions[n] + <span class="t-s">" "</span>).<span class="t-m">strip</span>().<span class="t-m">lower</span>()
+    <span class="t-k">if</span> reply == answers[n]:
+        <span class="t-f">print</span>(<span class="t-s">"Верно!"</span>)
+    <span class="t-k">else</span>:
+        <span class="t-f">print</span>(<span class="t-s">"Нет, это"</span>, answers[n])</code></pre></div>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Генератор имён героев: два списка, «Огненный, Тёмный, Быстрый…» и «Волк, Рыцарь, Маг…». Выведи 5 случайных имён.</li>
+  <li>Переделай свою викторину из модуля 2 на списки и случайный порядок.</li>
+  <li>Сундук: каждый раз выдаёт случайный предмет и кладёт его в рюкзак. Открой сундук 5 раз и покажи рюкзак.</li>
+  <li class="star">Сделай так, чтобы алмаз выпадал редко. Подсказка: предмет можно положить в список несколько раз.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Умею выбирать случайно">Умею выбирать случайно</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m5-3.html"><small>← урок 3</small><span class="pt">Инвентарь</span></a><a class="nx" href="../lessons/m5-5.html"><small>урок 5 →</small><span class="pt">Словари</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 1. Ставим Pygame Zero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m6-1">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 6 · урок 1 из 12</span>
+  <h1>Ставим Pygame Zero</h1>
+  <p class="lead">Первое окно игры</p>
+</div>
+<article class="body">
+<h4>Что такое Pygame Zero</h4>
+<p>Черепашка хороша для рисования, но для игр медленная и неудобная. Настоящие 2D-игры на Python делают с помощью библиотеки <b>Pygame Zero</b>. Библиотека — это набор готовых команд, который кто-то написал за тебя. С Pygame Zero можно сделать игру с картинками, звуком и управлением.</p>
+
+<h4>Устанавливаем (вместе с папой)</h4>
+<p>Pygame Zero работает поверх другой библиотеки, pygame. Обычный pygame не устанавливается на новую версию Python, которая стоит в Thonny. Поэтому ставим его современную версию — <b>pygame-ce</b>. Это делается командами, но только один раз.</p>
+<ol>
+  <li>В Thonny открой меню <b>Инструменты → Открыть системную консоль</b>. Откроется чёрное окно.</li>
+  <li>Напиши по очереди три команды. После каждой нажимай Enter и жди, пока она закончится:</li>
+</ol>
+<p class="out">python -m pip install pygame-ce<br>python -m pip install numpy<br>python -m pip install --no-deps pgzero</p>
+<p>Если в конце каждой команды написано <code>Successfully installed</code>, всё получилось. Окно можно закрыть.</p>
+<p>Если раньше ты уже ставил pgzero через «Управление пакетами» и видишь ошибку <code>mixer module not available</code>, сначала напиши <code>python -m pip uninstall pygame</code>, а потом три команды выше.</p>
+
+<h4>Первая игра: пустое окно</h4>
+<p>Создай в папке <code>python</code> новую папку <code>igra1</code> и сохрани в неё эту программу:</p>
+<div class="code"><div class="code-bar"><span>m6_urok1.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9</span><code><span class="t-k">import</span> pgzrun
+
+WIDTH = <span class="t-n">600</span>
+HEIGHT = <span class="t-n">400</span>
+
+<span class="t-k">def</span> draw():
+    screen.<span class="t-m">fill</span>(<span class="t-s">"darkblue"</span>)
+
+pgzrun.<span class="t-m">go</span>()</code></pre></div>
+<p>Нажми F5. Откроется синее окно 600 на 400 точек. Закрыть его можно крестиком. Если окно не закрывается, нажми в Thonny красную кнопку «Стоп».</p>
+<p>Важно: игру на Pygame Zero нужно <b>сначала сохранить в файл</b>, а потом запускать. Если запустить несохранённую программу, будет ошибка <code>'import pgzrun' only works when you are running a Python file</code>. Тогда нажми Ctrl+S, сохрани файл в папку игры и запусти снова.</p>
+<p>При сохранении смотри, в какую папку сохраняешь. Это должна быть твоя папка <code>python/igra1</code>, а не папка, которую предложит Thonny.</p>
+
+<h4>Что тут написано</h4>
+<ul>
+  <li><code>import pgzrun</code> — подключить Pygame Zero. Всегда первая строчка.</li>
+  <li><code>WIDTH</code> и <code>HEIGHT</code> — ширина и высота окна. Большие буквы — так договорились в Pygame Zero.</li>
+  <li><code>def draw():</code> — функция, которая рисует экран. Ты её только объясняешь, а вызывает её сама Pygame Zero, много раз в секунду.</li>
+  <li><code>screen.fill("darkblue")</code> — залить экран цветом.</li>
+  <li><code>pgzrun.go()</code> — запустить игру. Всегда последняя строчка.</li>
+</ul>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай окно 800 на 600 и залей его чёрным.</li>
+  <li>Попробуй цвета <code>"darkgreen"</code>, <code>"purple"</code>, <code>"skyblue"</code>.</li>
+  <li class="star">Цвет можно задать тремя числами от 0 до 255: сколько красного, зелёного и синего. Попробуй <code>screen.fill((255, 120, 0))</code> и подбери свой цвет.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Окно игры открывается">Окно игры открывается</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../module6.html"><small>← назад</small><span class="pt">Модуль 6</span></a><a class="nx" href="../lessons/m6-2.html"><small>урок 2 →</small><span class="pt">Рисуем фигуры</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

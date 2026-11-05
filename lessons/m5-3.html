@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 3. Инвентарь</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m5-3">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 5 · урок 3 из 10</span>
+  <h1>Инвентарь</h1>
+  <p class="lead">Добавлять, убирать, искать</p>
+</div>
+<article class="body">
+<h4>Список, который меняется</h4>
+<p>Инвентарь в игре не стоит на месте: подобрал предмет — добавился, выпил зелье — пропало. У списков для этого есть команды.</p>
+<div class="code"><div class="code-bar"><span>m5_urok3.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8</span><code>inventory = [<span class="t-s">"меч"</span>]
+
+inventory.<span class="t-m">append</span>(<span class="t-s">"щит"</span>)       <span class="t-c"># добавить в конец</span>
+inventory.<span class="t-m">append</span>(<span class="t-s">"зелье"</span>)
+<span class="t-f">print</span>(inventory)
+
+inventory.<span class="t-m">remove</span>(<span class="t-s">"зелье"</span>)     <span class="t-c"># убрать предмет</span>
+<span class="t-f">print</span>(inventory)</code></pre></div>
+<p class="out">Вывод:<br>['меч', 'щит', 'зелье']<br>['меч', 'щит']</p>
+<p>Можно начинать и с пустого списка: <code>inventory = []</code>.</p>
+
+<h4>Есть ли в списке</h4>
+<p>Слово <code>in</code> отвечает, есть ли элемент в списке. Это удобно в <code>if</code>:</p>
+<div class="code"><div class="code-bar"><span>m5_urok3.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6</span><code>inventory = [<span class="t-s">"меч"</span>, <span class="t-s">"ключ"</span>]
+
+<span class="t-k">if</span> <span class="t-s">"ключ"</span> <span class="t-k">in</span> inventory:
+    <span class="t-f">print</span>(<span class="t-s">"Ты открываешь дверь"</span>)
+<span class="t-k">else</span>:
+    <span class="t-f">print</span>(<span class="t-s">"Дверь заперта"</span>)</code></pre></div>
+<p>Если попробовать <code>remove</code> предмет, которого нет, будет ошибка. Поэтому перед удалением проверяй через <code>in</code>.</p>
+
+<h4>Магазин</h4>
+<div class="code"><div class="code-bar"><span>m5_urok3.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</span><code>inventory = []
+coins = <span class="t-n">100</span>
+
+<span class="t-k">while</span> <span class="t-k">True</span>:
+    <span class="t-f">print</span>(<span class="t-s">f"Монет: </span><span class="t-i">{coins}</span><span class="t-s">. Рюкзак: </span><span class="t-i">{inventory}</span><span class="t-s">"</span>)
+    choice = <span class="t-f">input</span>(<span class="t-s">"Купить: меч (60), зелье (20) или выход? "</span>).<span class="t-m">strip</span>().<span class="t-m">lower</span>()
+    <span class="t-k">if</span> choice == <span class="t-s">"выход"</span>:
+        <span class="t-k">break</span>
+    <span class="t-k">elif</span> choice == <span class="t-s">"меч"</span> <span class="t-k">and</span> coins &gt;= <span class="t-n">60</span>:
+        inventory.<span class="t-m">append</span>(<span class="t-s">"меч"</span>)
+        coins -= <span class="t-n">60</span>
+    <span class="t-k">elif</span> choice == <span class="t-s">"зелье"</span> <span class="t-k">and</span> coins &gt;= <span class="t-n">20</span>:
+        inventory.<span class="t-m">append</span>(<span class="t-s">"зелье"</span>)
+        coins -= <span class="t-n">20</span>
+    <span class="t-k">else</span>:
+        <span class="t-f">print</span>(<span class="t-s">"Не получится"</span>)</code></pre></div>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Список покупок: спрашивай продукты, пока не введут пустую строку, и добавляй их в список. Потом выведи весь список с номерами.</li>
+  <li>Добавь в магазин команду «выпить»: если в рюкзаке есть зелье — убрать его и написать «Здоровье восстановлено».</li>
+  <li>Сделай так, чтобы в рюкзак помещалось не больше 5 предметов.</li>
+  <li class="star">Добавь в магазин продажу: предмет убирается из рюкзака, а монет становится больше на половину цены.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Умею менять список">Умею менять список</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m5-2.html"><small>← урок 2</small><span class="pt">Перебор списка</span></a><a class="nx" href="../lessons/m5-4.html"><small>урок 4 →</small><span class="pt">Случайное из списка</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

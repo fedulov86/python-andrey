@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 10. Звуки</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m6-10">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 6 · урок 10 из 12</span>
+  <h1>Звуки</h1>
+  <p class="lead">Игра начинает звучать</p>
+</div>
+<article class="body">
+<h4>Где взять звуки</h4>
+<p>Самый простой способ — сайт <a href="https://sfxr.me" target="_blank" rel="noopener">sfxr.me</a>. Там можно сделать звуки в стиле старых игр. Нажимай кнопки слева: «Pickup/Coin» — звук монетки, «Explosion» — взрыв, «Jump» — прыжок. Понравился звук — нажми «Export .WAV».</p>
+<p>Звуки кладут в папку <code>sounds</code> рядом с файлом игры, как картинки в <code>images</code>. Имена — маленькими английскими буквами: <code>coin.wav</code>, <code>boom.wav</code>.</p>
+
+<h4>Проигрываем звук</h4>
+<p>Звук из файла <code>sounds/coin.wav</code> проигрывается так: <code>sounds.coin.play()</code>. Добавь это туда, где герой подбирает монету:</p>
+<div class="code"><div class="code-bar"><span>m6_urok10.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</span><code><span class="t-k">import</span> pgzrun
+<span class="t-k">import</span> random
+
+WIDTH = <span class="t-n">600</span>
+HEIGHT = <span class="t-n">400</span>
+
+hero = Actor(<span class="t-s">"hero"</span>, (<span class="t-n">300</span>, <span class="t-n">200</span>))
+coin = Actor(<span class="t-s">"coin"</span>, (<span class="t-n">100</span>, <span class="t-n">100</span>))
+
+<span class="t-k">def</span> update():
+    <span class="t-k">if</span> keyboard.<span class="t-m">left</span>:
+        hero.<span class="t-m">x</span> -= <span class="t-n">5</span>
+    <span class="t-k">if</span> keyboard.<span class="t-m">right</span>:
+        hero.<span class="t-m">x</span> += <span class="t-n">5</span>
+    <span class="t-k">if</span> keyboard.<span class="t-m">up</span>:
+        hero.<span class="t-m">y</span> -= <span class="t-n">5</span>
+    <span class="t-k">if</span> keyboard.<span class="t-m">down</span>:
+        hero.<span class="t-m">y</span> += <span class="t-n">5</span>
+    <span class="t-k">if</span> hero.<span class="t-m">colliderect</span>(coin):
+        sounds.<span class="t-m">coin</span>.<span class="t-m">play</span>()
+        coin.<span class="t-m">x</span> = random.<span class="t-m">randint</span>(<span class="t-n">30</span>, WIDTH - <span class="t-n">30</span>)
+        coin.<span class="t-m">y</span> = random.<span class="t-m">randint</span>(<span class="t-n">30</span>, HEIGHT - <span class="t-n">30</span>)
+
+<span class="t-k">def</span> draw():
+    screen.<span class="t-m">fill</span>(<span class="t-s">"darkgreen"</span>)
+    coin.<span class="t-m">draw</span>()
+    hero.<span class="t-m">draw</span>()
+
+pgzrun.<span class="t-m">go</span>()</code></pre></div>
+
+<h4>Музыка</h4>
+<p>Фоновую музыку кладут в папку <code>music</code> (файл .mp3 или .ogg) и включают одной строчкой перед <code>pgzrun.go()</code>: <code>music.play("theme")</code>. Она будет играть по кругу.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай на sfxr.me три звука: монетка, удар, конец игры.</li>
+  <li>Добавь их в свою игру с камнями из урока 8.</li>
+  <li class="star">Сделай звук, который становится выше с каждой монетой. Подсказка: сделай на sfxr несколько похожих звуков.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="В игре есть звуки">В игре есть звуки</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m6-9.html"><small>← урок 9</small><span class="pt">Мышь и нажатия</span></a><a class="nx" href="../lessons/m6-11.html"><small>урок 11 →</small><span class="pt">Игра окончена</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

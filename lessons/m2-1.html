@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 1. Да или нет</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m2-1">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 2 · урок 1 из 10</span>
+  <h1>Да или нет</h1>
+  <p class="lead">Сравнения</p>
+</div>
+<article class="body">
+<h4>Программа задаёт себе вопросы</h4>
+<p>В игре всё время что-то проверяется. Хватает ли монет на меч? Закончилось ли здоровье? Правильный ли ответ? На такие вопросы есть только два ответа: да или нет.</p>
+<p>В Python «да» — это <code>True</code> (правда), а «нет» — <code>False</code> (ложь). Python сам отвечает на вопрос, если записать его как сравнение:</p>
+<div class="code"><div class="code-bar"><span>m2_urok1.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4</span><code><span class="t-f">print</span>(<span class="t-n">5</span> &gt; <span class="t-n">3</span>)
+<span class="t-f">print</span>(<span class="t-n">5</span> &lt; <span class="t-n">3</span>)
+<span class="t-f">print</span>(<span class="t-n">10</span> == <span class="t-n">10</span>)
+<span class="t-f">print</span>(<span class="t-n">10</span> != <span class="t-n">10</span>)</code></pre></div>
+<p class="out">Вывод:<br>True<br>False<br>True<br>False</p>
+
+<h4>Знаки сравнения</h4>
+<div class="tbl"><table style="min-width:360px">
+  <thead><tr><th>знак</th><th>вопрос</th><th>пример</th><th>ответ</th></tr></thead>
+  <tbody>
+    <tr><td><code>&gt;</code></td><td>больше?</td><td><code>5 &gt; 3</code></td><td>True</td></tr>
+    <tr><td><code>&lt;</code></td><td>меньше?</td><td><code>5 &lt; 3</code></td><td>False</td></tr>
+    <tr><td><code>&gt;=</code></td><td>больше или равно?</td><td><code>3 &gt;= 3</code></td><td>True</td></tr>
+    <tr><td><code>&lt;=</code></td><td>меньше или равно?</td><td><code>4 &lt;= 3</code></td><td>False</td></tr>
+    <tr><td><code>==</code></td><td>равно?</td><td><code>2 + 2 == 4</code></td><td>True</td></tr>
+    <tr><td><code>!=</code></td><td>не равно?</td><td><code>2 + 2 != 4</code></td><td>False</td></tr>
+  </tbody>
+</table></div>
+
+<h4>Два знака равно</h4>
+<p>Это самое важное в уроке. Один знак <code>=</code> кладёт значение в коробку. Два знака <code>==</code> спрашивают: «это одинаковое?». Перепутать их — очень частая ошибка.</p>
+<div class="code"><div class="code-bar"><span>m2_urok1.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3</span><code>coins = <span class="t-n">50</span>              <span class="t-c"># положить 50 в coins</span>
+<span class="t-f">print</span>(coins == <span class="t-n">50</span>)      <span class="t-c"># спросить: в coins лежит 50?</span>
+<span class="t-f">print</span>(coins &gt;= <span class="t-n">100</span>)     <span class="t-c"># спросить: монет 100 или больше?</span></code></pre></div>
+<p class="out">Вывод:<br>True<br>False</p>
+
+<h4>Сравнивать можно и текст</h4>
+<div class="code"><div class="code-bar"><span>m2_urok1.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3</span><code>answer = <span class="t-s">"Париж"</span>
+<span class="t-f">print</span>(answer == <span class="t-s">"Париж"</span>)
+<span class="t-f">print</span>(answer == <span class="t-s">"париж"</span>)</code></pre></div>
+<p class="out">Вывод:<br>True<br>False</p>
+<p>Для Python большая и маленькая буква — разные буквы, поэтому «Париж» и «париж» не равны.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Что выведет каждая строчка? Сначала угадай, потом проверь.
+    <div class="code"><div class="code-bar"><span>m2_urok1.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4</span><code><span class="t-f">print</span>(<span class="t-n">7</span> &gt; <span class="t-n">7</span>)
+<span class="t-f">print</span>(<span class="t-n">7</span> &gt;= <span class="t-n">7</span>)
+<span class="t-f">print</span>(<span class="t-n">3</span> * <span class="t-n">3</span> == <span class="t-n">9</span>)
+<span class="t-f">print</span>(<span class="t-s">"кот"</span> != <span class="t-s">"кит"</span>)</code></pre></div></li>
+  <li>Заведи переменные <code>coins = 120</code> и <code>price = 150</code>. Выведи ответ на вопрос «хватает ли монет на покупку».</li>
+  <li>Спроси у игрока его возраст и выведи, правда ли, что ему больше 12.</li>
+  <li class="star">Спроси два слова и выведи, одинаковой ли они длины.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Умею сравнивать">Умею сравнивать</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../module2.html"><small>← назад</small><span class="pt">Модуль 2</span></a><a class="nx" href="../lessons/m2-2.html"><small>урок 2 →</small><span class="pt">if — если</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

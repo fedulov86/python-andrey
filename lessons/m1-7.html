@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 7. f-строки</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m1-7">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 1 · урок 7 из 11</span>
+  <h1>f-строки</h1>
+  <p class="lead">Вставляем переменные в текст</p>
+</div>
+<article class="body">
+<h4>Зачем это нужно</h4>
+<p>Вот как мы до сих пор собирали фразу из текста и переменных:</p>
+<div class="code"><div class="code-bar"><span>m1_urok7.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3</span><code>name = <span class="t-s">"Андрей"</span>
+level = <span class="t-n">7</span>
+<span class="t-f">print</span>(<span class="t-s">"Игрок "</span> + name + <span class="t-s">", уровень "</span> + <span class="t-f">str</span>(level) + <span class="t-s">"!"</span>)</code></pre></div>
+<p>Работает, но неудобно: куча плюсов и кавычек, легко забыть пробел, а для чисел ещё нужен <code>str</code>. Чем длиннее фраза, тем больше путаницы.</p>
+
+<h4>f-строка</h4>
+<p>Есть способ проще. Поставь букву <code>f</code> прямо перед открывающей кавычкой. Тогда внутри строки можно писать имена переменных в фигурных скобках <code>{ }</code>, и Python сам подставит вместо них значения:</p>
+<div class="code"><div class="code-bar"><span>m1_urok7.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3</span><code>name = <span class="t-s">"Андрей"</span>
+level = <span class="t-n">7</span>
+<span class="t-f">print</span>(<span class="t-s">f"Игрок </span><span class="t-i">{name}</span><span class="t-s">, уровень </span><span class="t-i">{level}</span><span class="t-s">!"</span>)</code></pre></div>
+<p class="out">Вывод:<br>Игрок Андрей, уровень 7!</p>
+<p>Ты пишешь фразу целиком, как она будет выглядеть, и отмечаешь скобками места, куда вставить значения. Числа в <code>str</code> превращать не нужно, f-строка делает это сама.</p>
+<p>Буква <code>f</code> — от слова format, «оформление». Если её забыть, Python выведет фигурные скобки как обычный текст: <span class="out">Игрок {name}, уровень {level}!</span></p>
+
+<h4>Внутри скобок можно считать</h4>
+<div class="code"><div class="code-bar"><span>m1_urok7.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2</span><code>level = <span class="t-n">7</span>
+<span class="t-f">print</span>(<span class="t-s">f"До 10 уровня осталось: </span><span class="t-i">{10 - level}</span><span class="t-s">"</span>)</code></pre></div>
+<p class="out">Вывод:<br>До 10 уровня осталось: 3</p>
+<p>Фигурные скобки на клавиатуре — это русские буквы Х и Ъ в английской раскладке, вместе с Shift.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Перепиши калькулятор из урока 6 через f-строки, чтобы вывод был таким: <span class="out">7 + 3 = 10</span>.</li>
+  <li>Спроси имя и год рождения. Выведи: «Андрей, в 2030 году тебе будет 17 лет».</li>
+  <li class="star">Сделай таблицу характеристик героя с ровными колонками.
+    <details class="hint"><summary>Подсказка</summary><div><div class="code"><div class="code-bar"><span>m1_urok7.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5</span><code>strength = <span class="t-n">7</span>
+agility = <span class="t-n">12</span>
+
+<span class="t-f">print</span>(<span class="t-s">f"</span><span class="t-i">{'Сила':&lt;10}</span><span class="t-s"></span><span class="t-i">{strength:&gt;5}</span><span class="t-s">"</span>)
+<span class="t-f">print</span>(<span class="t-s">f"</span><span class="t-i">{'Ловкость':&lt;10}</span><span class="t-s"></span><span class="t-i">{agility:&gt;5}</span><span class="t-s">"</span>)</code></pre></div><p>Число после двоеточия — ширина колонки. <code>&lt;</code> прижимает текст влево, <code>&gt;</code> — вправо.</p></div></details></li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Пишу через f-строки">Пишу через f-строки</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m1-6.html"><small>← урок 6</small><span class="pt">Ввод с клавиатуры: input</span></a><a class="nx" href="../lessons/m1-8.html"><small>урок 8 →</small><span class="pt">Черепашка: первые линии</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

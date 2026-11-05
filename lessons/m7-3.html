@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 3. Git: сохраняем версии</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m7-3">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 7 · урок 3 из 7</span>
+  <h1>Git: сохраняем версии</h1>
+  <p class="lead">Машина времени для кода</p>
+</div>
+<article class="body">
+<h4>Зачем это нужно</h4>
+<p>Бывает так: игра работала, ты что-то поменял, и всё сломалось. А как было раньше — уже не вспомнить. Программисты решают это программой <b>Git</b>. Она сохраняет версии проекта, как сохранения в игре. К любой версии можно вернуться.</p>
+<p>Мы будем пользоваться <b>GitHub Desktop</b> — это Git с понятными кнопками.</p>
+
+<h4>Устанавливаем (вместе с папой)</h4>
+<ol>
+  <li>Зарегистрируйся на <a href="https://github.com" target="_blank" rel="noopener">github.com</a>. Это сайт, где программисты хранят свои проекты.</li>
+  <li>Скачай и установи <a href="https://desktop.github.com" target="_blank" rel="noopener">GitHub Desktop</a>.</li>
+  <li>При первом запуске войди в свой аккаунт GitHub.</li>
+</ol>
+
+<h4>Первое сохранение</h4>
+<ol>
+  <li>В GitHub Desktop: <b>File → New repository</b>. Репозиторий — это папка проекта, за которой следит Git.</li>
+  <li>Name — название проекта английскими буквами, например <code>space-shooter</code>. Local path — твоя папка <code>python</code>. Нажми <b>Create repository</b>.</li>
+  <li>Положи в новую папку файл своей игры и папку <code>images</code>.</li>
+  <li>GitHub Desktop покажет слева новые файлы. Внизу слева в поле Summary напиши, что сделал: «Окно и корабль».</li>
+  <li>Нажми <b>Commit to main</b>. Commit — это и есть сохранение версии.</li>
+</ol>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Создай репозиторий для своего проекта и сделай первый commit.</li>
+  <li>Поменяй что-нибудь в игре, сохрани файл и посмотри в GitHub Desktop: зелёным показано, что добавилось, красным — что убрано.</li>
+  <li>Сделай второй commit с понятным описанием.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Сделал первое сохранение в Git">Сделал первое сохранение в Git</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m7-2.html"><small>← урок 2</small><span class="pt">План</span></a><a class="nx" href="../lessons/m7-4.html"><small>урок 4 →</small><span class="pt">Работа по шагам</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

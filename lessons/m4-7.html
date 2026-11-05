@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 7. Клик мышью</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m4-7">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 4 · урок 7 из 10</span>
+  <h1>Клик мышью</h1>
+  <p class="lead">Черепашка идёт туда, куда щёлкнул</p>
+</div>
+<article class="body">
+<h4>Где щёлкнули</h4>
+<p>Мышь работает так же, как клавиши: говоришь, какую функцию вызвать при щелчке. Отличие одно: функция получает два параметра — координаты места, куда щёлкнули.</p>
+<div class="code"><div class="code-bar"><span>m4_urok7.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</span><code><span class="t-k">from</span> turtle <span class="t-k">import</span> *
+
+<span class="t-f">shape</span>(<span class="t-s">"turtle"</span>)
+<span class="t-f">color</span>(<span class="t-s">"blue"</span>)
+
+<span class="t-k">def</span> go_there(x, y):
+    <span class="t-f">goto</span>(x, y)
+
+<span class="t-f">onscreenclick</span>(go_there)
+
+<span class="t-f">done</span>()</code></pre></div>
+<p>Щёлкай по окну: черепашка будет ползти к каждому месту и рисовать линию. Получается рисовалка.</p>
+
+<h4>Координаты</h4>
+<p>Центр окна — точка <code>(0, 0)</code>. <code>x</code> растёт вправо, <code>y</code> — вверх. Слева от центра <code>x</code> отрицательный, внизу отрицательный <code>y</code>.</p>
+
+<h4>Штамп</h4>
+<div class="code"><div class="code-bar"><span>m4_urok7.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</span><code><span class="t-k">from</span> turtle <span class="t-k">import</span> *
+
+<span class="t-f">speed</span>(<span class="t-n">0</span>)
+<span class="t-f">hideturtle</span>()
+
+<span class="t-k">def</span> stamp_star(x, y):
+    <span class="t-f">penup</span>()
+    <span class="t-f">goto</span>(x, y)
+    <span class="t-f">dot</span>(<span class="t-n">30</span>, <span class="t-s">"gold"</span>)
+
+<span class="t-f">onscreenclick</span>(stamp_star)
+
+<span class="t-f">done</span>()</code></pre></div>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай рисовалку, в которой по щелчку черепашка переходит без линии, а клавишами можно включать и выключать карандаш.</li>
+  <li>Поменяй штамп: пусть в месте щелчка рисуется квадратик случайного цвета.
+    <details class="hint"><summary>Подсказка</summary><div><p><code>random.choice(["red", "blue", "green"])</code></p></div></details></li>
+  <li class="star">Напечатай координаты каждого щелчка через <code>print</code>. Найди, какие координаты у углов окна.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Черепашка слушается мышь">Черепашка слушается мышь</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m4-6.html"><small>← урок 6</small><span class="pt">Управление клавишами</span></a><a class="nx" href="../lessons/m4-8.html"><small>урок 8 →</small><span class="pt">Таймер</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

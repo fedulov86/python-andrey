@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 5. Строки</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m1-5">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 1 · урок 5 из 11</span>
+  <h1>Строки</h1>
+  <p class="lead">Работа с текстом</p>
+</div>
+<article class="body">
+<h4>Что такое строка</h4>
+<p>Текст в кавычках программисты называют <b>строкой</b>. <code>"Андрей"</code>, <code>"Игра окончена"</code>, <code>"a"</code> и даже пустые кавычки <code>""</code> — всё это строки. Слово «строка» тут значит «цепочка букв», как бусины на нитке.</p>
+<p>Числа и строки для Python — разные вещи, даже если выглядят похоже:</p>
+<div class="code"><div class="code-bar"><span>m1_urok5.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2</span><code><span class="t-f">print</span>(<span class="t-n">5</span> + <span class="t-n">5</span>)          <span class="t-c"># числа: складывает</span>
+<span class="t-f">print</span>(<span class="t-s">"5"</span> + <span class="t-s">"5"</span>)      <span class="t-c"># строки: приклеивает одну к другой</span></code></pre></div>
+<p class="out">Вывод:<br>10<br>55</p>
+<p>Во второй строчке пятёрки в кавычках, значит это не числа, а текст. Python не считает их, а просто ставит рядом.</p>
+
+<h4>Склеиваем и повторяем</h4>
+<p>Знак <code>+</code> между строками склеивает их в одну. Пробелы сами не появятся, их надо писать внутри кавычек.</p>
+<div class="code"><div class="code-bar"><span>m1_urok5.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2</span><code>name = <span class="t-s">"Андрей"</span>
+<span class="t-f">print</span>(<span class="t-s">"Привет, "</span> + name + <span class="t-s">"!"</span>)</code></pre></div>
+<p class="out">Вывод:<br>Привет, Андрей!</p>
+<p>Знак <code>*</code> между строкой и числом повторяет строку. Это удобно для рамок и линий:</p>
+<div class="code"><div class="code-bar"><span>m1_urok5.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1</span><code><span class="t-f">print</span>(<span class="t-s">"=-"</span> * <span class="t-n">10</span>)</code></pre></div>
+<p class="out">Вывод:<br>=-=-=-=-=-=-=-=-=-=-</p>
+
+<h4>Длина строки</h4>
+<p><code>len</code> (от английского length — «длина») считает, сколько символов в строке. Пробелы и знаки тоже считаются.</p>
+<div class="code"><div class="code-bar"><span>m1_urok5.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2</span><code>name = <span class="t-s">"Андрей"</span>
+<span class="t-f">print</span>(<span class="t-f">len</span>(name))</code></pre></div>
+<p class="out">Вывод:<br>6</p>
+
+<h4>Буква по номеру</h4>
+<p>У каждой буквы в строке есть номер. Чтобы достать букву, пишут имя строки и номер в квадратных скобках. Важная странность: номера начинаются <b>с нуля</b>, а не с единицы. Так устроено почти во всех языках программирования.</p>
+<div class="tbl"><table style="min-width:300px">
+  <thead><tr><th>номер</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr></thead>
+  <tbody><tr><td>буква</td><td>А</td><td>н</td><td>д</td><td>р</td><td>е</td><td>й</td></tr></tbody>
+</table></div>
+<div class="code"><div class="code-bar"><span>m1_urok5.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3</span><code>name = <span class="t-s">"Андрей"</span>
+<span class="t-f">print</span>(name[<span class="t-n">0</span>])      <span class="t-c"># первая буква</span>
+<span class="t-f">print</span>(name[<span class="t-n">3</span>])      <span class="t-c"># четвёртая буква</span></code></pre></div>
+<p class="out">Вывод:<br>А<br>р</p>
+
+<h4>Большие и маленькие буквы</h4>
+<p>У строк есть встроенные команды. Их пишут через точку после имени строки. <code>upper</code> делает все буквы большими, <code>lower</code> — маленькими. Сама переменная при этом не меняется: команда выдаёт новую строку.</p>
+<div class="code"><div class="code-bar"><span>m1_urok5.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3</span><code>name = <span class="t-s">"Андрей"</span>
+<span class="t-f">print</span>(name.<span class="t-m">upper</span>())
+<span class="t-f">print</span>(name.<span class="t-m">lower</span>())</code></pre></div>
+<p class="out">Вывод:<br>АНДРЕЙ<br>андрей</p>
+
+<h4>Строка плюс число</h4>
+<p>Склеить строку с числом через <code>+</code> нельзя: Python не знает, считать ему или клеить, и выдаёт ошибку. Число сначала надо превратить в строку командой <code>str</code>:</p>
+<div class="code"><div class="code-bar"><span>m1_urok5.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2</span><code>level = <span class="t-n">5</span>
+<span class="t-f">print</span>(<span class="t-s">"Уровень "</span> + <span class="t-f">str</span>(level))</code></pre></div>
+<p class="out">Вывод:<br>Уровень 5</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай «баннер» вокруг своего имени: сверху и снизу линия из <code>#</code> той же длины, что и имя. Используй <code>len</code> и <code>*</code>.</li>
+  <li>Что выведет <code>print("ха" * 3 + "!")</code>? Угадай, потом проверь.</li>
+  <li>Заведи переменную <code>word = "Python"</code> и выведи её первую и последнюю букву.
+    <details class="hint"><summary>Подсказка</summary><div><p>Номера можно считать и с конца: последняя буква — <code>word[-1]</code>, предпоследняя — <code>word[-2]</code>.</p></div></details></li>
+  <li class="star">Попробуй <code>print("Привет " + 5)</code>. Прочитай ошибку и исправь её двумя разными способами.
+    <details class="hint"><summary>Подсказка</summary><div><p>Первый способ — <code>str</code>. Второй вспомни из урока 1: что можно писать в <code>print</code> через запятую?</p></div></details></li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Умею работать со строками">Умею работать со строками</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m1-4.html"><small>← урок 4</small><span class="pt">Числа и математика</span></a><a class="nx" href="../lessons/m1-6.html"><small>урок 6 →</small><span class="pt">Ввод с клавиатуры: input</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

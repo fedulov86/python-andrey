@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 3. Движение</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m6-3">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 6 · урок 3 из 12</span>
+  <h1>Движение</h1>
+  <p class="lead">Функция update</p>
+</div>
+<article class="body">
+<h4>Две главные функции игры</h4>
+<p>Любая игра на Pygame Zero 60 раз в секунду делает две вещи:</p>
+<ol>
+  <li><code>update()</code> — меняет то, что происходит: двигает героя, считает очки.</li>
+  <li><code>draw()</code> — рисует всё заново, уже в новых местах.</li>
+</ol>
+<p>Так же устроено кино: много картинок в секунду, и на каждой всё чуть-чуть сдвинуто. Глазу кажется, что всё плавно двигается.</p>
+
+<h4>Мяч летит</h4>
+<div class="code"><div class="code-bar"><span>m6_urok3.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18</span><code><span class="t-k">import</span> pgzrun
+
+WIDTH = <span class="t-n">600</span>
+HEIGHT = <span class="t-n">400</span>
+
+x = <span class="t-n">0</span>
+
+<span class="t-k">def</span> update():
+    <span class="t-k">global</span> x
+    x += <span class="t-n">3</span>
+    <span class="t-k">if</span> x &gt; WIDTH:
+        x = <span class="t-n">0</span>
+
+<span class="t-k">def</span> draw():
+    screen.<span class="t-m">fill</span>(<span class="t-s">"black"</span>)
+    screen.<span class="t-m">draw</span>.<span class="t-m">filled_circle</span>((x, <span class="t-n">200</span>), <span class="t-n">25</span>, <span class="t-s">"orange"</span>)
+
+pgzrun.<span class="t-m">go</span>()</code></pre></div>
+<p>В <code>update</code> мяч сдвигается на 3 точки вправо. Если ушёл за край — возвращается к левому. <code>global x</code> нужен, как в модуле 4: функция меняет переменную снаружи.</p>
+
+<h4>Мяч отскакивает</h4>
+<p>Чтобы мяч отскакивал, храним не только место, но и скорость. Когда мяч долетел до края, скорость меняет знак: летел вправо — полетит влево.</p>
+<div class="code"><div class="code-bar"><span>m6_urok3.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</span><code><span class="t-k">import</span> pgzrun
+
+WIDTH = <span class="t-n">600</span>
+HEIGHT = <span class="t-n">400</span>
+
+x = <span class="t-n">300</span>
+y = <span class="t-n">200</span>
+speed_x = <span class="t-n">4</span>
+speed_y = <span class="t-n">3</span>
+
+<span class="t-k">def</span> update():
+    <span class="t-k">global</span> x, y, speed_x, speed_y
+    x += speed_x
+    y += speed_y
+    <span class="t-k">if</span> x &lt; <span class="t-n">25</span> <span class="t-k">or</span> x &gt; WIDTH - <span class="t-n">25</span>:
+        speed_x = -speed_x
+    <span class="t-k">if</span> y &lt; <span class="t-n">25</span> <span class="t-k">or</span> y &gt; HEIGHT - <span class="t-n">25</span>:
+        speed_y = -speed_y
+
+<span class="t-k">def</span> draw():
+    screen.<span class="t-m">fill</span>(<span class="t-s">"black"</span>)
+    screen.<span class="t-m">draw</span>.<span class="t-m">filled_circle</span>((x, y), <span class="t-n">25</span>, <span class="t-s">"orange"</span>)
+
+pgzrun.<span class="t-m">go</span>()</code></pre></div>
+<p>Число 25 — радиус мяча. Без него мяч наполовину уходил бы за край.</p>
+
+<h4>Гравитация</h4>
+<p>Настоящий мяч не летает с одной скоростью: он падает всё быстрее и быстрее. Чтобы так было и в игре, будем каждый кадр немного менять не место мяча, а его <b>скорость</b>: <code>speed_y += 0.3</code>.</p>
+<p>Помни, что <code>y</code> растёт вниз. Значит, плюс к скорости — это толчок вниз.</p>
+<div class="code"><div class="code-bar"><span>m6_urok3.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</span><code><span class="t-k">import</span> pgzrun
+
+WIDTH = <span class="t-n">600</span>
+HEIGHT = <span class="t-n">400</span>
+
+x = <span class="t-n">300</span>
+y = <span class="t-n">100</span>
+speed_y = <span class="t-n">0</span>
+
+<span class="t-k">def</span> update():
+    <span class="t-k">global</span> y, speed_y
+    speed_y += <span class="t-n">0.3</span>
+    y += speed_y
+    <span class="t-k">if</span> y &gt; HEIGHT - <span class="t-n">25</span>:
+        y = HEIGHT - <span class="t-n">25</span>
+        speed_y = -speed_y
+
+<span class="t-k">def</span> draw():
+    screen.<span class="t-m">fill</span>(<span class="t-s">"black"</span>)
+    screen.<span class="t-m">draw</span>.<span class="t-m">filled_circle</span>((x, y), <span class="t-n">25</span>, <span class="t-s">"orange"</span>)
+    screen.<span class="t-m">draw</span>.<span class="t-m">text</span>(<span class="t-s">f"скорость: </span><span class="t-i">{speed_y:.1f}</span><span class="t-s">"</span>, (<span class="t-n">10</span>, <span class="t-n">10</span>), fontsize=<span class="t-n">30</span>, <span class="t-f">color</span>=<span class="t-s">"white"</span>)
+
+pgzrun.<span class="t-m">go</span>()</code></pre></div>
+<p>Запусти и следи за скоростью в углу экрана. Вот что происходит за один прыжок:</p>
+<div class="tbl"><table style="min-width:420px">
+  <thead><tr><th>мяч</th><th>скорость</th><th>что видно</th></tr></thead>
+  <tbody>
+    <tr><td>наверху</td><td>0</td><td>на миг зависает</td></tr>
+    <tr><td>падает</td><td>растёт: 1, 2, … 12</td><td>летит всё быстрее</td></tr>
+    <tr><td>ударился о пол</td><td>12 → −12</td><td>разворачивается</td></tr>
+    <tr><td>летит вверх</td><td>−12, −11, … 0</td><td>тормозит</td></tr>
+  </tbody>
+</table></div>
+<p>Толчок вниз разгоняет мяч, пока он падает, и тормозит, пока он летит вверх. Поэтому мяч поднимается почти на ту же высоту, откуда упал.</p>
+<p>Строчка <code>y = HEIGHT - 25</code> ставит мяч ровно на пол. Без неё мяч проваливается под пол и застревает там.</p>
+
+<h4>Мяч теряет силу</h4>
+<p>Сейчас мяч прыгает вечно. Настоящий мяч при каждом ударе о пол теряет часть скорости, и прыжки становятся всё ниже. Замени строчку <code>speed_y = -speed_y</code> на эту:</p>
+<p class="out">speed_y = -speed_y * 0.8</p>
+<p>Теперь после удара мяч летит вверх со скоростью 0.8 от прежней. Каждый прыжок ниже предыдущего, и в конце мяч ложится на пол.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай, чтобы мяч из первой программы летел быстрее или медленнее.</li>
+  <li>Добавь второй мяч другого цвета со своей скоростью.</li>
+  <li>Пусть при каждом отскоке мяч меняет цвет на случайный.</li>
+  <li>В программе с гравитацией попробуй вместо <code>0.8</code> числа <code>0.5</code> и <code>0.95</code>. Какой мяч похож на резиновый, а какой на мешок с песком?</li>
+  <li>Поменяй гравитацию: <code>0.05</code> — как на Луне, <code>1</code> — очень тяжёлая планета.</li>
+  <li class="star">Соедини обе программы: мяч с гравитацией летит ещё и вбок и отскакивает от стен.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="В игре всё двигается">В игре всё двигается</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m6-2.html"><small>← урок 2</small><span class="pt">Рисуем фигуры</span></a><a class="nx" href="../lessons/m6-4.html"><small>урок 4 →</small><span class="pt">Управление клавишами</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

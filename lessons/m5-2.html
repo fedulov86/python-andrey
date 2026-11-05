@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 2. Перебор списка</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m5-2">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 5 · урок 2 из 10</span>
+  <h1>Перебор списка</h1>
+  <p class="lead">for по всем элементам</p>
+</div>
+<article class="body">
+<h4>Пройти по всем</h4>
+<p>Часто нужно что-то сделать с каждым элементом: показать каждый предмет, проверить каждого врага. Для этого <code>for</code> пишут прямо со списком:</p>
+<div class="code"><div class="code-bar"><span>m5_urok2.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5</span><code>inventory = [<span class="t-s">"меч"</span>, <span class="t-s">"щит"</span>, <span class="t-s">"зелье"</span>]
+
+<span class="t-f">print</span>(<span class="t-s">"В рюкзаке:"</span>)
+<span class="t-k">for</span> item <span class="t-k">in</span> inventory:
+    <span class="t-f">print</span>(<span class="t-s">"-"</span>, item)</code></pre></div>
+<p class="out">Вывод:<br>В рюкзаке:<br>- меч<br>- щит<br>- зелье</p>
+<p>На каждом повторе в переменной <code>item</code> лежит очередной элемент списка: сначала меч, потом щит, потом зелье.</p>
+
+<h4>С номерами</h4>
+<p>Если нужен ещё и номер, используют <code>enumerate</code>. Он даёт сразу две вещи: номер и элемент.</p>
+<div class="code"><div class="code-bar"><span>m5_urok2.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4</span><code>inventory = [<span class="t-s">"меч"</span>, <span class="t-s">"щит"</span>, <span class="t-s">"зелье"</span>]
+
+<span class="t-k">for</span> number, item <span class="t-k">in</span> enumerate(inventory, <span class="t-n">1</span>):
+    <span class="t-f">print</span>(<span class="t-s">f"</span><span class="t-i">{number}</span><span class="t-s">. </span><span class="t-i">{item}</span><span class="t-s">"</span>)</code></pre></div>
+<p class="out">Вывод:<br>1. меч<br>2. щит<br>3. зелье</p>
+<p>Единица в <code>enumerate(inventory, 1)</code> значит «нумеровать с 1».</p>
+
+<h4>Посчитать по списку</h4>
+<div class="code"><div class="code-bar"><span>m5_urok2.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7</span><code>prices = [<span class="t-n">30</span>, <span class="t-n">120</span>, <span class="t-n">15</span>, <span class="t-n">60</span>]
+total = <span class="t-n">0</span>
+
+<span class="t-k">for</span> price <span class="t-k">in</span> prices:
+    total += price
+
+<span class="t-f">print</span>(<span class="t-s">"Всё вместе стоит:"</span>, total)</code></pre></div>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай список друзей и поздоровайся с каждым: «Привет, Петя!».</li>
+  <li>Выведи из списка чисел только те, что больше 50.</li>
+  <li>Список цветов <code>["red", "orange", "yellow", "green", "blue"]</code>: нарисуй черепашкой линию каждого цвета.</li>
+  <li class="star">Посчитай, сколько в списке слов длиннее 5 букв.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Умею перебирать список">Умею перебирать список</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m5-1.html"><small>← урок 1</small><span class="pt">Списки</span></a><a class="nx" href="../lessons/m5-3.html"><small>урок 3 →</small><span class="pt">Инвентарь</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

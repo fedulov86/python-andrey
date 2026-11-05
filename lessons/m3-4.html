@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 4. Цикл в цикле</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m3-4">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 3 · урок 4 из 11</span>
+  <h1>Цикл в цикле</h1>
+  <p class="lead">Узоры и таблицы</p>
+</div>
+<article class="body">
+<h4>Повторить повторение</h4>
+<p>Внутри цикла может быть ещё один цикл. Тогда внутренний выполняется целиком на каждом шаге внешнего.</p>
+<div class="code"><div class="code-bar"><span>m3_urok4.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4</span><code><span class="t-k">for</span> row <span class="t-k">in</span> <span class="t-f">range</span>(<span class="t-n">3</span>):
+    <span class="t-k">for</span> col <span class="t-k">in</span> <span class="t-f">range</span>(<span class="t-n">5</span>):
+        <span class="t-f">print</span>(<span class="t-s">"#"</span>, end=<span class="t-s">""</span>)
+    <span class="t-f">print</span>()</code></pre></div>
+<p class="out">Вывод:<br>#####<br>#####<br>#####</p>
+<p>Внешний цикл делает 3 строчки. На каждой строчке внутренний печатает 5 решёток подряд. Пустой <code>print()</code> переходит на новую строку.</p>
+
+<h4>Узор из квадратов</h4>
+<p>Внутренний цикл рисует квадрат, внешний — повторяет квадрат с поворотом:</p>
+<div class="code"><div class="code-bar"><span>m3_urok4.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</span><code><span class="t-k">from</span> turtle <span class="t-k">import</span> *
+
+<span class="t-f">speed</span>(<span class="t-n">0</span>)
+<span class="t-f">color</span>(<span class="t-s">"orange"</span>)
+
+<span class="t-k">for</span> i <span class="t-k">in</span> <span class="t-f">range</span>(<span class="t-n">18</span>):
+    <span class="t-k">for</span> j <span class="t-k">in</span> <span class="t-f">range</span>(<span class="t-n">4</span>):
+        <span class="t-f">forward</span>(<span class="t-n">100</span>)
+        <span class="t-f">left</span>(<span class="t-n">90</span>)
+    <span class="t-f">left</span>(<span class="t-n">20</span>)
+
+<span class="t-f">done</span>()</code></pre></div>
+
+<h4>Ряд домиков</h4>
+<div class="code"><div class="code-bar"><span>m3_urok4.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</span><code><span class="t-k">from</span> turtle <span class="t-k">import</span> *
+
+<span class="t-f">speed</span>(<span class="t-n">0</span>)
+<span class="t-f">penup</span>()
+<span class="t-f">goto</span>(-<span class="t-n">250</span>, <span class="t-n">0</span>)
+<span class="t-f">pendown</span>()
+
+<span class="t-k">for</span> house <span class="t-k">in</span> <span class="t-f">range</span>(<span class="t-n">5</span>):
+    <span class="t-k">for</span> side <span class="t-k">in</span> <span class="t-f">range</span>(<span class="t-n">4</span>):
+        <span class="t-f">forward</span>(<span class="t-n">60</span>)
+        <span class="t-f">left</span>(<span class="t-n">90</span>)
+    <span class="t-f">penup</span>()
+    <span class="t-f">forward</span>(<span class="t-n">100</span>)
+    <span class="t-f">pendown</span>()
+
+<span class="t-f">done</span>()</code></pre></div>
+<p><code>goto(-250, 0)</code> переносит черепашку в точку левее центра. Центр окна — это <code>(0, 0)</code>.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Нарисуй решётками прямоугольник: спроси ширину и высоту.</li>
+  <li>Напечатай полную таблицу умножения от 1 до 9.</li>
+  <li>Нарисуй узор из 36 треугольников, каждый повёрнут на 10 градусов.</li>
+  <li class="star">Нарисуй шахматную доску 8 на 8 из закрашенных и пустых квадратов.
+    <details class="hint"><summary>Подсказка</summary><div><p>Квадрат закрашивается так: <code>begin_fill()</code>, нарисовать квадрат, <code>end_fill()</code>. Чёрный он, когда <code>(row + col) % 2 == 0</code>.</p></div></details></li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Понял цикл в цикле">Понял цикл в цикле</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m3-3.html"><small>← урок 3</small><span class="pt">Счётчик цикла</span></a><a class="nx" href="../lessons/m3-5.html"><small>урок 5 →</small><span class="pt">while — пока</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

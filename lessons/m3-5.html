@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 5. while — пока</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m3-5">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 3 · урок 5 из 11</span>
+  <h1>while — пока</h1>
+  <p class="lead">Повторять, пока условие верно</p>
+</div>
+<article class="body">
+<h4>Когда неизвестно, сколько раз</h4>
+<p><code>for</code> подходит, когда заранее знаешь, сколько повторять. Но часто это неизвестно. Бой идёт, пока у монстра есть здоровье. Игра спрашивает пароль, пока не введут правильный.</p>
+<p>Для этого есть <code>while</code> — «пока». Цикл повторяется, пока ответ на вопрос «да».</p>
+<div class="code"><div class="code-bar"><span>m3_urok5.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7</span><code>monster = <span class="t-n">50</span>
+
+<span class="t-k">while</span> monster &gt; <span class="t-n">0</span>:
+    <span class="t-f">print</span>(<span class="t-s">"Бьёшь монстра! Здоровье монстра:"</span>, monster)
+    monster = monster - <span class="t-n">15</span>
+
+<span class="t-f">print</span>(<span class="t-s">"Монстр побеждён!"</span>)</code></pre></div>
+<p class="out">Вывод:<br>Бьёшь монстра! Здоровье монстра: 50<br>Бьёшь монстра! Здоровье монстра: 35<br>Бьёшь монстра! Здоровье монстра: 20<br>Бьёшь монстра! Здоровье монстра: 5<br>Монстр побеждён!</p>
+<p>Перед каждым повтором Python заново задаёт вопрос <code>monster &gt; 0</code>. Как только ответ «нет», цикл заканчивается.</p>
+
+<h4>Пароль</h4>
+<div class="code"><div class="code-bar"><span>m3_urok5.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7</span><code>password = <span class="t-f">input</span>(<span class="t-s">"Пароль: "</span>)
+
+<span class="t-k">while</span> password != <span class="t-s">"дракон"</span>:
+    <span class="t-f">print</span>(<span class="t-s">"Неверно, попробуй ещё"</span>)
+    password = <span class="t-f">input</span>(<span class="t-s">"Пароль: "</span>)
+
+<span class="t-f">print</span>(<span class="t-s">"Добро пожаловать!"</span>)</code></pre></div>
+
+<h4>Вечный цикл</h4>
+<p>Если ответ на вопрос всегда «да», цикл никогда не закончится. Например, если забыть уменьшать здоровье монстра. Программа зависнет. В Thonny её можно остановить красной кнопкой «Стоп» или клавишами Ctrl+F2.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Обратный отсчёт: спроси число и печатай его, уменьшая на 1, пока оно больше нуля.</li>
+  <li>Спрашивай числа и складывай их, пока игрок не введёт 0. Потом напечатай сумму.</li>
+  <li>Копилка: у тебя 0 монет, каждый день добавляется 15. Сколько дней копить на велосипед за 1000? Посчитай циклом.</li>
+  <li class="star">Напиши вечный цикл нарочно и останови его кнопкой «Стоп».</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Понял while">Понял while</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m3-4.html"><small>← урок 4</small><span class="pt">Цикл в цикле</span></a><a class="nx" href="../lessons/m3-6.html"><small>урок 6 →</small><span class="pt">break — выход</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 1. for — повторить</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m3-1">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 3 · урок 1 из 11</span>
+  <h1>for — повторить</h1>
+  <p class="lead">Цикл на нужное число раз</p>
+</div>
+<article class="body">
+<h4>Зачем повторять</h4>
+<p>Помнишь квадрат черепашкой? Ты 4 раза писал одно и то же: <code>forward</code>, <code>left</code>. А если нужно повторить 100 раз? Копировать код долго, и легко ошибиться.</p>
+<p>Для повторений есть <b>цикл</b>. Ты пишешь команды один раз и говоришь, сколько раз их выполнить.</p>
+<div class="code"><div class="code-bar"><span>m3_urok1.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2</span><code><span class="t-k">for</span> i <span class="t-k">in</span> <span class="t-f">range</span>(<span class="t-n">5</span>):
+    <span class="t-f">print</span>(<span class="t-s">"Привет!"</span>)</code></pre></div>
+<p class="out">Вывод:<br>Привет!<br>Привет!<br>Привет!<br>Привет!<br>Привет!</p>
+<p>Читается так: «повтори 5 раз: напечатай „Привет!“».</p>
+
+<h4>Как это записывается</h4>
+<ul>
+  <li><code>for i in range(5):</code> — повторить 5 раз. Число в скобках — сколько раз.</li>
+  <li>В конце двоеточие, как у <code>if</code>.</li>
+  <li>Всё, что нужно повторять, пишется с отступом. Строчки без отступа выполнятся один раз, после цикла.</li>
+</ul>
+<div class="code"><div class="code-bar"><span>m3_urok1.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5</span><code><span class="t-f">print</span>(<span class="t-s">"Начинаем отсчёт"</span>)
+<span class="t-k">for</span> i <span class="t-k">in</span> <span class="t-f">range</span>(<span class="t-n">3</span>):
+    <span class="t-f">print</span>(<span class="t-s">"Тик"</span>)
+    <span class="t-f">print</span>(<span class="t-s">"Так"</span>)
+<span class="t-f">print</span>(<span class="t-s">"Бум!"</span>)</code></pre></div>
+<p class="out">Вывод:<br>Начинаем отсчёт<br>Тик<br>Так<br>Тик<br>Так<br>Тик<br>Так<br>Бум!</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Напечатай своё имя 10 раз.</li>
+  <li>Спроси у игрока число и напечатай «Ура!» столько раз.</li>
+  <li>Нарисуй лесенку из 5 строчек <code>"=="</code>, а под ней надпись «Конец лестницы».</li>
+  <li class="star">Что будет, если написать <code>range(0)</code>? Угадай, потом проверь.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Понял for">Понял for</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../module3.html"><small>← назад</small><span class="pt">Модуль 3</span></a><a class="nx" href="../lessons/m3-2.html"><small>урок 2 →</small><span class="pt">Черепашка и for</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

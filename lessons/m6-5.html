@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 5. Спрайты</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m6-5">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 6 · урок 5 из 12</span>
+  <h1>Спрайты</h1>
+  <p class="lead">Картинки вместо кругов</p>
+</div>
+<article class="body">
+<h4>Что такое спрайт</h4>
+<p>Спрайт — это картинка, которая двигается по экрану: герой, монетка, враг. В Pygame Zero спрайт называется <code>Actor</code> — «актёр».</p>
+
+<h4>Где взять картинки</h4>
+<p>Мы приготовили набор: <a href="../assets/sprites.zip">скачать sprites.zip</a>. Внутри папка <code>images</code> с картинками:</p>
+<p>
+  <img src="../assets/sprites/hero.png" alt="герой" width="56" height="56" style="image-rendering:pixelated">
+  <img src="../assets/sprites/coin.png" alt="монета" width="48" height="48" style="image-rendering:pixelated">
+  <img src="../assets/sprites/enemy.png" alt="враг" width="56" height="48" style="image-rendering:pixelated">
+  <img src="../assets/sprites/star.png" alt="звезда" width="56" height="56" style="image-rendering:pixelated">
+  <img src="../assets/sprites/heart.png" alt="сердце" width="44" height="40" style="image-rendering:pixelated">
+  <img src="../assets/sprites/rock.png" alt="камень" width="56" height="40" style="image-rendering:pixelated">
+</p>
+<p>Названия: <code>hero</code>, <code>coin</code>, <code>enemy</code>, <code>star</code>, <code>heart</code>, <code>rock</code>.</p>
+<p>Распакуй архив так, чтобы папка <code>images</code> лежала <b>рядом с файлом игры</b>:</p>
+<p class="out">igra1/<br>&nbsp;&nbsp;igra.py<br>&nbsp;&nbsp;images/<br>&nbsp;&nbsp;&nbsp;&nbsp;hero.png<br>&nbsp;&nbsp;&nbsp;&nbsp;coin.png<br>&nbsp;&nbsp;&nbsp;&nbsp;...</p>
+<p>Свои картинки тоже можно: нарисуй в Paint, сохрани как PNG в папку <code>images</code>. Имя файла — только маленькие английские буквы, без пробелов.</p>
+
+<h4>Герой на экране</h4>
+<div class="code"><div class="code-bar"><span>m6_urok5.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</span><code><span class="t-k">import</span> pgzrun
+
+WIDTH = <span class="t-n">600</span>
+HEIGHT = <span class="t-n">400</span>
+
+hero = Actor(<span class="t-s">"hero"</span>, (<span class="t-n">300</span>, <span class="t-n">200</span>))
+
+<span class="t-k">def</span> update():
+    <span class="t-k">if</span> keyboard.<span class="t-m">left</span>:
+        hero.<span class="t-m">x</span> -= <span class="t-n">5</span>
+    <span class="t-k">if</span> keyboard.<span class="t-m">right</span>:
+        hero.<span class="t-m">x</span> += <span class="t-n">5</span>
+    <span class="t-k">if</span> keyboard.<span class="t-m">up</span>:
+        hero.<span class="t-m">y</span> -= <span class="t-n">5</span>
+    <span class="t-k">if</span> keyboard.<span class="t-m">down</span>:
+        hero.<span class="t-m">y</span> += <span class="t-n">5</span>
+
+<span class="t-k">def</span> draw():
+    screen.<span class="t-m">fill</span>(<span class="t-s">"darkgreen"</span>)
+    hero.<span class="t-m">draw</span>()
+
+pgzrun.<span class="t-m">go</span>()</code></pre></div>
+<ul>
+  <li><code>Actor("hero", (300, 200))</code> — создать актёра из картинки <code>hero.png</code> и поставить в точку (300, 200). Расширение <code>.png</code> не пишут.</li>
+  <li><code>hero.x</code> и <code>hero.y</code> — где он сейчас. Их можно менять.</li>
+  <li><code>hero.draw()</code> — нарисовать актёра.</li>
+</ul>
+<p>Заметь: <code>global</code> больше не нужен. Мы не кладём в <code>hero</code> новое значение, а только меняем его <code>x</code> и <code>y</code>.</p>
+<p>Если появилась ошибка <code>No image found like 'hero'</code>, значит папка <code>images</code> лежит не там. Проверь, что она рядом с файлом игры.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Добавь на экран монетку и звезду, которые стоят на месте.</li>
+  <li>Не давай герою уйти за край экрана.</li>
+  <li class="star">Нарисуй в Paint свою картинку 50 на 50 точек и сделай её героем.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="В игре есть картинки">В игре есть картинки</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m6-4.html"><small>← урок 4</small><span class="pt">Управление клавишами</span></a><a class="nx" href="../lessons/m6-6.html"><small>урок 6 →</small><span class="pt">Столкновения</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

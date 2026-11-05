@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 6. and, or, not</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m2-6">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 2 · урок 6 из 10</span>
+  <h1>and, or, not</h1>
+  <p class="lead">Сложные вопросы</p>
+</div>
+<article class="body">
+<h4>Два условия сразу</h4>
+<p>Иногда одного вопроса мало. Дверь открывается, только если есть ключ <b>и</b> ты стоишь рядом. В Python для этого есть три слова.</p>
+
+<h4>and — «и»</h4>
+<p>Ответ «да», только если <b>оба</b> вопроса «да».</p>
+<div class="code"><div class="code-bar"><span>m2_urok6.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7</span><code>coins = <span class="t-f">int</span>(<span class="t-f">input</span>(<span class="t-s">"Монет: "</span>))
+level = <span class="t-f">int</span>(<span class="t-f">input</span>(<span class="t-s">"Уровень: "</span>))
+
+<span class="t-k">if</span> coins &gt;= <span class="t-n">100</span> <span class="t-k">and</span> level &gt;= <span class="t-n">5</span>:
+    <span class="t-f">print</span>(<span class="t-s">"Можно купить огненный меч"</span>)
+<span class="t-k">else</span>:
+    <span class="t-f">print</span>(<span class="t-s">"Нужно 100 монет и 5 уровень"</span>)</code></pre></div>
+
+<h4>or — «или»</h4>
+<p>Ответ «да», если <b>хотя бы один</b> вопрос «да».</p>
+<div class="code"><div class="code-bar"><span>m2_urok6.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6</span><code>answer = <span class="t-f">input</span>(<span class="t-s">"Продолжить? "</span>)
+
+<span class="t-k">if</span> answer == <span class="t-s">"да"</span> <span class="t-k">or</span> answer == <span class="t-s">"Да"</span>:
+    <span class="t-f">print</span>(<span class="t-s">"Продолжаем!"</span>)
+<span class="t-k">else</span>:
+    <span class="t-f">print</span>(<span class="t-s">"Выход"</span>)</code></pre></div>
+<p>Тут программа поймёт ответ и с большой, и с маленькой буквы.</p>
+
+<h4>not — «не»</h4>
+<p>Переворачивает ответ: «да» становится «нет», и наоборот.</p>
+<div class="code"><div class="code-bar"><span>m2_urok6.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6</span><code>name = <span class="t-f">input</span>(<span class="t-s">"Имя героя: "</span>)
+
+<span class="t-k">if</span> <span class="t-k">not</span> name == <span class="t-s">""</span>:
+    <span class="t-f">print</span>(<span class="t-s">"Привет,"</span>, name)
+<span class="t-k">else</span>:
+    <span class="t-f">print</span>(<span class="t-s">"Ты не ввёл имя"</span>)</code></pre></div>
+
+<h4>Число в промежутке</h4>
+<p>Часто нужно проверить, что число между двумя другими. Это можно записать коротко, как в математике:</p>
+<div class="code"><div class="code-bar"><span>m2_urok6.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4</span><code>age = <span class="t-f">int</span>(<span class="t-f">input</span>(<span class="t-s">"Возраст: "</span>))
+
+<span class="t-k">if</span> <span class="t-n">10</span> &lt;= age &lt;= <span class="t-n">15</span>:
+    <span class="t-f">print</span>(<span class="t-s">"Тебе в младшую лигу"</span>)</code></pre></div>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Спроси логин и пароль. Если логин <code>"andrey"</code> и пароль <code>"12345"</code>, напиши «Вход выполнен», иначе «Неверный логин или пароль».</li>
+  <li>Спроси день недели. Если это «суббота» или «воскресенье», напиши «Выходной!», иначе «Учебный день».</li>
+  <li>Спроси число. Скажи, лежит ли оно от 1 до 100.</li>
+  <li class="star">Монстр побеждён, если у героя сила больше 10 и есть меч, или если у героя есть волшебный амулет. Спроси всё это у игрока и выведи результат.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Понял and, or, not">Понял and, or, not</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m2-5.html"><small>← урок 5</small><span class="pt">elif — много вариантов</span></a><a class="nx" href="../lessons/m2-7.html"><small>урок 7 →</small><span class="pt">Проверка ввода</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

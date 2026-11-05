@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 10. Проверь себя</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m2-10">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 2 · урок 10 из 10</span>
+  <h1>Проверь себя</h1>
+  <p class="lead">Мини-тест по модулю 2</p>
+</div>
+<article class="body">
+<p>Отвечай в уме или на бумажке, без Thonny. Потом открой ответ. Если ошибся, вернись к уроку.</p>
+<ol class="tasks">
+  <li>Чем отличаются <code>=</code> и <code>==</code>?<details class="hint"><summary>Ответ</summary><div><p><code>=</code> кладёт значение в переменную, <code>==</code> спрашивает, равны ли два значения.</p></div></details></li>
+  <li>Что выведет программа?
+    <div class="code"><div class="code-bar"><span>m2_urok10.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7</span><code>x = <span class="t-n">7</span>
+<span class="t-k">if</span> x &gt; <span class="t-n">5</span>:
+    <span class="t-f">print</span>(<span class="t-s">"А"</span>)
+<span class="t-k">elif</span> x &gt; <span class="t-n">3</span>:
+    <span class="t-f">print</span>(<span class="t-s">"Б"</span>)
+<span class="t-k">else</span>:
+    <span class="t-f">print</span>(<span class="t-s">"В"</span>)</code></pre></div>
+    <details class="hint"><summary>Ответ</summary><div><p>Только <code>А</code>. После первого «да» остальное пропускается.</p></div></details></li>
+  <li>Что выведет программа?
+    <div class="code"><div class="code-bar"><span>m2_urok10.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4</span><code>x = <span class="t-n">2</span>
+<span class="t-k">if</span> x &gt; <span class="t-n">5</span>:
+    <span class="t-f">print</span>(<span class="t-s">"много"</span>)
+<span class="t-f">print</span>(<span class="t-s">"готово"</span>)</code></pre></div>
+    <details class="hint"><summary>Ответ</summary><div><p><code>готово</code>. Эта строчка без отступа и выполняется всегда.</p></div></details></li>
+  <li>Чему равно <code>5 &gt; 3 and 2 &gt; 4</code>?<details class="hint"><summary>Ответ</summary><div><p><code>False</code>: второе условие не выполняется.</p></div></details></li>
+  <li>Чему равно <code>5 &gt; 3 or 2 &gt; 4</code>?<details class="hint"><summary>Ответ</summary><div><p><code>True</code>: хватает одного выполненного условия.</p></div></details></li>
+  <li>Как узнать, что игрок ввёл именно число?<details class="hint"><summary>Ответ</summary><div><p><code>isdigit()</code>: <code>if answer.isdigit():</code></p></div></details></li>
+  <li class="star">Объясни папе, зачем в Python отступы.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Ответил правильно на 5 из 6">Ответил правильно на 5 из 6</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m2-9.html"><small>← урок 9</small><span class="pt">Проект: викторина</span></a><a class="nx" href="../module3.html"><small>модуль 2 закончен →</small><span class="pt">Модуль 3. Циклы и случайность</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

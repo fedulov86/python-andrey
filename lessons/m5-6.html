@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 6. Словари в деле</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m5-6">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 5 · урок 6 из 10</span>
+  <h1>Словари в деле</h1>
+  <p class="lead">Перебор, цены и сохранение героя</p>
+</div>
+<article class="body">
+<h4>Перебрать словарь</h4>
+<p>Цикл по словарю идёт по ключам. А <code>items()</code> даёт сразу ключ и значение:</p>
+<div class="code"><div class="code-bar"><span>m5_urok6.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5</span><code>prices = {<span class="t-s">"меч"</span>: <span class="t-n">60</span>, <span class="t-s">"щит"</span>: <span class="t-n">40</span>, <span class="t-s">"зелье"</span>: <span class="t-n">20</span>}
+
+<span class="t-f">print</span>(<span class="t-s">"Магазин:"</span>)
+<span class="t-k">for</span> item, price <span class="t-k">in</span> prices.<span class="t-m">items</span>():
+    <span class="t-f">print</span>(<span class="t-s">f"  </span><span class="t-i">{item}</span><span class="t-s"> — </span><span class="t-i">{price}</span><span class="t-s"> монет"</span>)</code></pre></div>
+<p class="out">Вывод:<br>Магазин:<br>&nbsp;&nbsp;меч — 60 монет<br>&nbsp;&nbsp;щит — 40 монет<br>&nbsp;&nbsp;зелье — 20 монет</p>
+
+<h4>Магазин на словаре</h4>
+<p>С таким словарём магазину больше не нужен длинный <code>elif</code> для каждого товара. Новые товары добавляются одной строчкой.</p>
+<div class="code"><div class="code-bar"><span>m5_urok6.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18</span><code>prices = {<span class="t-s">"меч"</span>: <span class="t-n">60</span>, <span class="t-s">"щит"</span>: <span class="t-n">40</span>, <span class="t-s">"зелье"</span>: <span class="t-n">20</span>, <span class="t-s">"лук"</span>: <span class="t-n">50</span>}
+coins = <span class="t-n">100</span>
+inventory = []
+
+<span class="t-k">while</span> <span class="t-k">True</span>:
+    choice = <span class="t-f">input</span>(<span class="t-s">f"Монет </span><span class="t-i">{coins}</span><span class="t-s">. Что купить? (выход — уйти) "</span>).<span class="t-m">strip</span>().<span class="t-m">lower</span>()
+    <span class="t-k">if</span> choice == <span class="t-s">"выход"</span>:
+        <span class="t-k">break</span>
+    <span class="t-k">if</span> choice <span class="t-k">not</span> <span class="t-k">in</span> prices:
+        <span class="t-f">print</span>(<span class="t-s">"Такого нет"</span>)
+    <span class="t-k">elif</span> coins &lt; prices[choice]:
+        <span class="t-f">print</span>(<span class="t-s">"Не хватает монет"</span>)
+    <span class="t-k">else</span>:
+        coins -= prices[choice]
+        inventory.<span class="t-m">append</span>(choice)
+        <span class="t-f">print</span>(<span class="t-s">"Куплено:"</span>, choice)
+
+<span class="t-f">print</span>(<span class="t-s">"Рюкзак:"</span>, inventory)</code></pre></div>
+
+<h4>Список словарей</h4>
+<p>Если монстров много, удобно хранить список, где каждый монстр — словарь:</p>
+<div class="code"><div class="code-bar"><span>m5_urok6.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8</span><code>monsters = [
+    {<span class="t-s">"name"</span>: <span class="t-s">"гоблин"</span>, <span class="t-s">"health"</span>: <span class="t-n">30</span>, <span class="t-s">"damage"</span>: <span class="t-n">5</span>},
+    {<span class="t-s">"name"</span>: <span class="t-s">"волк"</span>, <span class="t-s">"health"</span>: <span class="t-n">40</span>, <span class="t-s">"damage"</span>: <span class="t-n">8</span>},
+    {<span class="t-s">"name"</span>: <span class="t-s">"дракон"</span>, <span class="t-s">"health"</span>: <span class="t-n">200</span>, <span class="t-s">"damage"</span>: <span class="t-n">30</span>},
+]
+
+<span class="t-k">for</span> m <span class="t-k">in</span> monsters:
+    <span class="t-f">print</span>(<span class="t-s">f"</span><span class="t-i">{m['name']}</span><span class="t-s">: здоровье </span><span class="t-i">{m['health']}</span><span class="t-s">, урон </span><span class="t-i">{m['damage']}</span><span class="t-s">"</span>)</code></pre></div>
+<p>Внутри f-строки ключ пишут в одинарных кавычках, чтобы не спутать с кавычками самой строки.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Добавь в магазин 3 новых товара.</li>
+  <li>Выведи из списка монстров только тех, у кого урон больше 6.</li>
+  <li>Выбери случайного монстра из списка и выведи его характеристики.</li>
+  <li class="star">Словарь-переводчик: 10 слов «русское: английское». Программа спрашивает перевод случайного слова и считает правильные ответы.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Использую словари">Использую словари</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m5-5.html"><small>← урок 5</small><span class="pt">Словари</span></a><a class="nx" href="../lessons/m5-7.html"><small>урок 7 →</small><span class="pt">Карта мира</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

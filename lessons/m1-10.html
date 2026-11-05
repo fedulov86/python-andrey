@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 10. Проект: создатель персонажа</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m1-10">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 1 · урок 10 из 11</span>
+  <h1>Проект: создатель персонажа</h1>
+  <p class="lead">2 дня · собираем всё вместе</p>
+</div>
+<article class="body">
+<h4>Твоя первая настоящая программа</h4>
+<p>Ты уже знаешь всё, что нужно: <code>print</code>, переменные, математику, строки, <code>input</code> и f-строки. Теперь соберём из этого программу, которую можно дать поиграть другу. На проект есть два дня, торопиться не надо.</p>
+<h4>Что должна делать программа</h4>
+<ol>
+  <li>Показать заставку с названием игры.</li>
+  <li>Спросить имя героя, расу (человек, эльф, гном) и класс (воин, маг, лучник).</li>
+  <li>Спросить, сколько очков игрок вложит в <b>силу</b>, а сколько в <b>ловкость</b>. Всего очков 10, остаток уходит в <b>магию</b>.</li>
+  <li>Посчитать характеристики: здоровье = 50 + сила × 10, урон = сила × 2 + ловкость, мана = магия × 15.</li>
+  <li>Вывести красивую карточку персонажа в рамке.</li>
+</ol>
+<h4>Как делать большую программу</h4>
+<p>Не пиши всё сразу. Опытные программисты делают так: написал маленький кусок, запустил, проверил, что работает, и только потом пишешь дальше. Если что-то сломается, ты будешь точно знать, что ошибка в последнем куске.</p>
+<p>Делай по одному пункту из списка выше и запускай программу после каждого.</p>
+<h4>Начало, дальше сам</h4>
+<div class="code"><div class="code-bar"><span>m1_urok10.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</span><code><span class="t-f">print</span>(<span class="t-s">"*"</span> * <span class="t-n">30</span>)
+<span class="t-f">print</span>(<span class="t-s">"   СОЗДАТЕЛЬ ГЕРОЯ v1.0"</span>)
+<span class="t-f">print</span>(<span class="t-s">"*"</span> * <span class="t-n">30</span>)
+
+name = <span class="t-f">input</span>(<span class="t-s">"Имя героя: "</span>)
+race = <span class="t-f">input</span>(<span class="t-s">"Раса (человек / эльф / гном): "</span>)
+
+points = <span class="t-n">10</span>
+strength = <span class="t-f">int</span>(<span class="t-f">input</span>(<span class="t-s">f"Очков в силу (из </span><span class="t-i">{points}</span><span class="t-s">): "</span>))
+<span class="t-c"># ... продолжи сам</span></code></pre></div>
+<p class="out">Пример карточки:<br>==============================<br>  Торин, гном-воин<br>  Сила 6 · Ловкость 3 · Магия 1<br>  Здоровье 110 · Урон 15 · Мана 15<br>==============================</p>
+<ol class="tasks">
+  <li>Сделай программу по пунктам 1–5.</li>
+  <li>Дай поиграть папе или другу. Запиши, что им было непонятно, и поправь.</li>
+  <li class="star">Добавь бонус расы: эльфу +2 к ловкости, гному +20 к здоровью. Пока без if: просто спроси у игрока бонус числом. Как сделать по-настоящему, ты узнаешь в следующем модуле.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Проект готов и показан">Проект готов и показан</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m1-9.html"><small>← урок 9</small><span class="pt">Черепашка и переменные</span></a><a class="nx" href="../lessons/m1-11.html"><small>урок 11 →</small><span class="pt">Проверь себя</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

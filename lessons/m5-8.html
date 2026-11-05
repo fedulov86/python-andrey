@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 8. Проект RPG: мир и предметы</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m5-8">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 5 · урок 8 из 10</span>
+  <h1>Проект RPG: мир и предметы</h1>
+  <p class="lead">2 дня · часть 1</p>
+</div>
+<article class="body">
+<h4>Что делаем</h4>
+<p>Следующие два урока ты делаешь свою текстовую RPG. Сегодня — мир и предметы. В следующем уроке — бой.</p>
+<p>Придумай сюжет. Например: ты просыпаешься в подземелье и надо выбраться. Или: найти потерянный амулет в заброшенном замке. Нарисуй карту на бумаге: 6–8 комнат.</p>
+
+<h4>Что должна уметь программа</h4>
+<ol>
+  <li>Комнаты с описаниями и выходами (как в прошлом уроке).</li>
+  <li>В некоторых комнатах лежат предметы. Команда «взять» кладёт предмет в рюкзак, и он пропадает из комнаты.</li>
+  <li>Команда «рюкзак» показывает, что у тебя есть.</li>
+  <li>Одна дверь заперта: пройти можно, только если в рюкзаке ключ.</li>
+  <li>Есть цель: дойти до выхода с нужным предметом.</li>
+</ol>
+
+<h4>Подсказка: предметы в комнате</h4>
+<p>Добавь в словарь каждой комнаты ключ <code>"items"</code> со списком предметов:</p>
+<div class="code"><div class="code-bar"><span>m5_urok8.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</span><code>rooms = {
+    <span class="t-s">"подвал"</span>: {
+        <span class="t-s">"text"</span>: <span class="t-s">"Сыро и темно."</span>,
+        <span class="t-s">"exits"</span>: {<span class="t-s">"вверх"</span>: <span class="t-s">"зал"</span>},
+        <span class="t-s">"items"</span>: [<span class="t-s">"ключ"</span>, <span class="t-s">"факел"</span>],
+    },
+    <span class="t-s">"зал"</span>: {
+        <span class="t-s">"text"</span>: <span class="t-s">"Пустой зал."</span>,
+        <span class="t-s">"exits"</span>: {<span class="t-s">"вниз"</span>: <span class="t-s">"подвал"</span>},
+        <span class="t-s">"items"</span>: [],
+    },
+}
+
+inventory = []
+current = <span class="t-s">"подвал"</span>
+room = rooms[current]
+
+<span class="t-k">if</span> room[<span class="t-s">"items"</span>]:
+    <span class="t-f">print</span>(<span class="t-s">"Здесь лежит:"</span>, <span class="t-s">", "</span>.<span class="t-m">join</span>(room[<span class="t-s">"items"</span>]))
+
+<span class="t-c"># команда «взять»: перенести все предметы из комнаты в рюкзак</span>
+inventory += room[<span class="t-s">"items"</span>]
+room[<span class="t-s">"items"</span>] = []
+<span class="t-f">print</span>(<span class="t-s">"Рюкзак:"</span>, inventory)</code></pre></div>
+<p><code>if room["items"]:</code> — короткая проверка «список не пустой».</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай мир по пунктам 1–5.</li>
+  <li>Вынеси показ комнаты в функцию <code>show_room()</code>, а показ рюкзака — в <code>show_inventory()</code>.</li>
+  <li class="star">Добавь команду «осмотреть предмет», которая показывает описание предмета. Описания храни в словаре.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Мир с предметами готов">Мир с предметами готов</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m5-7.html"><small>← урок 7</small><span class="pt">Карта мира</span></a><a class="nx" href="../lessons/m5-9.html"><small>урок 9 →</small><span class="pt">Проект RPG: бой</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

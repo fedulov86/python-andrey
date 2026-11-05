@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 11. Игра окончена</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m6-11">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 6 · урок 11 из 12</span>
+  <h1>Игра окончена</h1>
+  <p class="lead">Экраны и перезапуск</p>
+</div>
+<article class="body">
+<h4>Состояние игры</h4>
+<p>У настоящей игры есть разные экраны: заставка, сама игра, «игра окончена». Чтобы программа знала, что сейчас показывать, заводят переменную <code>state</code>.</p>
+<div class="code"><div class="code-bar"><span>m6_urok11.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59</span><code><span class="t-k">import</span> pgzrun
+<span class="t-k">import</span> random
+
+WIDTH = <span class="t-n">600</span>
+HEIGHT = <span class="t-n">400</span>
+
+hero = Actor(<span class="t-s">"hero"</span>, (<span class="t-n">300</span>, <span class="t-n">360</span>))
+rocks = []
+state = <span class="t-s">"menu"</span>
+score = <span class="t-n">0</span>
+
+<span class="t-k">def</span> start():
+    <span class="t-k">global</span> state, score
+    state = <span class="t-s">"play"</span>
+    score = <span class="t-n">0</span>
+    rocks.<span class="t-m">clear</span>()
+    hero.<span class="t-m">x</span> = <span class="t-n">300</span>
+
+<span class="t-k">def</span> add_rock():
+    <span class="t-k">if</span> state == <span class="t-s">"play"</span>:
+        rocks.<span class="t-m">append</span>(Actor(<span class="t-s">"rock"</span>, (random.<span class="t-m">randint</span>(<span class="t-n">20</span>, WIDTH - <span class="t-n">20</span>), -<span class="t-n">20</span>)))
+
+<span class="t-k">def</span> on_key_down(key):
+    <span class="t-k">if</span> key == keys.<span class="t-m">SPACE</span> <span class="t-k">and</span> state != <span class="t-s">"play"</span>:
+        start()
+
+<span class="t-k">def</span> update():
+    <span class="t-k">global</span> state, score
+    <span class="t-k">if</span> state != <span class="t-s">"play"</span>:
+        <span class="t-k">return</span>
+    <span class="t-k">if</span> keyboard.<span class="t-m">left</span>:
+        hero.<span class="t-m">x</span> -= <span class="t-n">6</span>
+    <span class="t-k">if</span> keyboard.<span class="t-m">right</span>:
+        hero.<span class="t-m">x</span> += <span class="t-n">6</span>
+    <span class="t-k">for</span> rock <span class="t-k">in</span> rocks[:]:
+        rock.<span class="t-m">y</span> += <span class="t-n">5</span>
+        <span class="t-k">if</span> rock.<span class="t-m">colliderect</span>(hero):
+            state = <span class="t-s">"over"</span>
+        <span class="t-k">elif</span> rock.<span class="t-m">y</span> &gt; HEIGHT + <span class="t-n">20</span>:
+            rocks.<span class="t-m">remove</span>(rock)
+            score += <span class="t-n">1</span>
+
+<span class="t-k">def</span> draw():
+    screen.<span class="t-m">fill</span>(<span class="t-s">"midnightblue"</span>)
+    <span class="t-k">if</span> state == <span class="t-s">"menu"</span>:
+        screen.<span class="t-m">draw</span>.<span class="t-m">text</span>(<span class="t-s">"КАМНЕПАД"</span>, center=(<span class="t-n">300</span>, <span class="t-n">160</span>), fontsize=<span class="t-n">70</span>, <span class="t-f">color</span>=<span class="t-s">"yellow"</span>)
+        screen.<span class="t-m">draw</span>.<span class="t-m">text</span>(<span class="t-s">"Пробел — начать"</span>, center=(<span class="t-n">300</span>, <span class="t-n">240</span>), fontsize=<span class="t-n">36</span>, <span class="t-f">color</span>=<span class="t-s">"white"</span>)
+    <span class="t-k">elif</span> state == <span class="t-s">"play"</span>:
+        hero.<span class="t-m">draw</span>()
+        <span class="t-k">for</span> rock <span class="t-k">in</span> rocks:
+            rock.<span class="t-m">draw</span>()
+        screen.<span class="t-m">draw</span>.<span class="t-m">text</span>(<span class="t-s">f"Очки: </span><span class="t-i">{score}</span><span class="t-s">"</span>, (<span class="t-n">10</span>, <span class="t-n">10</span>), fontsize=<span class="t-n">36</span>, <span class="t-f">color</span>=<span class="t-s">"white"</span>)
+    <span class="t-k">else</span>:
+        screen.<span class="t-m">draw</span>.<span class="t-m">text</span>(<span class="t-s">"ИГРА ОКОНЧЕНА"</span>, center=(<span class="t-n">300</span>, <span class="t-n">160</span>), fontsize=<span class="t-n">60</span>, <span class="t-f">color</span>=<span class="t-s">"red"</span>)
+        screen.<span class="t-m">draw</span>.<span class="t-m">text</span>(<span class="t-s">f"Очки: </span><span class="t-i">{score}</span><span class="t-s">"</span>, center=(<span class="t-n">300</span>, <span class="t-n">220</span>), fontsize=<span class="t-n">40</span>, <span class="t-f">color</span>=<span class="t-s">"white"</span>)
+        screen.<span class="t-m">draw</span>.<span class="t-m">text</span>(<span class="t-s">"Пробел — ещё раз"</span>, center=(<span class="t-n">300</span>, <span class="t-n">280</span>), fontsize=<span class="t-n">30</span>, <span class="t-f">color</span>=<span class="t-s">"white"</span>)
+
+clock.<span class="t-m">schedule_interval</span>(add_rock, <span class="t-n">0.7</span>)
+pgzrun.<span class="t-m">go</span>()</code></pre></div>
+
+<h4>Как это работает</h4>
+<ul>
+  <li><code>state</code> бывает <code>"menu"</code>, <code>"play"</code> или <code>"over"</code>.</li>
+  <li><code>draw</code> смотрит на <code>state</code> и рисует нужный экран.</li>
+  <li><code>update</code> ничего не делает, если сейчас не игра: <code>return</code> сразу заканчивает функцию.</li>
+  <li><code>start()</code> возвращает всё к началу: обнуляет счёт, убирает камни. Так игру можно перезапустить без закрытия окна.</li>
+</ul>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Перепечатай игру и сыграй. Поменяй название и цвета на свои.</li>
+  <li>Добавь рекорд, который показывается на экране «игра окончена».</li>
+  <li class="star">Добавь паузу: клавиша P останавливает и продолжает игру.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Игра перезапускается">Игра перезапускается</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m6-10.html"><small>← урок 10</small><span class="pt">Звуки</span></a><a class="nx" href="../lessons/m6-12.html"><small>урок 12 →</small><span class="pt">Проект: своя игра</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>
