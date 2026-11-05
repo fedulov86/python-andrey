@@ -1,0 +1,407 @@
+<!--module {"num": 2, "title": "Решения", "weeks": "недели 3–4", "topics": "Сравнения, if, else, elif, and / or / not, проверка ввода.", "project": "викторина с очками и званиями", "lead": "Программа учится выбирать: делать одно или другое в зависимости от того, что происходит."} -->
+
+<!--lesson {"num": 1, "title": "Да или нет", "sub": "Сравнения", "done_label": "Умею сравнивать"} -->
+<h4>Программа задаёт себе вопросы</h4>
+<p>В игре всё время что-то проверяется. Хватает ли монет на меч? Закончилось ли здоровье? Правильный ли ответ? На такие вопросы есть только два ответа: да или нет.</p>
+<p>В Python «да» — это <code>True</code> (правда), а «нет» — <code>False</code> (ложь). Python сам отвечает на вопрос, если записать его как сравнение:</p>
+<div class="code"><pre>print(5 &gt; 3)
+print(5 &lt; 3)
+print(10 == 10)
+print(10 != 10)</pre></div>
+<p class="out">Вывод:<br>True<br>False<br>True<br>False</p>
+
+<h4>Знаки сравнения</h4>
+<div class="tbl"><table style="min-width:360px">
+  <thead><tr><th>знак</th><th>вопрос</th><th>пример</th><th>ответ</th></tr></thead>
+  <tbody>
+    <tr><td><code>&gt;</code></td><td>больше?</td><td><code>5 &gt; 3</code></td><td>True</td></tr>
+    <tr><td><code>&lt;</code></td><td>меньше?</td><td><code>5 &lt; 3</code></td><td>False</td></tr>
+    <tr><td><code>&gt;=</code></td><td>больше или равно?</td><td><code>3 &gt;= 3</code></td><td>True</td></tr>
+    <tr><td><code>&lt;=</code></td><td>меньше или равно?</td><td><code>4 &lt;= 3</code></td><td>False</td></tr>
+    <tr><td><code>==</code></td><td>равно?</td><td><code>2 + 2 == 4</code></td><td>True</td></tr>
+    <tr><td><code>!=</code></td><td>не равно?</td><td><code>2 + 2 != 4</code></td><td>False</td></tr>
+  </tbody>
+</table></div>
+
+<h4>Два знака равно</h4>
+<p>Это самое важное в уроке. Один знак <code>=</code> кладёт значение в коробку. Два знака <code>==</code> спрашивают: «это одинаковое?». Перепутать их — очень частая ошибка.</p>
+<div class="code"><pre>coins = 50              <span class="c"># положить 50 в coins</span>
+print(coins == 50)      <span class="c"># спросить: в coins лежит 50?</span>
+print(coins &gt;= 100)     <span class="c"># спросить: монет 100 или больше?</span></pre></div>
+<p class="out">Вывод:<br>True<br>False</p>
+
+<h4>Сравнивать можно и текст</h4>
+<div class="code"><pre>answer = <span class="s">"Париж"</span>
+print(answer == <span class="s">"Париж"</span>)
+print(answer == <span class="s">"париж"</span>)</pre></div>
+<p class="out">Вывод:<br>True<br>False</p>
+<p>Для Python большая и маленькая буква — разные буквы, поэтому «Париж» и «париж» не равны.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Что выведет каждая строчка? Сначала угадай, потом проверь.
+    <div class="code"><pre>print(7 &gt; 7)
+print(7 &gt;= 7)
+print(3 * 3 == 9)
+print(<span class="s">"кот"</span> != <span class="s">"кит"</span>)</pre></div></li>
+  <li>Заведи переменные <code>coins = 120</code> и <code>price = 150</code>. Выведи ответ на вопрос «хватает ли монет на покупку».</li>
+  <li>Спроси у игрока его возраст и выведи, правда ли, что ему больше 12.</li>
+  <li class="star">Спроси два слова и выведи, одинаковой ли они длины.</li>
+</ol>
+
+<!--lesson {"num": 2, "title": "if — если", "sub": "Программа выбирает", "done_label": "Понял if"} -->
+<h4>Если…, то…</h4>
+<p>Теперь программа умеет ответить «да» или «нет». Осталось научить её что-то <b>делать</b>, когда ответ «да». Для этого есть слово <code>if</code> — по-английски «если».</p>
+<div class="code"><pre>health = 0
+
+<span class="t-k">if</span> health == 0:
+    print(<span class="s">"Игра окончена"</span>)</pre></div>
+<p class="out">Вывод:<br>Игра окончена</p>
+<p>Читается так: «<b>если</b> здоровье равно нулю, <b>то</b> напечатай „Игра окончена“».</p>
+
+<h4>Как это записывается</h4>
+<ul>
+  <li>Сначала слово <code>if</code>, потом вопрос, потом <b>двоеточие</b> <code>:</code>.</li>
+  <li>Следующая строчка начинается с <b>4 пробелов</b>. Так Python понимает, что эта команда выполняется только если ответ «да». Thonny сам ставит пробелы после двоеточия, когда нажимаешь Enter.</li>
+</ul>
+<p>Поменяй <code>health = 0</code> на <code>health = 30</code> и запусти. Ничего не напечатается: ответ на вопрос «нет», и строчка с отступом пропускается.</p>
+
+<h4>Несколько команд внутри if</h4>
+<p>Все строчки с отступом выполняются только при «да». Строчка без отступа выполняется всегда.</p>
+<div class="code"><pre>coins = int(input(<span class="s">"Сколько у тебя монет? "</span>))
+
+<span class="t-k">if</span> coins &gt;= 100:
+    print(<span class="s">"Ты купил меч!"</span>)
+    coins = coins - 100
+    print(<span class="s">"Осталось монет:"</span>, coins)
+
+print(<span class="s">"Пока!"</span>)</pre></div>
+<p class="out">Сколько у тебя монет? 150<br>Ты купил меч!<br>Осталось монет: 50<br>Пока!</p>
+<p class="out">Сколько у тебя монет? 40<br>Пока!</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Спроси у игрока пароль. Если он равен <code>"дракон"</code>, напиши «Дверь открыта».</li>
+  <li>Спроси число. Если оно больше 100, напиши «Большое число!».</li>
+  <li>Спроси, сколько очков набрал игрок. Если 1000 или больше, напиши «Новый рекорд!» и «Ты получаешь медаль». В конце всегда пиши «Спасибо за игру».</li>
+  <li class="star">Убери двоеточие после <code>if</code> и запусти. Потом верни двоеточие и убери пробелы в следующей строчке. Прочитай обе ошибки.</li>
+</ol>
+
+<!--lesson {"num": 3, "title": "else — иначе", "sub": "Две дороги", "done_label": "Понял else"} -->
+<h4>Что делать, если «нет»</h4>
+<p>С одним <code>if</code> программа что-то делает при «да», а при «нет» молчит. Но часто нужно сделать что-то и в другом случае: правильный ответ — похвалить, неправильный — сказать, что ошибся. Для этого есть <code>else</code> — «иначе».</p>
+<div class="code"><pre>answer = input(<span class="s">"Столица Франции? "</span>)
+
+<span class="t-k">if</span> answer == <span class="s">"Париж"</span>:
+    print(<span class="s">"Правильно!"</span>)
+<span class="t-k">else</span>:
+    print(<span class="s">"Нет, это Париж"</span>)</pre></div>
+<p class="out">Столица Франции? Лондон<br>Нет, это Париж</p>
+<p>Программа идёт <b>только по одной дороге</b>: либо по той, что под <code>if</code>, либо по той, что под <code>else</code>. Обе сразу не выполнятся никогда.</p>
+<p>У <code>else</code> нет своего вопроса, только двоеточие. Он пишется на одном уровне с <code>if</code>, без отступа.</p>
+
+<h4>Чётное или нечётное</h4>
+<p>Помнишь остаток от деления <code>%</code> из модуля 1? У чётных чисел остаток от деления на 2 равен нулю.</p>
+<div class="code"><pre>n = int(input(<span class="s">"Введи число: "</span>))
+
+<span class="t-k">if</span> n % 2 == 0:
+    print(<span class="s">"Чётное"</span>)
+<span class="t-k">else</span>:
+    print(<span class="s">"Нечётное"</span>)</pre></div>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Спроси возраст. Если 12 или больше, напиши «Можно играть», иначе «Подрасти немного».</li>
+  <li>Спроси, сколько монет у игрока. Меч стоит 100. Если хватает, напиши, сколько останется после покупки. Если нет — сколько не хватает.</li>
+  <li>Задай вопрос «Сколько будет 7 × 8?». Скажи, правильный ли ответ.
+    <details class="hint"><summary>Подсказка</summary><div><p>Ответ из <code>input</code> — это строка. Сравнивай с <code>"56"</code> или превращай ответ в число через <code>int</code>.</p></div></details></li>
+  <li class="star">Спроси два числа и выведи большее из них.</li>
+</ol>
+
+<!--lesson {"num": 4, "title": "Отступы", "sub": "Почему пробелы важны", "done_label": "Понимаю отступы"} -->
+<h4>Отступ — это часть кода</h4>
+<p>Во многих языках пробелы в начале строчки ни на что не влияют. В Python — влияют. Отступ показывает, какие строчки «лежат внутри» <code>if</code>, а какие — снаружи.</p>
+<p>Посмотри на две программы. Они отличаются только одним отступом:</p>
+<div class="code"><pre>health = 50
+
+<span class="t-k">if</span> health == 0:
+    print(<span class="s">"Ты проиграл"</span>)
+    print(<span class="s">"Попробуй ещё раз"</span>)</pre></div>
+<p class="out">Вывод: (ничего)</p>
+<div class="code"><pre>health = 50
+
+<span class="t-k">if</span> health == 0:
+    print(<span class="s">"Ты проиграл"</span>)
+print(<span class="s">"Попробуй ещё раз"</span>)</pre></div>
+<p class="out">Вывод:<br>Попробуй ещё раз</p>
+<p>Во второй программе <code>print("Попробуй ещё раз")</code> без отступа. Значит, он не внутри <code>if</code> и выполняется всегда.</p>
+
+<h4>Правила</h4>
+<ul>
+  <li>После строчки с двоеточием <code>:</code> идёт отступ.</li>
+  <li>Отступ — 4 пробела. Клавиша Tab в Thonny тоже ставит 4 пробела.</li>
+  <li>Все строчки внутри должны иметь <b>одинаковый</b> отступ.</li>
+  <li>Чтобы выйти из <code>if</code>, просто пиши следующую строчку снова от левого края.</li>
+</ul>
+
+<h4>if внутри if</h4>
+<p>Внутри <code>if</code> может быть ещё один <code>if</code>. Тогда у него свой отступ, ещё на 4 пробела дальше:</p>
+<div class="code"><pre>has_key = input(<span class="s">"Есть ключ? (да/нет) "</span>)
+
+<span class="t-k">if</span> has_key == <span class="s">"да"</span>:
+    print(<span class="s">"Ты открыл дверь."</span>)
+    answer = input(<span class="s">"Войти в тёмную комнату? (да/нет) "</span>)
+    <span class="t-k">if</span> answer == <span class="s">"да"</span>:
+        print(<span class="s">"В комнате сундук с золотом!"</span>)
+    <span class="t-k">else</span>:
+        print(<span class="s">"Ты остался в коридоре."</span>)
+<span class="t-k">else</span>:
+    print(<span class="s">"Дверь закрыта. Ищи ключ."</span>)</pre></div>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Перепечатай программу с ключом и пройди все три пути: нет ключа; есть ключ и вошёл; есть ключ и не вошёл.</li>
+  <li>Найди ошибку и почини программу:
+    <div class="code"><pre>coins = 200
+<span class="t-k">if</span> coins &gt;= 100:
+print(<span class="s">"Покупаем меч"</span>)
+  coins = coins - 100</pre></div></li>
+  <li class="star">Допиши программу с ключом: в тёмной комнате спроси «Открыть сундук?» и сделай ещё одну развилку.</li>
+</ol>
+
+<!--lesson {"num": 5, "title": "elif — много вариантов", "sub": "Больше двух дорог", "done_label": "Понял elif"} -->
+<h4>Когда двух дорог мало</h4>
+<p>Игрок набрал очки. За 0–49 он «Новичок», за 50–99 «Боец», за 100 и больше «Герой». Тут три варианта, а <code>if</code> с <code>else</code> дают только два.</p>
+<p>Для этого есть <code>elif</code> — сокращение от else if, «иначе если».</p>
+<div class="code"><pre>score = int(input(<span class="s">"Сколько очков? "</span>))
+
+<span class="t-k">if</span> score &gt;= 100:
+    print(<span class="s">"Звание: Герой"</span>)
+<span class="t-k">elif</span> score &gt;= 50:
+    print(<span class="s">"Звание: Боец"</span>)
+<span class="t-k">else</span>:
+    print(<span class="s">"Звание: Новичок"</span>)</pre></div>
+
+<h4>Как Python это читает</h4>
+<p>Python проверяет вопросы <b>по очереди, сверху вниз</b>. Как только находит первый ответ «да», выполняет эту часть и пропускает всё остальное.</p>
+<ul>
+  <li>Если очков 120: первый вопрос «да», печатается «Герой». Остальное пропускается.</li>
+  <li>Если 70: первый вопрос «нет», второй «да», печатается «Боец».</li>
+  <li>Если 10: оба вопроса «нет», работает <code>else</code>.</li>
+</ul>
+<p>Поэтому порядок важен. Если поставить проверку <code>score &gt;= 50</code> первой, то и 120 очков дадут звание «Боец».</p>
+<p><code>elif</code> можно писать сколько угодно раз. <code>else</code> в конце можно и не писать.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Спроси оценку от 1 до 5. Выведи: 5 — «отлично», 4 — «хорошо», 3 — «нормально», остальное — «надо подтянуть».</li>
+  <li>Спроси температуру на улице. Ниже 0 — «надевай шапку», от 0 до 15 — «куртка», от 16 до 25 — «футболка», выше — «жара!».</li>
+  <li>Меню игры: выведи «1. Новая игра», «2. Загрузить», «3. Выход». Спроси номер и напечатай, что выбрано. Если ввели другое число — «Нет такого пункта».</li>
+  <li class="star">Поменяй местами проверки в программе со званиями и найди такое число очков, при котором звание получается неправильное.</li>
+</ol>
+
+<!--lesson {"num": 6, "title": "and, or, not", "sub": "Сложные вопросы", "done_label": "Понял and, or, not"} -->
+<h4>Два условия сразу</h4>
+<p>Иногда одного вопроса мало. Дверь открывается, только если есть ключ <b>и</b> ты стоишь рядом. В Python для этого есть три слова.</p>
+
+<h4>and — «и»</h4>
+<p>Ответ «да», только если <b>оба</b> вопроса «да».</p>
+<div class="code"><pre>coins = int(input(<span class="s">"Монет: "</span>))
+level = int(input(<span class="s">"Уровень: "</span>))
+
+<span class="t-k">if</span> coins &gt;= 100 <span class="t-k">and</span> level &gt;= 5:
+    print(<span class="s">"Можно купить огненный меч"</span>)
+<span class="t-k">else</span>:
+    print(<span class="s">"Нужно 100 монет и 5 уровень"</span>)</pre></div>
+
+<h4>or — «или»</h4>
+<p>Ответ «да», если <b>хотя бы один</b> вопрос «да».</p>
+<div class="code"><pre>answer = input(<span class="s">"Продолжить? "</span>)
+
+<span class="t-k">if</span> answer == <span class="s">"да"</span> <span class="t-k">or</span> answer == <span class="s">"Да"</span>:
+    print(<span class="s">"Продолжаем!"</span>)
+<span class="t-k">else</span>:
+    print(<span class="s">"Выход"</span>)</pre></div>
+<p>Тут программа поймёт ответ и с большой, и с маленькой буквы.</p>
+
+<h4>not — «не»</h4>
+<p>Переворачивает ответ: «да» становится «нет», и наоборот.</p>
+<div class="code"><pre>name = input(<span class="s">"Имя героя: "</span>)
+
+<span class="t-k">if</span> <span class="t-k">not</span> name == <span class="s">""</span>:
+    print(<span class="s">"Привет,"</span>, name)
+<span class="t-k">else</span>:
+    print(<span class="s">"Ты не ввёл имя"</span>)</pre></div>
+
+<h4>Число в промежутке</h4>
+<p>Часто нужно проверить, что число между двумя другими. Это можно записать коротко, как в математике:</p>
+<div class="code"><pre>age = int(input(<span class="s">"Возраст: "</span>))
+
+<span class="t-k">if</span> 10 &lt;= age &lt;= 15:
+    print(<span class="s">"Тебе в младшую лигу"</span>)</pre></div>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Спроси логин и пароль. Если логин <code>"andrey"</code> и пароль <code>"12345"</code>, напиши «Вход выполнен», иначе «Неверный логин или пароль».</li>
+  <li>Спроси день недели. Если это «суббота» или «воскресенье», напиши «Выходной!», иначе «Учебный день».</li>
+  <li>Спроси число. Скажи, лежит ли оно от 1 до 100.</li>
+  <li class="star">Монстр побеждён, если у героя сила больше 10 и есть меч, или если у героя есть волшебный амулет. Спроси всё это у игрока и выведи результат.</li>
+</ol>
+
+<!--lesson {"num": 7, "title": "Проверка ввода", "sub": "Если ввели не то", "done_label": "Программа не ломается от неправильного ввода"} -->
+<h4>Помнишь «тринадцать»?</h4>
+<p>В модуле 1 ты вводил слово вместо числа, и программа падала с ошибкой. В настоящей игре так нельзя: игрок ошибся клавишей, и всё сломалось. Теперь, когда ты знаешь <code>if</code>, это можно исправить.</p>
+
+<h4>Это цифры?</h4>
+<p>У строк есть команда <code>isdigit()</code>. Она отвечает <code>True</code>, если строка состоит только из цифр.</p>
+<div class="code"><pre>print(<span class="s">"13"</span>.isdigit())
+print(<span class="s">"тринадцать"</span>.isdigit())
+print(<span class="s">"1 3"</span>.isdigit())</pre></div>
+<p class="out">Вывод:<br>True<br>False<br>False</p>
+<p>Значит, перед <code>int()</code> можно проверить, что ввели именно число:</p>
+<div class="code"><pre>age = input(<span class="s">"Сколько тебе лет? "</span>)
+
+<span class="t-k">if</span> age.isdigit():
+    age = int(age)
+    print(<span class="s">"Через 5 лет тебе будет"</span>, age + 5)
+<span class="t-k">else</span>:
+    print(<span class="s">"Нужно ввести число цифрами"</span>)</pre></div>
+
+<h4>Большие и маленькие буквы</h4>
+<p>Игрок может ответить «Да», «ДА» или «да». Чтобы не проверять все варианты, сделай ответ маленькими буквами через <code>lower()</code>, а потом сравнивай:</p>
+<div class="code"><pre>answer = input(<span class="s">"Хочешь сыграть? "</span>).lower()
+
+<span class="t-k">if</span> answer == <span class="s">"да"</span>:
+    print(<span class="s">"Начинаем!"</span>)
+<span class="t-k">else</span>:
+    print(<span class="s">"Ну ладно"</span>)</pre></div>
+
+<h4>Лишние пробелы</h4>
+<p>Ещё игрок может случайно нажать пробел. <code>strip()</code> убирает пробелы в начале и конце строки. Можно делать всё сразу: <code>input("...").strip().lower()</code>.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Переделай калькулятор из модуля 1: если ввели не число, программа пишет «Это не число» вместо ошибки.</li>
+  <li>Спроси «Столица России?». Засчитай ответ «москва», «Москва», «МОСКВА» и « Москва ».</li>
+  <li class="star">Спроси число от 1 до 10. Отдельно сообщи, если ввели не число, и если число вне промежутка.</li>
+</ol>
+
+<!--lesson {"num": 8, "title": "Черепашка выбирает", "sub": "Рисунок зависит от ответа", "done_label": "Черепашка выбирает"} -->
+<h4>Рисунок по заказу</h4>
+<p>Соединим черепашку с <code>if</code>. Игрок выбирает фигуру, а программа рисует то, что он выбрал.</p>
+<div class="code"><pre>from turtle import *
+
+figure = input(<span class="s">"Что нарисовать? (квадрат / треугольник / круг) "</span>).lower()
+
+pensize(4)
+
+<span class="t-k">if</span> figure == <span class="s">"квадрат"</span>:
+    color(<span class="s">"blue"</span>)
+    forward(100)
+    left(90)
+    forward(100)
+    left(90)
+    forward(100)
+    left(90)
+    forward(100)
+<span class="t-k">elif</span> figure == <span class="s">"треугольник"</span>:
+    color(<span class="s">"green"</span>)
+    forward(100)
+    left(120)
+    forward(100)
+    left(120)
+    forward(100)
+<span class="t-k">elif</span> figure == <span class="s">"круг"</span>:
+    color(<span class="s">"red"</span>)
+    circle(50)
+<span class="t-k">else</span>:
+    write(<span class="s">"Не знаю такую фигуру"</span>, font=(<span class="s">"Arial"</span>, 16))
+
+done()</pre></div>
+
+<h4>Светофор</h4>
+<p>Цвет тоже можно выбирать через <code>if</code>. Команда <code>dot(80, "red")</code> рисует закрашенный круг диаметром 80.</p>
+<div class="code"><pre>from turtle import *
+
+signal = input(<span class="s">"Можно идти? (да / нет) "</span>).lower()
+
+hideturtle()
+
+<span class="t-k">if</span> signal == <span class="s">"да"</span>:
+    dot(80, <span class="s">"green"</span>)
+<span class="t-k">else</span>:
+    dot(80, <span class="s">"red"</span>)
+
+done()</pre></div>
+<p><code>hideturtle()</code> прячет черепашку, чтобы она не закрывала рисунок.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Добавь в программу с фигурами ещё одну: «звезда».</li>
+  <li>Спроси размер фигуры. Если он больше 300, напиши «Слишком большая» и не рисуй.</li>
+  <li>Спроси настроение: «хорошее» — нарисуй жёлтый круг, «плохое» — серый, остальное — синий.</li>
+  <li class="star">Нарисуй светофор из трёх кругов друг над другом. Тот, что выбрал игрок, горит своим цветом, остальные серые.
+    <details class="hint"><summary>Подсказка</summary><div><p>Между кругами поднимай карандаш и сдвигай черепашку вверх на 100.</p></div></details></li>
+</ol>
+
+<!--lesson {"num": 9, "title": "Проект: викторина", "sub": "2 дня · вопросы, очки и звания", "done_label": "Викторина готова и показана"} -->
+<h4>Что делаем</h4>
+<p>Викторину на тему, которую ты хорошо знаешь: игры, футбол, космос, Minecraft. Дай в неё сыграть папе или друзьям.</p>
+
+<h4>Что должна уметь программа</h4>
+<ol>
+  <li>Показать заставку с названием и спросить имя игрока.</li>
+  <li>Задать не меньше 5 вопросов. За правильный ответ +1 очко.</li>
+  <li>После каждого вопроса сказать, правильно или нет. Если нет — показать правильный ответ.</li>
+  <li>Понимать ответ с большой и маленькой буквы и с лишними пробелами.</li>
+  <li>В конце показать счёт и звание: например, 5 из 5 — «Гений», 3–4 — «Знаток», меньше — «Новичок».</li>
+</ol>
+
+<h4>Начало, дальше сам</h4>
+<div class="code"><pre>print(<span class="s">"=== ВИКТОРИНА ПРО КОСМОС ==="</span>)
+name = input(<span class="s">"Как тебя зовут? "</span>)
+score = 0
+
+answer = input(<span class="s">"1. Какая планета самая большая? "</span>).strip().lower()
+<span class="t-k">if</span> answer == <span class="s">"юпитер"</span>:
+    print(<span class="s">"Правильно!"</span>)
+    score += 1
+<span class="t-k">else</span>:
+    print(<span class="s">"Нет, это Юпитер"</span>)
+
+<span class="c"># дальше вопросы 2, 3, 4, 5</span>
+
+print(f<span class="s">"{name}, твой счёт: {score}"</span>)</pre></div>
+<p>Делай по шагам: написал один вопрос — запусти и проверь. Потом следующий.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай викторину по пунктам 1–5.</li>
+  <li>Дай сыграть двум людям. Запиши, где они запутались, и поправь.</li>
+  <li class="star">Добавь вопрос с вариантами ответа: «а, б, в». А на один вопрос засчитывай два варианта ответа, например «Юпитер» и «юпитер планета».</li>
+</ol>
+
+<!--lesson {"num": 10, "title": "Проверь себя", "sub": "Мини-тест по модулю 2", "done_label": "Ответил правильно на 5 из 6"} -->
+<p>Отвечай в уме или на бумажке, без Thonny. Потом открой ответ. Если ошибся, вернись к уроку.</p>
+<ol class="tasks">
+  <li>Чем отличаются <code>=</code> и <code>==</code>?<details class="hint"><summary>Ответ</summary><div><p><code>=</code> кладёт значение в переменную, <code>==</code> спрашивает, равны ли два значения.</p></div></details></li>
+  <li>Что выведет программа?
+    <div class="code"><pre>x = 7
+<span class="t-k">if</span> x &gt; 5:
+    print(<span class="s">"А"</span>)
+<span class="t-k">elif</span> x &gt; 3:
+    print(<span class="s">"Б"</span>)
+<span class="t-k">else</span>:
+    print(<span class="s">"В"</span>)</pre></div>
+    <details class="hint"><summary>Ответ</summary><div><p>Только <code>А</code>. После первого «да» остальное пропускается.</p></div></details></li>
+  <li>Что выведет программа?
+    <div class="code"><pre>x = 2
+<span class="t-k">if</span> x &gt; 5:
+    print(<span class="s">"много"</span>)
+print(<span class="s">"готово"</span>)</pre></div>
+    <details class="hint"><summary>Ответ</summary><div><p><code>готово</code>. Эта строчка без отступа и выполняется всегда.</p></div></details></li>
+  <li>Чему равно <code>5 &gt; 3 and 2 &gt; 4</code>?<details class="hint"><summary>Ответ</summary><div><p><code>False</code>: второе условие не выполняется.</p></div></details></li>
+  <li>Чему равно <code>5 &gt; 3 or 2 &gt; 4</code>?<details class="hint"><summary>Ответ</summary><div><p><code>True</code>: хватает одного выполненного условия.</p></div></details></li>
+  <li>Как узнать, что игрок ввёл именно число?<details class="hint"><summary>Ответ</summary><div><p><code>isdigit()</code>: <code>if answer.isdigit():</code></p></div></details></li>
+  <li class="star">Объясни папе, зачем в Python отступы.</li>
+</ol>

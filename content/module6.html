@@ -1,0 +1,708 @@
+<!--module {"num": 6, "title": "Настоящие игры", "weeks": "недели 12–15", "topics": "Pygame Zero: окно игры, рисование, движение, клавиши, спрайты, столкновения, счёт, звуки.", "project": "своя 2D-игра: ловец монет, шутер или платформер", "lead": "Настоящие игры с картинками, управлением и звуком. Некоторые уроки занимают два дня, это нормально."} -->
+
+<!--lesson {"num": 1, "title": "Ставим Pygame Zero", "sub": "Первое окно игры", "done_label": "Окно игры открывается"} -->
+<h4>Что такое Pygame Zero</h4>
+<p>Черепашка хороша для рисования, но для игр медленная и неудобная. Настоящие 2D-игры на Python делают с помощью библиотеки <b>Pygame Zero</b>. Библиотека — это набор готовых команд, который кто-то написал за тебя. С Pygame Zero можно сделать игру с картинками, звуком и управлением.</p>
+
+<h4>Устанавливаем (вместе с папой)</h4>
+<p>Pygame Zero работает поверх другой библиотеки, pygame. Обычный pygame не устанавливается на новую версию Python, которая стоит в Thonny. Поэтому ставим его современную версию — <b>pygame-ce</b>. Это делается командами, но только один раз.</p>
+<ol>
+  <li>В Thonny открой меню <b>Инструменты → Открыть системную консоль</b>. Откроется чёрное окно.</li>
+  <li>Напиши по очереди три команды. После каждой нажимай Enter и жди, пока она закончится:</li>
+</ol>
+<p class="out">python -m pip install pygame-ce<br>python -m pip install numpy<br>python -m pip install --no-deps pgzero</p>
+<p>Если в конце каждой команды написано <code>Successfully installed</code>, всё получилось. Окно можно закрыть.</p>
+<p>Если раньше ты уже ставил pgzero через «Управление пакетами» и видишь ошибку <code>mixer module not available</code>, сначала напиши <code>python -m pip uninstall pygame</code>, а потом три команды выше.</p>
+
+<h4>Первая игра: пустое окно</h4>
+<p>Создай в папке <code>python</code> новую папку <code>igra1</code> и сохрани в неё эту программу:</p>
+<div class="code"><pre>import pgzrun
+
+WIDTH = 600
+HEIGHT = 400
+
+<span class="t-k">def</span> draw():
+    screen.fill(<span class="s">"darkblue"</span>)
+
+pgzrun.go()</pre></div>
+<p>Нажми F5. Откроется синее окно 600 на 400 точек. Закрыть его можно крестиком. Если окно не закрывается, нажми в Thonny красную кнопку «Стоп».</p>
+<p>Важно: игру на Pygame Zero нужно <b>сначала сохранить в файл</b>, а потом запускать. Если запустить несохранённую программу, будет ошибка <code>'import pgzrun' only works when you are running a Python file</code>. Тогда нажми Ctrl+S, сохрани файл в папку игры и запусти снова.</p>
+<p>При сохранении смотри, в какую папку сохраняешь. Это должна быть твоя папка <code>python/igra1</code>, а не папка, которую предложит Thonny.</p>
+
+<h4>Что тут написано</h4>
+<ul>
+  <li><code>import pgzrun</code> — подключить Pygame Zero. Всегда первая строчка.</li>
+  <li><code>WIDTH</code> и <code>HEIGHT</code> — ширина и высота окна. Большие буквы — так договорились в Pygame Zero.</li>
+  <li><code>def draw():</code> — функция, которая рисует экран. Ты её только объясняешь, а вызывает её сама Pygame Zero, много раз в секунду.</li>
+  <li><code>screen.fill("darkblue")</code> — залить экран цветом.</li>
+  <li><code>pgzrun.go()</code> — запустить игру. Всегда последняя строчка.</li>
+</ul>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай окно 800 на 600 и залей его чёрным.</li>
+  <li>Попробуй цвета <code>"darkgreen"</code>, <code>"purple"</code>, <code>"skyblue"</code>.</li>
+  <li class="star">Цвет можно задать тремя числами от 0 до 255: сколько красного, зелёного и синего. Попробуй <code>screen.fill((255, 120, 0))</code> и подбери свой цвет.</li>
+</ol>
+
+<!--lesson {"num": 2, "title": "Рисуем фигуры", "sub": "Круги, прямоугольники, текст", "done_label": "Рисую в окне игры"} -->
+<h4>Координаты в Pygame Zero</h4>
+<p>У черепашки центр окна был <code>(0, 0)</code>. В Pygame Zero не так: <code>(0, 0)</code> — это <b>левый верхний угол</b>. <code>x</code> растёт вправо, а <code>y</code> растёт <b>вниз</b>. Так устроены почти все игры.</p>
+<p>В окне 600 на 400 центр — <code>(300, 200)</code>, а правый нижний угол — <code>(600, 400)</code>.</p>
+
+<h4>Фигуры</h4>
+<div class="code"><pre>import pgzrun
+
+WIDTH = 600
+HEIGHT = 400
+
+<span class="t-k">def</span> draw():
+    screen.fill(<span class="s">"skyblue"</span>)
+    screen.draw.filled_circle((500, 80), 40, <span class="s">"yellow"</span>)
+    screen.draw.filled_rect(Rect((0, 320), (600, 80)), <span class="s">"darkgreen"</span>)
+    screen.draw.filled_rect(Rect((100, 220), (120, 100)), <span class="s">"brown"</span>)
+    screen.draw.circle((300, 200), 30, <span class="s">"white"</span>)
+    screen.draw.text(<span class="s">"Моя игра"</span>, (20, 20), fontsize=40, color=<span class="s">"white"</span>)
+
+pgzrun.go()</pre></div>
+
+<h4>Команды рисования</h4>
+<div class="tbl"><table style="min-width:420px">
+  <thead><tr><th>команда</th><th>что рисует</th></tr></thead>
+  <tbody>
+    <tr><td><code>screen.draw.filled_circle((x, y), r, цвет)</code></td><td>закрашенный круг с центром в (x, y) и радиусом r</td></tr>
+    <tr><td><code>screen.draw.circle((x, y), r, цвет)</code></td><td>только контур круга</td></tr>
+    <tr><td><code>screen.draw.filled_rect(Rect((x, y), (w, h)), цвет)</code></td><td>прямоугольник: левый верхний угол (x, y), ширина w, высота h</td></tr>
+    <tr><td><code>screen.draw.line((x1, y1), (x2, y2), цвет)</code></td><td>линия</td></tr>
+    <tr><td><code>screen.draw.text(текст, (x, y), fontsize=…, color=…)</code></td><td>надпись</td></tr>
+  </tbody>
+</table></div>
+<p>Порядок важен: то, что нарисовано позже, оказывается сверху. Поэтому <code>screen.fill</code> всегда первая — она закрашивает всё старое.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Нарисуй домик из прямоугольников: стены, дверь, окно, труба.</li>
+  <li>Нарисуй снеговика из трёх кругов.</li>
+  <li>Нарисуй циклом ряд из 10 кругов вдоль экрана.</li>
+  <li class="star">Нарисуй ночное небо: 100 звёзд-точек в случайных местах.
+    <details class="hint"><summary>Подсказка</summary><div><p>Если выбирать места прямо в <code>draw</code>, звёзды будут мигать. Выбери их один раз до <code>draw</code> и сохрани в список.</p></div></details></li>
+</ol>
+
+<!--lesson {"num": 3, "title": "Движение", "sub": "Функция update", "done_label": "В игре всё двигается"} -->
+<h4>Две главные функции игры</h4>
+<p>Любая игра на Pygame Zero 60 раз в секунду делает две вещи:</p>
+<ol>
+  <li><code>update()</code> — меняет то, что происходит: двигает героя, считает очки.</li>
+  <li><code>draw()</code> — рисует всё заново, уже в новых местах.</li>
+</ol>
+<p>Так же устроено кино: много картинок в секунду, и на каждой всё чуть-чуть сдвинуто. Глазу кажется, что всё плавно двигается.</p>
+
+<h4>Мяч летит</h4>
+<div class="code"><pre>import pgzrun
+
+WIDTH = 600
+HEIGHT = 400
+
+x = 0
+
+<span class="t-k">def</span> update():
+    <span class="t-k">global</span> x
+    x += 3
+    <span class="t-k">if</span> x &gt; WIDTH:
+        x = 0
+
+<span class="t-k">def</span> draw():
+    screen.fill(<span class="s">"black"</span>)
+    screen.draw.filled_circle((x, 200), 25, <span class="s">"orange"</span>)
+
+pgzrun.go()</pre></div>
+<p>В <code>update</code> мяч сдвигается на 3 точки вправо. Если ушёл за край — возвращается к левому. <code>global x</code> нужен, как в модуле 4: функция меняет переменную снаружи.</p>
+
+<h4>Мяч отскакивает</h4>
+<p>Чтобы мяч отскакивал, храним не только место, но и скорость. Когда мяч долетел до края, скорость меняет знак: летел вправо — полетит влево.</p>
+<div class="code"><pre>import pgzrun
+
+WIDTH = 600
+HEIGHT = 400
+
+x = 300
+y = 200
+speed_x = 4
+speed_y = 3
+
+<span class="t-k">def</span> update():
+    <span class="t-k">global</span> x, y, speed_x, speed_y
+    x += speed_x
+    y += speed_y
+    <span class="t-k">if</span> x &lt; 25 <span class="t-k">or</span> x &gt; WIDTH - 25:
+        speed_x = -speed_x
+    <span class="t-k">if</span> y &lt; 25 <span class="t-k">or</span> y &gt; HEIGHT - 25:
+        speed_y = -speed_y
+
+<span class="t-k">def</span> draw():
+    screen.fill(<span class="s">"black"</span>)
+    screen.draw.filled_circle((x, y), 25, <span class="s">"orange"</span>)
+
+pgzrun.go()</pre></div>
+<p>Число 25 — радиус мяча. Без него мяч наполовину уходил бы за край.</p>
+
+<h4>Гравитация</h4>
+<p>Настоящий мяч не летает с одной скоростью: он падает всё быстрее и быстрее. Чтобы так было и в игре, будем каждый кадр немного менять не место мяча, а его <b>скорость</b>: <code>speed_y += 0.3</code>.</p>
+<p>Помни, что <code>y</code> растёт вниз. Значит, плюс к скорости — это толчок вниз.</p>
+<div class="code"><pre>import pgzrun
+
+WIDTH = 600
+HEIGHT = 400
+
+x = 300
+y = 100
+speed_y = 0
+
+<span class="t-k">def</span> update():
+    <span class="t-k">global</span> y, speed_y
+    speed_y += 0.3
+    y += speed_y
+    <span class="t-k">if</span> y &gt; HEIGHT - 25:
+        y = HEIGHT - 25
+        speed_y = -speed_y
+
+<span class="t-k">def</span> draw():
+    screen.fill(<span class="s">"black"</span>)
+    screen.draw.filled_circle((x, y), 25, <span class="s">"orange"</span>)
+    screen.draw.text(f<span class="s">"скорость: {speed_y:.1f}"</span>, (10, 10), fontsize=30, color=<span class="s">"white"</span>)
+
+pgzrun.go()</pre></div>
+<p>Запусти и следи за скоростью в углу экрана. Вот что происходит за один прыжок:</p>
+<div class="tbl"><table style="min-width:420px">
+  <thead><tr><th>мяч</th><th>скорость</th><th>что видно</th></tr></thead>
+  <tbody>
+    <tr><td>наверху</td><td>0</td><td>на миг зависает</td></tr>
+    <tr><td>падает</td><td>растёт: 1, 2, … 12</td><td>летит всё быстрее</td></tr>
+    <tr><td>ударился о пол</td><td>12 → −12</td><td>разворачивается</td></tr>
+    <tr><td>летит вверх</td><td>−12, −11, … 0</td><td>тормозит</td></tr>
+  </tbody>
+</table></div>
+<p>Толчок вниз разгоняет мяч, пока он падает, и тормозит, пока он летит вверх. Поэтому мяч поднимается почти на ту же высоту, откуда упал.</p>
+<p>Строчка <code>y = HEIGHT - 25</code> ставит мяч ровно на пол. Без неё мяч проваливается под пол и застревает там.</p>
+
+<h4>Мяч теряет силу</h4>
+<p>Сейчас мяч прыгает вечно. Настоящий мяч при каждом ударе о пол теряет часть скорости, и прыжки становятся всё ниже. Замени строчку <code>speed_y = -speed_y</code> на эту:</p>
+<p class="out">speed_y = -speed_y * 0.8</p>
+<p>Теперь после удара мяч летит вверх со скоростью 0.8 от прежней. Каждый прыжок ниже предыдущего, и в конце мяч ложится на пол.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай, чтобы мяч из первой программы летел быстрее или медленнее.</li>
+  <li>Добавь второй мяч другого цвета со своей скоростью.</li>
+  <li>Пусть при каждом отскоке мяч меняет цвет на случайный.</li>
+  <li>В программе с гравитацией попробуй вместо <code>0.8</code> числа <code>0.5</code> и <code>0.95</code>. Какой мяч похож на резиновый, а какой на мешок с песком?</li>
+  <li>Поменяй гравитацию: <code>0.05</code> — как на Луне, <code>1</code> — очень тяжёлая планета.</li>
+  <li class="star">Соедини обе программы: мяч с гравитацией летит ещё и вбок и отскакивает от стен.</li>
+</ol>
+
+<!--lesson {"num": 4, "title": "Управление клавишами", "sub": "Герой слушается стрелок", "done_label": "Герой ездит по стрелкам"} -->
+<h4>Нажата ли клавиша</h4>
+<p>В Pygame Zero есть готовая штука <code>keyboard</code>. В <code>update</code> можно спрашивать её: нажата ли сейчас клавиша?</p>
+<div class="code"><pre>import pgzrun
+
+WIDTH = 600
+HEIGHT = 400
+
+x = 300
+y = 200
+
+<span class="t-k">def</span> update():
+    <span class="t-k">global</span> x, y
+    <span class="t-k">if</span> keyboard.left:
+        x -= 5
+    <span class="t-k">if</span> keyboard.right:
+        x += 5
+    <span class="t-k">if</span> keyboard.up:
+        y -= 5
+    <span class="t-k">if</span> keyboard.down:
+        y += 5
+
+<span class="t-k">def</span> draw():
+    screen.fill(<span class="s">"black"</span>)
+    screen.draw.filled_circle((x, y), 20, <span class="s">"lime"</span>)
+
+pgzrun.go()</pre></div>
+<p>Пока держишь стрелку, круг едет. Можно нажать две стрелки сразу и ехать по диагонали. Заметь: вверх — это <b>минус</b> по <code>y</code>, ведь <code>y</code> растёт вниз.</p>
+<p>Буквы проверяются так: <code>keyboard.a</code>, <code>keyboard.w</code>. Пробел — <code>keyboard.space</code>.</p>
+
+<h4>Не уезжать за край</h4>
+<p>Сейчас герой может уехать за экран. Это легко исправить: после движения проверить края.</p>
+<div class="code"><pre>import pgzrun
+
+WIDTH = 600
+HEIGHT = 400
+
+x = 300
+
+<span class="t-k">def</span> update():
+    <span class="t-k">global</span> x
+    <span class="t-k">if</span> keyboard.left:
+        x -= 5
+    <span class="t-k">if</span> keyboard.right:
+        x += 5
+    <span class="t-k">if</span> x &lt; 20:
+        x = 20
+    <span class="t-k">if</span> x &gt; WIDTH - 20:
+        x = WIDTH - 20
+
+<span class="t-k">def</span> draw():
+    screen.fill(<span class="s">"black"</span>)
+    screen.draw.filled_circle((x, 360), 20, <span class="s">"lime"</span>)
+
+pgzrun.go()</pre></div>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Добавь управление клавишами W, A, S, D.</li>
+  <li>Не давай герою уехать за края ни по <code>x</code>, ни по <code>y</code>.</li>
+  <li>Пока зажат пробел, герой едет в два раза быстрее.</li>
+  <li class="star">Игра на двоих: один круг управляется стрелками, другой — WASD.</li>
+</ol>
+
+<!--lesson {"num": 5, "title": "Спрайты", "sub": "Картинки вместо кругов", "done_label": "В игре есть картинки"} -->
+<h4>Что такое спрайт</h4>
+<p>Спрайт — это картинка, которая двигается по экрану: герой, монетка, враг. В Pygame Zero спрайт называется <code>Actor</code> — «актёр».</p>
+
+<h4>Где взять картинки</h4>
+<p>Мы приготовили набор: <a href="../assets/sprites.zip">скачать sprites.zip</a>. Внутри папка <code>images</code> с картинками:</p>
+<p>
+  <img src="../assets/sprites/hero.png" alt="герой" width="56" height="56" style="image-rendering:pixelated">
+  <img src="../assets/sprites/coin.png" alt="монета" width="48" height="48" style="image-rendering:pixelated">
+  <img src="../assets/sprites/enemy.png" alt="враг" width="56" height="48" style="image-rendering:pixelated">
+  <img src="../assets/sprites/star.png" alt="звезда" width="56" height="56" style="image-rendering:pixelated">
+  <img src="../assets/sprites/heart.png" alt="сердце" width="44" height="40" style="image-rendering:pixelated">
+  <img src="../assets/sprites/rock.png" alt="камень" width="56" height="40" style="image-rendering:pixelated">
+</p>
+<p>Названия: <code>hero</code>, <code>coin</code>, <code>enemy</code>, <code>star</code>, <code>heart</code>, <code>rock</code>.</p>
+<p>Распакуй архив так, чтобы папка <code>images</code> лежала <b>рядом с файлом игры</b>:</p>
+<p class="out">igra1/<br>&nbsp;&nbsp;igra.py<br>&nbsp;&nbsp;images/<br>&nbsp;&nbsp;&nbsp;&nbsp;hero.png<br>&nbsp;&nbsp;&nbsp;&nbsp;coin.png<br>&nbsp;&nbsp;&nbsp;&nbsp;...</p>
+<p>Свои картинки тоже можно: нарисуй в Paint, сохрани как PNG в папку <code>images</code>. Имя файла — только маленькие английские буквы, без пробелов.</p>
+
+<h4>Герой на экране</h4>
+<div class="code"><pre>import pgzrun
+
+WIDTH = 600
+HEIGHT = 400
+
+hero = Actor(<span class="s">"hero"</span>, (300, 200))
+
+<span class="t-k">def</span> update():
+    <span class="t-k">if</span> keyboard.left:
+        hero.x -= 5
+    <span class="t-k">if</span> keyboard.right:
+        hero.x += 5
+    <span class="t-k">if</span> keyboard.up:
+        hero.y -= 5
+    <span class="t-k">if</span> keyboard.down:
+        hero.y += 5
+
+<span class="t-k">def</span> draw():
+    screen.fill(<span class="s">"darkgreen"</span>)
+    hero.draw()
+
+pgzrun.go()</pre></div>
+<ul>
+  <li><code>Actor("hero", (300, 200))</code> — создать актёра из картинки <code>hero.png</code> и поставить в точку (300, 200). Расширение <code>.png</code> не пишут.</li>
+  <li><code>hero.x</code> и <code>hero.y</code> — где он сейчас. Их можно менять.</li>
+  <li><code>hero.draw()</code> — нарисовать актёра.</li>
+</ul>
+<p>Заметь: <code>global</code> больше не нужен. Мы не кладём в <code>hero</code> новое значение, а только меняем его <code>x</code> и <code>y</code>.</p>
+<p>Если появилась ошибка <code>No image found like 'hero'</code>, значит папка <code>images</code> лежит не там. Проверь, что она рядом с файлом игры.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Добавь на экран монетку и звезду, которые стоят на месте.</li>
+  <li>Не давай герою уйти за край экрана.</li>
+  <li class="star">Нарисуй в Paint свою картинку 50 на 50 точек и сделай её героем.</li>
+</ol>
+
+<!--lesson {"num": 6, "title": "Столкновения", "sub": "Герой подобрал монету", "done_label": "Понял столкновения"} -->
+<h4>Касаются ли два спрайта</h4>
+<p>Почти в любой игре нужно знать, что два спрайта коснулись: герой подобрал монету, враг поймал героя. У актёров для этого есть <code>colliderect</code>:</p>
+<div class="code"><pre>import pgzrun
+import random
+
+WIDTH = 600
+HEIGHT = 400
+
+hero = Actor(<span class="s">"hero"</span>, (300, 200))
+coin = Actor(<span class="s">"coin"</span>, (100, 100))
+
+<span class="t-k">def</span> move_coin():
+    coin.x = random.randint(30, WIDTH - 30)
+    coin.y = random.randint(30, HEIGHT - 30)
+
+<span class="t-k">def</span> update():
+    <span class="t-k">if</span> keyboard.left:
+        hero.x -= 5
+    <span class="t-k">if</span> keyboard.right:
+        hero.x += 5
+    <span class="t-k">if</span> keyboard.up:
+        hero.y -= 5
+    <span class="t-k">if</span> keyboard.down:
+        hero.y += 5
+
+    <span class="t-k">if</span> hero.colliderect(coin):
+        move_coin()
+
+<span class="t-k">def</span> draw():
+    screen.fill(<span class="s">"darkgreen"</span>)
+    coin.draw()
+    hero.draw()
+
+pgzrun.go()</pre></div>
+<p><code>hero.colliderect(coin)</code> отвечает <code>True</code>, если картинки героя и монеты хоть чуть-чуть перекрываются. Тогда монета прыгает в случайное место.</p>
+
+<h4>Попал ли курсор в спрайт</h4>
+<p>Есть ещё <code>collidepoint</code>: проверяет, попадает ли точка в картинку. Пригодится в уроке про мышь.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Добавь врага, который стоит на месте. Если герой его коснулся — напечатай в Thonny «Ой!» через <code>print</code>.</li>
+  <li>Сделай так, чтобы враг медленно ехал вправо и, уехав за край, появлялся слева.</li>
+  <li class="star">Пусть при касании врага герой отскакивает назад, а не проходит сквозь него.</li>
+</ol>
+
+<!--lesson {"num": 7, "title": "Счёт и текст", "sub": "Очки и надписи в игре", "done_label": "В игре есть счёт"} -->
+<h4>Очки на экране</h4>
+<p>Теперь посчитаем собранные монеты и покажем счёт. Переменную <code>score</code> меняем в <code>update</code>, а рисуем в <code>draw</code>:</p>
+<div class="code"><pre>import pgzrun
+import random
+
+WIDTH = 600
+HEIGHT = 400
+
+hero = Actor(<span class="s">"hero"</span>, (300, 200))
+coin = Actor(<span class="s">"coin"</span>, (100, 100))
+score = 0
+
+<span class="t-k">def</span> move_coin():
+    coin.x = random.randint(30, WIDTH - 30)
+    coin.y = random.randint(30, HEIGHT - 30)
+
+<span class="t-k">def</span> update():
+    <span class="t-k">global</span> score
+    <span class="t-k">if</span> keyboard.left:
+        hero.x -= 5
+    <span class="t-k">if</span> keyboard.right:
+        hero.x += 5
+    <span class="t-k">if</span> keyboard.up:
+        hero.y -= 5
+    <span class="t-k">if</span> keyboard.down:
+        hero.y += 5
+    <span class="t-k">if</span> hero.colliderect(coin):
+        score += 1
+        move_coin()
+
+<span class="t-k">def</span> draw():
+    screen.fill(<span class="s">"darkgreen"</span>)
+    coin.draw()
+    hero.draw()
+    screen.draw.text(f<span class="s">"Монеты: {score}"</span>, (10, 10), fontsize=36, color=<span class="s">"yellow"</span>)
+
+pgzrun.go()</pre></div>
+
+<h4>Время</h4>
+<p>Pygame Zero умеет вызывать функцию через заданное время. <code>clock.schedule_interval(tick, 1.0)</code> — «вызывай <code>tick</code> каждую секунду». Так делают таймер:</p>
+<div class="code"><pre>import pgzrun
+
+WIDTH = 600
+HEIGHT = 400
+
+time_left = 30
+
+<span class="t-k">def</span> tick():
+    <span class="t-k">global</span> time_left
+    <span class="t-k">if</span> time_left &gt; 0:
+        time_left -= 1
+
+<span class="t-k">def</span> draw():
+    screen.fill(<span class="s">"black"</span>)
+    screen.draw.text(f<span class="s">"Осталось: {time_left}"</span>, center=(300, 200), fontsize=60, color=<span class="s">"white"</span>)
+
+clock.schedule_interval(tick, 1.0)
+pgzrun.go()</pre></div>
+<p><code>center=(300, 200)</code> ставит надпись по центру этой точки.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Соедини обе программы: собирай монеты на время, 30 секунд.</li>
+  <li>Когда время вышло, герой больше не двигается, а по центру экрана надпись «Время вышло! Монет: …».</li>
+  <li class="star">Запоминай рекорд: если набрал больше, чем в прошлый раз, пиши «Новый рекорд!».</li>
+</ol>
+
+<!--lesson {"num": 8, "title": "Много врагов", "sub": "Список актёров", "done_label": "В игре много врагов"} -->
+<h4>Враги появляются сами</h4>
+<p>Один враг — скучно. Пусть они появляются каждую секунду сверху и падают вниз. А герой уворачивается. Врагов храним в <b>списке</b>, как предметы в рюкзаке из модуля 5.</p>
+<div class="code"><pre>import pgzrun
+import random
+
+WIDTH = 600
+HEIGHT = 400
+
+hero = Actor(<span class="s">"hero"</span>, (300, 360))
+rocks = []
+
+<span class="t-k">def</span> add_rock():
+    rock = Actor(<span class="s">"rock"</span>, (random.randint(20, WIDTH - 20), -20))
+    rocks.append(rock)
+
+<span class="t-k">def</span> update():
+    <span class="t-k">if</span> keyboard.left:
+        hero.x -= 6
+    <span class="t-k">if</span> keyboard.right:
+        hero.x += 6
+
+    <span class="t-k">for</span> rock <span class="t-k">in</span> rocks:
+        rock.y += 4
+        <span class="t-k">if</span> rock.colliderect(hero):
+            print(<span class="s">"Попал!"</span>)
+
+    <span class="t-k">for</span> rock <span class="t-k">in</span> rocks[:]:
+        <span class="t-k">if</span> rock.y &gt; HEIGHT + 20:
+            rocks.remove(rock)
+
+<span class="t-k">def</span> draw():
+    screen.fill(<span class="s">"midnightblue"</span>)
+    hero.draw()
+    <span class="t-k">for</span> rock <span class="t-k">in</span> rocks:
+        rock.draw()
+
+clock.schedule_interval(add_rock, 1.0)
+pgzrun.go()</pre></div>
+
+<h4>Что тут нового</h4>
+<ul>
+  <li>Каждую секунду <code>add_rock</code> создаёт новый камень над экраном и кладёт его в список.</li>
+  <li>В <code>update</code> цикл двигает каждый камень вниз и проверяет, не задел ли он героя.</li>
+  <li>Камни, которые улетели вниз, убираем из списка, иначе их станет тысячи и игра начнёт тормозить.</li>
+  <li><code>rocks[:]</code> — это копия списка. Удалять элементы из списка, по которому идёт цикл, нельзя: Python запутается. Поэтому идём по копии, а удаляем из настоящего.</li>
+</ul>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Добавь жизни: 3 сердца. Камень, задевший героя, отнимает жизнь и пропадает.</li>
+  <li>Покажи жизни картинками <code>heart</code> в углу экрана.</li>
+  <li>Считай очки: +1 за каждый камень, который улетел вниз, не задев героя.</li>
+  <li class="star">Пусть камни со временем падают быстрее.</li>
+</ol>
+
+<!--lesson {"num": 9, "title": "Мышь и нажатия", "sub": "Клики и одиночные нажатия", "done_label": "Игра слушается мыши"} -->
+<h4>Клик мышью</h4>
+<p>Если в программе есть функция <code>on_mouse_down</code>, Pygame Zero вызывает её при каждом щелчке. В параметр <code>pos</code> она получает место щелчка.</p>
+<div class="code"><pre>import pgzrun
+import random
+
+WIDTH = 600
+HEIGHT = 400
+
+star = Actor(<span class="s">"star"</span>, (300, 200))
+score = 0
+
+<span class="t-k">def</span> on_mouse_down(pos):
+    <span class="t-k">global</span> score
+    <span class="t-k">if</span> star.collidepoint(pos):
+        score += 1
+        star.x = random.randint(30, WIDTH - 30)
+        star.y = random.randint(30, HEIGHT - 30)
+
+<span class="t-k">def</span> draw():
+    screen.fill(<span class="s">"black"</span>)
+    star.draw()
+    screen.draw.text(f<span class="s">"Очки: {score}"</span>, (10, 10), fontsize=36, color=<span class="s">"white"</span>)
+
+pgzrun.go()</pre></div>
+<p>Щёлкай по звезде: за каждое попадание +1, и звезда прыгает в другое место.</p>
+
+<h4>Одно нажатие клавиши</h4>
+<p><code>keyboard.space</code> в <code>update</code> отвечает «да», всё время пока клавиша зажата. А иногда нужно сделать что-то <b>один раз</b> на каждое нажатие: выстрел, прыжок. Для этого есть <code>on_key_down</code>:</p>
+<div class="code"><pre>import pgzrun
+
+WIDTH = 600
+HEIGHT = 400
+
+jumps = 0
+
+<span class="t-k">def</span> on_key_down(key):
+    <span class="t-k">global</span> jumps
+    <span class="t-k">if</span> key == keys.SPACE:
+        jumps += 1
+
+<span class="t-k">def</span> draw():
+    screen.fill(<span class="s">"black"</span>)
+    screen.draw.text(f<span class="s">"Прыжков: {jumps}"</span>, center=(300, 200), fontsize=50, color=<span class="s">"white"</span>)
+
+pgzrun.go()</pre></div>
+<p>Названия клавиш: <code>keys.SPACE</code>, <code>keys.RETURN</code> (Enter), <code>keys.UP</code>, <code>keys.A</code> и так далее.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Добавь в игру со звездой таймер на 20 секунд.</li>
+  <li>Пусть звезда сама медленно двигается, чтобы было сложнее попасть.</li>
+  <li class="star">Стрельба: по нажатию пробела от героя вверх летит пуля (маленький круг). Пули храни в списке.</li>
+</ol>
+
+<!--lesson {"num": 10, "title": "Звуки", "sub": "Игра начинает звучать", "done_label": "В игре есть звуки"} -->
+<h4>Где взять звуки</h4>
+<p>Самый простой способ — сайт <a href="https://sfxr.me" target="_blank" rel="noopener">sfxr.me</a>. Там можно сделать звуки в стиле старых игр. Нажимай кнопки слева: «Pickup/Coin» — звук монетки, «Explosion» — взрыв, «Jump» — прыжок. Понравился звук — нажми «Export .WAV».</p>
+<p>Звуки кладут в папку <code>sounds</code> рядом с файлом игры, как картинки в <code>images</code>. Имена — маленькими английскими буквами: <code>coin.wav</code>, <code>boom.wav</code>.</p>
+
+<h4>Проигрываем звук</h4>
+<p>Звук из файла <code>sounds/coin.wav</code> проигрывается так: <code>sounds.coin.play()</code>. Добавь это туда, где герой подбирает монету:</p>
+<div class="code"><pre>import pgzrun
+import random
+
+WIDTH = 600
+HEIGHT = 400
+
+hero = Actor(<span class="s">"hero"</span>, (300, 200))
+coin = Actor(<span class="s">"coin"</span>, (100, 100))
+
+<span class="t-k">def</span> update():
+    <span class="t-k">if</span> keyboard.left:
+        hero.x -= 5
+    <span class="t-k">if</span> keyboard.right:
+        hero.x += 5
+    <span class="t-k">if</span> keyboard.up:
+        hero.y -= 5
+    <span class="t-k">if</span> keyboard.down:
+        hero.y += 5
+    <span class="t-k">if</span> hero.colliderect(coin):
+        sounds.coin.play()
+        coin.x = random.randint(30, WIDTH - 30)
+        coin.y = random.randint(30, HEIGHT - 30)
+
+<span class="t-k">def</span> draw():
+    screen.fill(<span class="s">"darkgreen"</span>)
+    coin.draw()
+    hero.draw()
+
+pgzrun.go()</pre></div>
+
+<h4>Музыка</h4>
+<p>Фоновую музыку кладут в папку <code>music</code> (файл .mp3 или .ogg) и включают одной строчкой перед <code>pgzrun.go()</code>: <code>music.play("theme")</code>. Она будет играть по кругу.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай на sfxr.me три звука: монетка, удар, конец игры.</li>
+  <li>Добавь их в свою игру с камнями из урока 8.</li>
+  <li class="star">Сделай звук, который становится выше с каждой монетой. Подсказка: сделай на sfxr несколько похожих звуков.</li>
+</ol>
+
+<!--lesson {"num": 11, "title": "Игра окончена", "sub": "Экраны и перезапуск", "done_label": "Игра перезапускается"} -->
+<h4>Состояние игры</h4>
+<p>У настоящей игры есть разные экраны: заставка, сама игра, «игра окончена». Чтобы программа знала, что сейчас показывать, заводят переменную <code>state</code>.</p>
+<div class="code"><pre>import pgzrun
+import random
+
+WIDTH = 600
+HEIGHT = 400
+
+hero = Actor(<span class="s">"hero"</span>, (300, 360))
+rocks = []
+state = <span class="s">"menu"</span>
+score = 0
+
+<span class="t-k">def</span> start():
+    <span class="t-k">global</span> state, score
+    state = <span class="s">"play"</span>
+    score = 0
+    rocks.clear()
+    hero.x = 300
+
+<span class="t-k">def</span> add_rock():
+    <span class="t-k">if</span> state == <span class="s">"play"</span>:
+        rocks.append(Actor(<span class="s">"rock"</span>, (random.randint(20, WIDTH - 20), -20)))
+
+<span class="t-k">def</span> on_key_down(key):
+    <span class="t-k">if</span> key == keys.SPACE <span class="t-k">and</span> state != <span class="s">"play"</span>:
+        start()
+
+<span class="t-k">def</span> update():
+    <span class="t-k">global</span> state, score
+    <span class="t-k">if</span> state != <span class="s">"play"</span>:
+        <span class="t-k">return</span>
+    <span class="t-k">if</span> keyboard.left:
+        hero.x -= 6
+    <span class="t-k">if</span> keyboard.right:
+        hero.x += 6
+    <span class="t-k">for</span> rock <span class="t-k">in</span> rocks[:]:
+        rock.y += 5
+        <span class="t-k">if</span> rock.colliderect(hero):
+            state = <span class="s">"over"</span>
+        <span class="t-k">elif</span> rock.y &gt; HEIGHT + 20:
+            rocks.remove(rock)
+            score += 1
+
+<span class="t-k">def</span> draw():
+    screen.fill(<span class="s">"midnightblue"</span>)
+    <span class="t-k">if</span> state == <span class="s">"menu"</span>:
+        screen.draw.text(<span class="s">"КАМНЕПАД"</span>, center=(300, 160), fontsize=70, color=<span class="s">"yellow"</span>)
+        screen.draw.text(<span class="s">"Пробел — начать"</span>, center=(300, 240), fontsize=36, color=<span class="s">"white"</span>)
+    <span class="t-k">elif</span> state == <span class="s">"play"</span>:
+        hero.draw()
+        <span class="t-k">for</span> rock <span class="t-k">in</span> rocks:
+            rock.draw()
+        screen.draw.text(f<span class="s">"Очки: {score}"</span>, (10, 10), fontsize=36, color=<span class="s">"white"</span>)
+    <span class="t-k">else</span>:
+        screen.draw.text(<span class="s">"ИГРА ОКОНЧЕНА"</span>, center=(300, 160), fontsize=60, color=<span class="s">"red"</span>)
+        screen.draw.text(f<span class="s">"Очки: {score}"</span>, center=(300, 220), fontsize=40, color=<span class="s">"white"</span>)
+        screen.draw.text(<span class="s">"Пробел — ещё раз"</span>, center=(300, 280), fontsize=30, color=<span class="s">"white"</span>)
+
+clock.schedule_interval(add_rock, 0.7)
+pgzrun.go()</pre></div>
+
+<h4>Как это работает</h4>
+<ul>
+  <li><code>state</code> бывает <code>"menu"</code>, <code>"play"</code> или <code>"over"</code>.</li>
+  <li><code>draw</code> смотрит на <code>state</code> и рисует нужный экран.</li>
+  <li><code>update</code> ничего не делает, если сейчас не игра: <code>return</code> сразу заканчивает функцию.</li>
+  <li><code>start()</code> возвращает всё к началу: обнуляет счёт, убирает камни. Так игру можно перезапустить без закрытия окна.</li>
+</ul>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Перепечатай игру и сыграй. Поменяй название и цвета на свои.</li>
+  <li>Добавь рекорд, который показывается на экране «игра окончена».</li>
+  <li class="star">Добавь паузу: клавиша P останавливает и продолжает игру.</li>
+</ol>
+
+<!--lesson {"num": 12, "title": "Проект: своя игра", "sub": "3–4 дня · большая игра", "done_label": "Моя игра готова и показана"} -->
+<h4>Твоя игра</h4>
+<p>Теперь ты знаешь всё, чтобы сделать настоящую 2D-игру. Выбери одну из идей или придумай свою.</p>
+<ul>
+  <li><b>Ловец монет.</b> Монеты и камни падают сверху. Монеты лови, от камней уворачивайся.</li>
+  <li><b>Космический шутер.</b> Корабль внизу стреляет по врагам, которые летят сверху.</li>
+  <li><b>Змейка.</b> Змейка растёт от каждой съеденной звезды. Нельзя врезаться в себя и в стены.</li>
+  <li><b>Лабиринт.</b> Герой ищет выход, стены — прямоугольники, по полю ходят враги.</li>
+</ul>
+
+<h4>Что должно быть в игре</h4>
+<ol>
+  <li>Заставка с названием и правилами.</li>
+  <li>Управление героем.</li>
+  <li>Что-то, что нужно собирать или уничтожать, и счёт.</li>
+  <li>Опасность: враги, препятствия или таймер.</li>
+  <li>Экран «игра окончена» и перезапуск.</li>
+  <li>Хотя бы два звука.</li>
+</ol>
+
+<h4>Как делать</h4>
+<ol>
+  <li>Напиши на бумаге, как играть, в 3–4 предложениях.</li>
+  <li>Сначала сделай самое главное: герой двигается и что-то собирает. Запусти, поиграй.</li>
+  <li>Потом добавляй по одной вещи и запускай после каждой.</li>
+  <li>Звуки и красивости — в самом конце.</li>
+</ol>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай игру по пунктам 1–6.</li>
+  <li>Дай поиграть трём людям. Посмотри, где им трудно или скучно, и поправь.</li>
+  <li class="star">Добавь уровни: каждые 10 очков игра становится сложнее, и на экране пишется «Уровень 2».</li>
+</ol>

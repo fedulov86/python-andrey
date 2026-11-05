@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 3. Переменные</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m1-3">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 1 · урок 3 из 11</span>
+  <h1>Переменные</h1>
+  <p class="lead">Как программа запоминает</p>
+</div>
+<article class="body">
+<h4>Зачем это нужно</h4>
+<p>Вспомни любую игру. Она всё время что-то помнит: сколько у тебя здоровья, сколько монет, какой уровень, как зовут героя. Когда тебя ударили, здоровье уменьшилось, и игра это запомнила. Когда ты подобрал монету, монет стало больше.</p>
+<p>Чтобы программа могла что-то запомнить, в ней есть <b>переменные</b>.</p>
+
+<h4>Что такое переменная</h4>
+<p>Представь коробку с наклейкой. На наклейке написано имя, например <code>health</code>. Внутрь коробки можно положить что-то: число <code>100</code> или слово <code>"Андрей"</code>.</p>
+<p>Потом, когда тебе нужно это значение, ты не пишешь его заново. Ты просто называешь имя коробки, и Python сам заглядывает внутрь.</p>
+<div class="code"><div class="code-bar"><span>m1_urok3.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2</span><code>health = <span class="t-n">100</span>
+<span class="t-f">print</span>(health)</code></pre></div>
+<p class="out">Вывод:<br>100</p>
+<p>Первая строчка значит: «возьми коробку с именем <code>health</code> и положи в неё <code>100</code>». Вторая: «покажи, что лежит в коробке <code>health</code>».</p>
+
+<h4>Знак = это не «равно»</h4>
+<p>В математике <code>=</code> значит «равно». В Python это команда <b>«положить в коробку»</b>. Слева всегда имя коробки, справа то, что в неё кладём. Читай её справа налево: «сто положить в health».</p>
+
+<h4>Содержимое можно менять</h4>
+<p>В коробке лежит только одна вещь. Если положить новую, старая пропадает.</p>
+<div class="code"><div class="code-bar"><span>m1_urok3.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4</span><code>health = <span class="t-n">100</span>
+<span class="t-f">print</span>(health)
+health = <span class="t-n">80</span>          <span class="t-c"># положили новое значение, 100 больше нет</span>
+<span class="t-f">print</span>(health)</code></pre></div>
+<p class="out">Вывод:<br>100<br>80</p>
+<p>Поэтому это и называется <b>пере</b>менная: её значение может <b>меняться</b>, пока программа работает.</p>
+
+<h4>С кавычками и без</h4>
+<p>Это частая путаница, посмотри внимательно:</p>
+<div class="code"><div class="code-bar"><span>m1_urok3.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3</span><code>hero = <span class="t-s">"Андрей"</span>
+<span class="t-f">print</span>(hero)          <span class="t-c"># без кавычек: покажи, что лежит в коробке hero</span>
+<span class="t-f">print</span>(<span class="t-s">"hero"</span>)        <span class="t-c"># в кавычках: просто напечатай слово hero</span></code></pre></div>
+<p class="out">Вывод:<br>Андрей<br>hero</p>
+<p>В коробку можно положить текст (в кавычках) или число (без кавычек). Дробные числа пишутся через <b>точку</b>: <code>2.5</code>, а не <code>2,5</code>.</p>
+
+<h4>Всё вместе</h4>
+<div class="code"><div class="code-bar"><span>m1_urok3.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9</span><code>hero = <span class="t-s">"Андрей"</span>
+health = <span class="t-n">100</span>
+<span class="t-f">speed</span> = <span class="t-n">2.5</span>
+
+<span class="t-f">print</span>(<span class="t-s">"Герой:"</span>, hero)
+<span class="t-f">print</span>(<span class="t-s">"Здоровье:"</span>, health)
+
+health = <span class="t-n">80</span>
+<span class="t-f">print</span>(<span class="t-s">"Получил урон! Здоровье:"</span>, health)</code></pre></div>
+<p class="out">Вывод:<br>Герой: Андрей<br>Здоровье: 100<br>Получил урон! Здоровье: 80</p>
+
+<h4>Как называть переменные</h4>
+<ul>
+  <li>Только английские буквы, цифры и <code>_</code>. Начинать с цифры нельзя: <code>level2</code> можно, <code>2level</code> нельзя.</li>
+  <li>Большие и маленькие буквы различаются: <code>Health</code> и <code>health</code> — две разные коробки.</li>
+  <li>Называй понятно: <code>score</code> лучше, чем <code>x</code>. Через месяц ты сам не вспомнишь, что лежит в <code>x</code>. Несколько слов пиши через подчёркивание: <code>max_health</code>.</li>
+</ul>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Заведи переменные для персонажа игры: имя, уровень, золото, оружие. Выведи «карточку персонажа».</li>
+  <li>Что выведет эта программа? Сначала угадай на бумажке, потом проверь в Thonny.
+    <div class="code"><div class="code-bar"><span>m1_urok3.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4</span><code>a = <span class="t-n">5</span>
+b = a
+a = <span class="t-n">10</span>
+<span class="t-f">print</span>(a, b)</code></pre></div>
+    <details class="hint"><summary>Подсказка</summary><div><p>Строчка <code>b = a</code> значит: возьми значение из <code>a</code> и положи его в <code>b</code>.</p></div></details></li>
+  <li>Поменяй местами значения двух переменных <code>left = "меч"</code> и <code>right = "щит"</code>, чтобы в <code>left</code> оказался щит, а в <code>right</code> меч.
+    <details class="hint"><summary>Подсказка</summary><div><p>Нужна третья, временная коробка. Это как поменять местами воду и сок в двух стаканах: без третьего стакана не получится. Есть и хитрый способ: <code>left, right = right, left</code>.</p></div></details></li>
+  <li class="star">Открой в Thonny «Вид → Переменные» и запусти программу кнопкой «Отладка» (жучок), а потом нажимай F7. Посмотри, как меняется содержимое коробок на каждой строчке.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Понял переменные">Понял переменные</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m1-2.html"><small>← урок 2</small><span class="pt">Ошибки — это подсказки</span></a><a class="nx" href="../lessons/m1-4.html"><small>урок 4 →</small><span class="pt">Числа и математика</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

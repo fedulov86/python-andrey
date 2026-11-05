@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 6. Управление клавишами</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m4-6">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 4 · урок 6 из 10</span>
+  <h1>Управление клавишами</h1>
+  <p class="lead">Черепашка слушается стрелок</p>
+</div>
+<article class="body">
+<h4>Программа ждёт нажатий</h4>
+<p>До сих пор программа выполнялась сверху вниз и заканчивалась. В игре по-другому: программа ждёт, что сделает игрок, и отвечает на его действия.</p>
+<p>Для этого черепашке говорят: «когда нажмут такую клавишу, выполни такую функцию».</p>
+<div class="code"><div class="code-bar"><span>m4_urok6.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</span><code><span class="t-k">from</span> turtle <span class="t-k">import</span> *
+
+<span class="t-f">shape</span>(<span class="t-s">"turtle"</span>)
+<span class="t-f">penup</span>()
+
+<span class="t-k">def</span> go_up():
+    <span class="t-f">setheading</span>(<span class="t-n">90</span>)
+    <span class="t-f">forward</span>(<span class="t-n">20</span>)
+
+<span class="t-k">def</span> go_down():
+    <span class="t-f">setheading</span>(<span class="t-n">270</span>)
+    <span class="t-f">forward</span>(<span class="t-n">20</span>)
+
+<span class="t-k">def</span> go_left():
+    <span class="t-f">setheading</span>(<span class="t-n">180</span>)
+    <span class="t-f">forward</span>(<span class="t-n">20</span>)
+
+<span class="t-k">def</span> go_right():
+    <span class="t-f">setheading</span>(<span class="t-n">0</span>)
+    <span class="t-f">forward</span>(<span class="t-n">20</span>)
+
+<span class="t-f">onkey</span>(go_up, <span class="t-s">"Up"</span>)
+<span class="t-f">onkey</span>(go_down, <span class="t-s">"Down"</span>)
+<span class="t-f">onkey</span>(go_left, <span class="t-s">"Left"</span>)
+<span class="t-f">onkey</span>(go_right, <span class="t-s">"Right"</span>)
+<span class="t-f">listen</span>()
+
+<span class="t-f">done</span>()</code></pre></div>
+<p>Запусти, щёлкни по окну черепашки и нажимай стрелки.</p>
+
+<h4>Что тут нового</h4>
+<ul>
+  <li><code>setheading(90)</code> разворачивает черепашку в нужную сторону: 0 — вправо, 90 — вверх, 180 — влево, 270 — вниз.</li>
+  <li><code>onkey(go_up, "Up")</code> — «когда нажмут стрелку вверх, вызови <code>go_up</code>». Обрати внимание: имя функции пишется <b>без скобок</b>. Мы не вызываем её сейчас, а говорим, что вызвать потом.</li>
+  <li><code>listen()</code> — «начни слушать клавиатуру».</li>
+</ul>
+<p>Клавиши-буквы пишут как есть: <code>"a"</code>, <code>"w"</code>. Пробел — <code>"space"</code>.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай так, чтобы черепашка рисовала след, когда едет.</li>
+  <li>Добавь клавиши: <code>"r"</code> — красный карандаш, <code>"b"</code> — синий, <code>"space"</code> — поднять или опустить карандаш.</li>
+  <li>Добавь клавишу <code>"c"</code>, которая стирает рисунок командой <code>clear()</code>.</li>
+  <li class="star">Сделай управление клавишами W, A, S, D вместо стрелок.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Черепашка ездит по стрелкам">Черепашка ездит по стрелкам</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m4-5.html"><small>← урок 5</small><span class="pt">Несколько черепашек</span></a><a class="nx" href="../lessons/m4-7.html"><small>урок 7 →</small><span class="pt">Клик мышью</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

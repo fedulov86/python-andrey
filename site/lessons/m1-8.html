@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 8. Черепашка: первые линии</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m1-8">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 1 · урок 8 из 11</span>
+  <h1>Черепашка: первые линии</h1>
+  <p class="lead">Программа рисует</p>
+</div>
+<article class="body">
+<h4>Что такое черепашка</h4>
+<p>В Python есть встроенная черепашка. Она сидит посреди белого окна и держит карандаш. Ты даёшь ей команды: «проползи вперёд», «повернись налево». Она ползёт и оставляет за собой линию.</p>
+
+<h4>Первый рисунок</h4>
+<div class="code"><div class="code-bar"><span>m1_urok8.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8</span><code><span class="t-k">from</span> turtle <span class="t-k">import</span> *      <span class="t-c"># подключаем черепашку</span>
+
+<span class="t-f">shape</span>(<span class="t-s">"turtle"</span>)           <span class="t-c"># выглядеть как черепашка, а не как стрелка</span>
+<span class="t-f">forward</span>(<span class="t-n">100</span>)              <span class="t-c"># вперёд на 100 шагов</span>
+<span class="t-f">left</span>(<span class="t-n">90</span>)                  <span class="t-c"># повернуться налево на 90 градусов</span>
+<span class="t-f">forward</span>(<span class="t-n">100</span>)
+
+<span class="t-f">done</span>()                    <span class="t-c"># не закрывать окно с рисунком</span></code></pre></div>
+<p>Запусти. Откроется окно, черепашка проползёт вправо, повернёт и проползёт вверх. Получится уголок.</p>
+<p>Первая строчка <code>from turtle import *</code> подключает черепашку. Без неё Python не знает команд <code>forward</code> и <code>left</code>. Последняя строчка <code>done()</code> нужна, чтобы окно не закрылось сразу.</p>
+
+<h4>Команды черепашки</h4>
+<div class="tbl"><table style="min-width:360px">
+  <thead><tr><th>команда</th><th>что делает</th></tr></thead>
+  <tbody>
+    <tr><td><code>forward(100)</code></td><td>вперёд на 100 шагов</td></tr>
+    <tr><td><code>back(100)</code></td><td>назад на 100 шагов</td></tr>
+    <tr><td><code>left(90)</code></td><td>повернуться налево на 90 градусов</td></tr>
+    <tr><td><code>right(90)</code></td><td>повернуться направо на 90 градусов</td></tr>
+    <tr><td><code>circle(50)</code></td><td>нарисовать круг радиусом 50</td></tr>
+    <tr><td><code>color("red")</code></td><td>цвет карандаша</td></tr>
+    <tr><td><code>pensize(5)</code></td><td>толщина линии</td></tr>
+    <tr><td><code>penup()</code></td><td>поднять карандаш: дальше ползёт без линии</td></tr>
+    <tr><td><code>pendown()</code></td><td>опустить карандаш: снова рисует</td></tr>
+  </tbody>
+</table></div>
+<p>Цвета пишутся по-английски: <code>"red"</code> красный, <code>"blue"</code> синий, <code>"green"</code> зелёный, <code>"yellow"</code> жёлтый, <code>"orange"</code> оранжевый, <code>"purple"</code> фиолетовый, <code>"black"</code> чёрный, <code>"pink"</code> розовый.</p>
+
+<h4>Повороты</h4>
+<p>90 градусов — это поворот как в углу тетради. 180 — развернуться назад. 360 — полный оборот на месте, черепашка снова смотрит туда же.</p>
+
+<h4>Квадрат</h4>
+<p>У квадрата 4 одинаковые стороны и 4 угла по 90 градусов. Значит, черепашке нужно 4 раза проползти и повернуть:</p>
+<div class="code"><div class="code-bar"><span>m1_urok8.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</span><code><span class="t-k">from</span> turtle <span class="t-k">import</span> *
+
+<span class="t-f">shape</span>(<span class="t-s">"turtle"</span>)
+<span class="t-f">color</span>(<span class="t-s">"blue"</span>)
+<span class="t-f">pensize</span>(<span class="t-n">4</span>)
+
+<span class="t-f">forward</span>(<span class="t-n">100</span>)
+<span class="t-f">left</span>(<span class="t-n">90</span>)
+<span class="t-f">forward</span>(<span class="t-n">100</span>)
+<span class="t-f">left</span>(<span class="t-n">90</span>)
+<span class="t-f">forward</span>(<span class="t-n">100</span>)
+<span class="t-f">left</span>(<span class="t-n">90</span>)
+<span class="t-f">forward</span>(<span class="t-n">100</span>)
+<span class="t-f">left</span>(<span class="t-n">90</span>)
+
+<span class="t-f">done</span>()</code></pre></div>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Нарисуй красный квадрат со стороной 200.</li>
+  <li>Нарисуй треугольник с одинаковыми сторонами.
+    <details class="hint"><summary>Подсказка</summary><div><p>Поворачивать надо 3 раза на 120 градусов.</p></div></details></li>
+  <li>Нарисуй две линии, которые не касаются друг друга.
+    <details class="hint"><summary>Подсказка</summary><div><p>Между ними подними карандаш, проползи и опусти снова.</p></div></details></li>
+  <li>Нарисуй домик: квадрат и треугольная крыша сверху.</li>
+  <li class="star">Нарисуй звезду. Нужно 5 раз проползти вперёд и повернуть на 144 градуса.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Черепашка рисует">Черепашка рисует</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m1-7.html"><small>← урок 7</small><span class="pt">f-строки</span></a><a class="nx" href="../lessons/m1-9.html"><small>урок 9 →</small><span class="pt">Черепашка и переменные</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

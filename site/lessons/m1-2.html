@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 2. Ошибки — это подсказки</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m1-2">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 1 · урок 2 из 11</span>
+  <h1>Ошибки — это подсказки</h1>
+  <p class="lead">Как читать красный текст</p>
+</div>
+<article class="body">
+<h4>Ошибки бывают у всех</h4>
+<p>Скоро ты увидишь красный текст в нижнем окне Thonny. Это значит, что в программе ошибка. Пугаться не надо: ошибки делают все программисты, даже самые опытные, каждый день.</p>
+<p>Компьютер очень точный, но совсем не догадливый. Человек поймёт «пирнт» как «принт», а компьютер — нет. Одна лишняя или пропущенная скобка, и он останавливается и говорит: «я не понимаю».</p>
+<p>Хорошая новость: Python всегда объясняет, <b>что</b> не так и <b>где</b>. Нужно только научиться читать его сообщения.</p>
+
+<h4>Как выглядит сообщение об ошибке</h4>
+<p>Допустим, ты написал программу из двух строчек и в первой опечатался:</p>
+<div class="code"><div class="code-bar"><span>m1_urok2.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2</span><code>pirnt(<span class="t-s">"Привет"</span>)
+<span class="t-f">print</span>(<span class="t-s">"Пока"</span>)</code></pre></div>
+<p>Python ответит так:</p>
+<p class="out">Traceback (most recent call last):<br>&nbsp;&nbsp;File "urok2.py", line 1, in &lt;module&gt;<br>NameError: name 'pirnt' is not defined</p>
+<p>Сообщение на английском, но читать его просто. Тебе нужны две вещи:</p>
+<ul>
+  <li><b>line 1</b> — номер строчки, где Python споткнулся. Значит, смотреть надо в первую строчку.</li>
+  <li><b>Последняя строка</b> — что случилось. <code>NameError</code> — название ошибки, а дальше объяснение: «имя pirnt не определено». То есть Python не знает такого слова.</li>
+</ul>
+<p>Заметь: вторая строчка так и не выполнилась. Как только Python встречает ошибку, он останавливает программу.</p>
+
+<h4>Три ошибки, которые ты увидишь чаще всего</h4>
+<ul>
+  <li><b>SyntaxError</b> — «ошибка в написании». Забыта скобка или кавычка, и Python не может разобрать, что ты написал.</li>
+  <li><b>NameError</b> — Python не знает такого слова. Почти всегда это опечатка.</li>
+  <li><b>IndentationError</b> — лишние пробелы в начале строчки. В Python пробелы в начале строки важны, зачем они нужны, ты узнаешь в модуле 2. А пока все строчки пиши от самого левого края.</li>
+</ul>
+
+<h4>Что делать, если не понимаешь ошибку</h4>
+<ol>
+  <li>Найди номер строки и посмотри на неё внимательно. Иногда ошибка на строчку выше: например, если там не закрыли скобку.</li>
+  <li>Скопируй последнюю строку сообщения в переводчик.</li>
+  <li>Можно спросить ИИ: «объясни эту ошибку, но не исправляй код». Если он исправит за тебя, ты не научишься находить ошибки сам.</li>
+</ol>
+
+<h4>Задачи</h4>
+<p>Перепечатай эту программу целиком. В ней 4 ошибки. Запускай, читай сообщение, исправляй одну ошибку и запускай снова, пока программа не заработает.</p>
+<div class="code"><div class="code-bar"><span>m1_urok2.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4</span><code><span class="t-f">print</span>(<span class="t-s">"Добро пожаловать в игру"</span>
+pirnt(<span class="t-s">"Уровень 1"</span>)
+<span class="t-f">print</span>(Здоровье: <span class="t-n">100</span><span class="t-s">")</span>
+  <span class="t-f">print</span>(<span class="t-s">"Начинаем!"</span>)</code></pre></div>
+<ol class="tasks">
+  <li>Найди и исправь все 4 ошибки. Каждый раз записывай на бумажке, как называлась ошибка.
+    <details class="hint"><summary>Подсказка</summary><div><p>Строка 1: скобка. Строка 2: опечатка. Строка 3: кавычка. Строка 4: пробелы в начале.</p></div></details></li>
+  <li>Сломай свою программу из урока 1 нарочно тремя разными способами и посмотри, какие ошибки покажет Python.</li>
+  <li class="star">Включи в Thonny «Вид → Помощник». Сделай ошибку и почитай, что он пишет. Помощник объясняет ошибки понятнее, чем сам Python.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Починил программу и знаю 3 вида ошибок">Починил программу и знаю 3 вида ошибок</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m1-1.html"><small>← урок 1</small><span class="pt">Первая программа: print</span></a><a class="nx" href="../lessons/m1-3.html"><small>урок 3 →</small><span class="pt">Переменные</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

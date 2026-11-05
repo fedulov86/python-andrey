@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 4. Отступы</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m2-4">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 2 · урок 4 из 10</span>
+  <h1>Отступы</h1>
+  <p class="lead">Почему пробелы важны</p>
+</div>
+<article class="body">
+<h4>Отступ — это часть кода</h4>
+<p>Во многих языках пробелы в начале строчки ни на что не влияют. В Python — влияют. Отступ показывает, какие строчки «лежат внутри» <code>if</code>, а какие — снаружи.</p>
+<p>Посмотри на две программы. Они отличаются только одним отступом:</p>
+<div class="code"><div class="code-bar"><span>m2_urok4.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5</span><code>health = <span class="t-n">50</span>
+
+<span class="t-k">if</span> health == <span class="t-n">0</span>:
+    <span class="t-f">print</span>(<span class="t-s">"Ты проиграл"</span>)
+    <span class="t-f">print</span>(<span class="t-s">"Попробуй ещё раз"</span>)</code></pre></div>
+<p class="out">Вывод: (ничего)</p>
+<div class="code"><div class="code-bar"><span>m2_urok4.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5</span><code>health = <span class="t-n">50</span>
+
+<span class="t-k">if</span> health == <span class="t-n">0</span>:
+    <span class="t-f">print</span>(<span class="t-s">"Ты проиграл"</span>)
+<span class="t-f">print</span>(<span class="t-s">"Попробуй ещё раз"</span>)</code></pre></div>
+<p class="out">Вывод:<br>Попробуй ещё раз</p>
+<p>Во второй программе <code>print("Попробуй ещё раз")</code> без отступа. Значит, он не внутри <code>if</code> и выполняется всегда.</p>
+
+<h4>Правила</h4>
+<ul>
+  <li>После строчки с двоеточием <code>:</code> идёт отступ.</li>
+  <li>Отступ — 4 пробела. Клавиша Tab в Thonny тоже ставит 4 пробела.</li>
+  <li>Все строчки внутри должны иметь <b>одинаковый</b> отступ.</li>
+  <li>Чтобы выйти из <code>if</code>, просто пиши следующую строчку снова от левого края.</li>
+</ul>
+
+<h4>if внутри if</h4>
+<p>Внутри <code>if</code> может быть ещё один <code>if</code>. Тогда у него свой отступ, ещё на 4 пробела дальше:</p>
+<div class="code"><div class="code-bar"><span>m2_urok4.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</span><code>has_key = <span class="t-f">input</span>(<span class="t-s">"Есть ключ? (да/нет) "</span>)
+
+<span class="t-k">if</span> has_key == <span class="t-s">"да"</span>:
+    <span class="t-f">print</span>(<span class="t-s">"Ты открыл дверь."</span>)
+    answer = <span class="t-f">input</span>(<span class="t-s">"Войти в тёмную комнату? (да/нет) "</span>)
+    <span class="t-k">if</span> answer == <span class="t-s">"да"</span>:
+        <span class="t-f">print</span>(<span class="t-s">"В комнате сундук с золотом!"</span>)
+    <span class="t-k">else</span>:
+        <span class="t-f">print</span>(<span class="t-s">"Ты остался в коридоре."</span>)
+<span class="t-k">else</span>:
+    <span class="t-f">print</span>(<span class="t-s">"Дверь закрыта. Ищи ключ."</span>)</code></pre></div>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Перепечатай программу с ключом и пройди все три пути: нет ключа; есть ключ и вошёл; есть ключ и не вошёл.</li>
+  <li>Найди ошибку и почини программу:
+    <div class="code"><div class="code-bar"><span>m2_urok4.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4</span><code>coins = <span class="t-n">200</span>
+<span class="t-k">if</span> coins &gt;= <span class="t-n">100</span>:
+<span class="t-f">print</span>(<span class="t-s">"Покупаем меч"</span>)
+  coins = coins - <span class="t-n">100</span></code></pre></div></li>
+  <li class="star">Допиши программу с ключом: в тёмной комнате спроси «Открыть сундук?» и сделай ещё одну развилку.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Понимаю отступы">Понимаю отступы</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m2-3.html"><small>← урок 3</small><span class="pt">else — иначе</span></a><a class="nx" href="../lessons/m2-5.html"><small>урок 5 →</small><span class="pt">elif — много вариантов</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

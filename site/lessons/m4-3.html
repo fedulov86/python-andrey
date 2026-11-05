@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 3. return — ответ функции</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m4-3">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 4 · урок 3 из 10</span>
+  <h1>return — ответ функции</h1>
+  <p class="lead">Функция считает и отдаёт результат</p>
+</div>
+<article class="body">
+<h4>Функция, которая отвечает</h4>
+<p>До сих пор функции что-то делали: печатали, рисовали. Но бывает нужно, чтобы функция что-то <b>посчитала и отдала ответ</b>. Как <code>len("Андрей")</code> отдаёт 6, а <code>input()</code> отдаёт то, что ввёл игрок.</p>
+<p>Для этого есть <code>return</code> — «вернуть».</p>
+<div class="code"><div class="code-bar"><span>m4_urok3.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6</span><code><span class="t-k">def</span> damage(power, weapon):
+    <span class="t-k">return</span> power * <span class="t-n">2</span> + weapon
+
+hit = damage(<span class="t-n">10</span>, <span class="t-n">5</span>)
+<span class="t-f">print</span>(<span class="t-s">"Урон:"</span>, hit)
+<span class="t-f">print</span>(<span class="t-s">"Урон с мечом получше:"</span>, damage(<span class="t-n">10</span>, <span class="t-n">12</span>))</code></pre></div>
+<p class="out">Вывод:<br>Урон: 25<br>Урон с мечом получше: 32</p>
+<p>Вызов <code>damage(10, 5)</code> как будто превращается в число 25. Его можно положить в переменную, напечатать или посчитать с ним дальше.</p>
+
+<h4>Ответ «да» или «нет»</h4>
+<p>Функция может возвращать <code>True</code> или <code>False</code>. Такие функции удобно ставить прямо в <code>if</code>:</p>
+<div class="code"><div class="code-bar"><span>m4_urok3.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9</span><code><span class="t-k">def</span> can_buy(coins, price):
+    <span class="t-k">return</span> coins &gt;= price
+
+coins = <span class="t-n">80</span>
+
+<span class="t-k">if</span> can_buy(coins, <span class="t-n">50</span>):
+    <span class="t-f">print</span>(<span class="t-s">"Покупаем щит"</span>)
+<span class="t-k">if</span> <span class="t-k">not</span> can_buy(coins, <span class="t-n">100</span>):
+    <span class="t-f">print</span>(<span class="t-s">"На меч не хватает"</span>)</code></pre></div>
+
+<h4>return заканчивает функцию</h4>
+<p>Как только выполняется <code>return</code>, функция сразу заканчивается. Строчки после него не выполнятся.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай функцию <code>area(width, height)</code>, которая возвращает площадь прямоугольника.</li>
+  <li>Сделай функцию <code>is_even(n)</code>: возвращает <code>True</code>, если число чётное.</li>
+  <li>Сделай функцию <code>rank(score)</code>, которая возвращает звание по очкам (как в викторине). Проверь её на разных числах.</li>
+  <li class="star">Сделай функцию <code>ask_number(question)</code>: задаёт вопрос, пока не введут число, и возвращает его уже как число. Используй её в «Угадай число».</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Понял return">Понял return</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m4-2.html"><small>← урок 2</small><span class="pt">Параметры</span></a><a class="nx" href="../lessons/m4-4.html"><small>урок 4 →</small><span class="pt">Рисуем функциями</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 6. break — выход</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m3-6">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 3 · урок 6 из 11</span>
+  <h1>break — выход</h1>
+  <p class="lead">Игра, пока игрок не скажет стоп</p>
+</div>
+<article class="body">
+<h4>Выйти из цикла в любой момент</h4>
+<p>Иногда удобнее сделать бесконечный цикл и выходить из него, когда нужно. Так устроены почти все игры: они работают, пока игрок не нажмёт «выход».</p>
+<p>Бесконечный цикл — это <code>while True:</code>. Вопрос всегда «да», поэтому он сам не закончится. Выйти из него можно командой <code>break</code> — «прервать».</p>
+<div class="code"><div class="code-bar"><span>m3_urok6.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</span><code><span class="t-k">while</span> <span class="t-k">True</span>:
+    command = <span class="t-f">input</span>(<span class="t-s">"Команда (идти / осмотреться / выход): "</span>).<span class="t-m">strip</span>().<span class="t-m">lower</span>()
+
+    <span class="t-k">if</span> command == <span class="t-s">"выход"</span>:
+        <span class="t-f">print</span>(<span class="t-s">"Пока!"</span>)
+        <span class="t-k">break</span>
+    <span class="t-k">elif</span> command == <span class="t-s">"идти"</span>:
+        <span class="t-f">print</span>(<span class="t-s">"Ты идёшь по тёмному лесу..."</span>)
+    <span class="t-k">elif</span> command == <span class="t-s">"осмотреться"</span>:
+        <span class="t-f">print</span>(<span class="t-s">"Вокруг деревья. Где-то воет волк."</span>)
+    <span class="t-k">else</span>:
+        <span class="t-f">print</span>(<span class="t-s">"Не понимаю"</span>)</code></pre></div>
+<p>Как только выполняется <code>break</code>, цикл сразу заканчивается, и программа идёт дальше.</p>
+
+<h4>Три попытки</h4>
+<p><code>break</code> работает и в <code>for</code>. Например, у игрока три попытки угадать пароль:</p>
+<div class="code"><div class="code-bar"><span>m3_urok6.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8</span><code><span class="t-k">for</span> attempt <span class="t-k">in</span> <span class="t-f">range</span>(<span class="t-n">3</span>):
+    password = <span class="t-f">input</span>(<span class="t-s">"Пароль: "</span>)
+    <span class="t-k">if</span> password == <span class="t-s">"дракон"</span>:
+        <span class="t-f">print</span>(<span class="t-s">"Верно!"</span>)
+        <span class="t-k">break</span>
+    <span class="t-f">print</span>(<span class="t-s">"Неверно"</span>)
+
+<span class="t-f">print</span>(<span class="t-s">"Конец"</span>)</code></pre></div>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай меню, которое повторяется, пока не выбрали «3. Выход».</li>
+  <li>Попугай: программа повторяет всё, что ввёл игрок, пока он не напишет «хватит».</li>
+  <li>Добавь в программу «три попытки» сообщение «Попытки закончились», если пароль так и не угадали.
+    <details class="hint"><summary>Подсказка</summary><div><p>Заведи переменную <code>found = False</code>, а при правильном пароле делай <code>found = True</code>. После цикла проверь её.</p></div></details></li>
+  <li class="star">Добавь в лес команду «гриб»: каждый найденный гриб +1, команда «корзина» показывает, сколько грибов.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Понял break">Понял break</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m3-5.html"><small>← урок 5</small><span class="pt">while — пока</span></a><a class="nx" href="../lessons/m3-7.html"><small>урок 7 →</small><span class="pt">Счётчики и суммы</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

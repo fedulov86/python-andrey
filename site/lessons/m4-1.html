@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 1. Свои команды</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m4-1">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 4 · урок 1 из 10</span>
+  <h1>Свои команды</h1>
+  <p class="lead">Что такое функция</p>
+</div>
+<article class="body">
+<h4>Зачем свои команды</h4>
+<p>Ты уже пользовался готовыми командами: <code>print</code>, <code>input</code>, <code>forward</code>. Такие команды называются <b>функциями</b>. А ещё можно делать свои.</p>
+<p>Представь: в игре в нескольких местах нужно нарисовать рамку из звёздочек. Можно каждый раз копировать три строчки. А можно один раз научить Python новой команде <code>frame</code> и потом просто её вызывать.</p>
+<div class="code"><div class="code-bar"><span>m4_urok1.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8</span><code><span class="t-k">def</span> frame():
+    <span class="t-f">print</span>(<span class="t-s">"*"</span> * <span class="t-n">20</span>)
+    <span class="t-f">print</span>(<span class="t-s">"*      ИГРА      *"</span>)
+    <span class="t-f">print</span>(<span class="t-s">"*"</span> * <span class="t-n">20</span>)
+
+frame()
+<span class="t-f">print</span>(<span class="t-s">"Добро пожаловать!"</span>)
+frame()</code></pre></div>
+<p class="out">Вывод:<br>********************<br>*      ИГРА      *<br>********************<br>Добро пожаловать!<br>********************<br>*      ИГРА      *<br>********************</p>
+
+<h4>Как это записывается</h4>
+<ul>
+  <li><code>def</code> (от define — «определить») говорит: «сейчас я объясню новую команду».</li>
+  <li>Потом имя команды, пустые скобки и двоеточие.</li>
+  <li>С отступом — что команда делает.</li>
+</ul>
+<p>Важно: сама строчка <code>def</code> ничего не выполняет. Она только запоминает, что делать. Команда срабатывает, когда ты её <b>вызываешь</b>: пишешь имя и скобки, <code>frame()</code>.</p>
+<p>Поэтому <code>def</code> пишут в начале программы. Вызвать команду, которую ещё не объяснили, нельзя: будет <code>NameError</code>.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай функцию <code>hello()</code>, которая печатает приветствие из трёх строчек. Вызови её 3 раза.</li>
+  <li>Сделай функцию <code>line()</code>, которая печатает линию из 30 знаков <code>=</code>. Нарисуй ею рамку вокруг своего имени.</li>
+  <li>Поставь вызов функции <b>выше</b> её <code>def</code> и посмотри, какая будет ошибка.</li>
+  <li class="star">Сделай функцию <code>menu()</code>, которая показывает меню игры, и вызывай её в цикле <code>while True</code>, пока игрок не выберет «выход».</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Понял, что такое функция">Понял, что такое функция</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../module4.html"><small>← назад</small><span class="pt">Модуль 4</span></a><a class="nx" href="../lessons/m4-2.html"><small>урок 2 →</small><span class="pt">Параметры</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

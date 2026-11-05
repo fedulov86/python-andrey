@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 5. Несколько черепашек</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m4-5">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 4 · урок 5 из 10</span>
+  <h1>Несколько черепашек</h1>
+  <p class="lead">У каждой свои команды</p>
+</div>
+<article class="body">
+<h4>Больше одной черепашки</h4>
+<p>До сих пор на экране была одна черепашка. Для игры понадобится несколько: одна — игрок, другая — звезда, третья пишет счёт. Новую черепашку создают так:</p>
+<div class="code"><div class="code-bar"><span>m4_urok5.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</span><code><span class="t-k">from</span> turtle <span class="t-k">import</span> *
+
+hero = <span class="t-f">Turtle</span>()
+hero.<span class="t-m">shape</span>(<span class="t-s">"turtle"</span>)
+hero.<span class="t-m">color</span>(<span class="t-s">"green"</span>)
+
+enemy = <span class="t-f">Turtle</span>()
+enemy.<span class="t-m">shape</span>(<span class="t-s">"circle"</span>)
+enemy.<span class="t-m">color</span>(<span class="t-s">"red"</span>)
+
+hero.<span class="t-m">forward</span>(<span class="t-n">100</span>)
+enemy.<span class="t-m">left</span>(<span class="t-n">180</span>)
+enemy.<span class="t-m">forward</span>(<span class="t-n">100</span>)
+
+<span class="t-f">done</span>()</code></pre></div>
+<p><code>Turtle()</code> создаёт новую черепашку, и мы кладём её в переменную <code>hero</code>. Чтобы дать команду именно ей, пишем имя, точку и команду: <code>hero.forward(100)</code>. Точку ты уже видел у строк: <code>name.upper()</code>.</p>
+
+<h4>Формы и место</h4>
+<p>Форма может быть <code>"turtle"</code>, <code>"circle"</code>, <code>"square"</code>, <code>"triangle"</code>, <code>"arrow"</code>. Чтобы поставить черепашку в другое место без линии, сначала поднимают карандаш:</p>
+<div class="code"><div class="code-bar"><span>m4_urok5.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9</span><code><span class="t-k">from</span> turtle <span class="t-k">import</span> *
+
+star = <span class="t-f">Turtle</span>()
+star.<span class="t-m">shape</span>(<span class="t-s">"circle"</span>)
+star.<span class="t-m">color</span>(<span class="t-s">"gold"</span>)
+star.<span class="t-m">penup</span>()
+star.<span class="t-m">goto</span>(<span class="t-n">150</span>, <span class="t-n">100</span>)
+
+<span class="t-f">done</span>()</code></pre></div>
+
+<h4>Черепашка-писатель</h4>
+<p>Удобно завести отдельную невидимую черепашку, которая только пишет текст:</p>
+<div class="code"><div class="code-bar"><span>m4_urok5.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9</span><code><span class="t-k">from</span> turtle <span class="t-k">import</span> *
+
+writer = <span class="t-f">Turtle</span>()
+writer.<span class="t-m">hideturtle</span>()
+writer.<span class="t-m">penup</span>()
+writer.<span class="t-m">goto</span>(-<span class="t-n">200</span>, <span class="t-n">150</span>)
+writer.<span class="t-m">write</span>(<span class="t-s">"Очки: 0"</span>, font=(<span class="t-s">"Arial"</span>, <span class="t-n">20</span>))
+
+<span class="t-f">done</span>()</code></pre></div>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Создай трёх черепашек разных цветов и устрой гонку: каждая проползает вперёд случайное расстояние.</li>
+  <li>Повтори гонку циклом 20 раз, по чуть-чуть, чтобы было видно движение.</li>
+  <li class="star">После гонки напиши черепашкой-писателем, кто победил.
+    <details class="hint"><summary>Подсказка</summary><div><p><code>hero.xcor()</code> возвращает, где черепашка сейчас по горизонтали. У кого больше — тот впереди.</p></div></details></li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Управляю несколькими черепашками">Управляю несколькими черепашками</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m4-4.html"><small>← урок 4</small><span class="pt">Рисуем функциями</span></a><a class="nx" href="../lessons/m4-6.html"><small>урок 6 →</small><span class="pt">Управление клавишами</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

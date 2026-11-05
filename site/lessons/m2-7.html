@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 7. Проверка ввода</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m2-7">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 2 · урок 7 из 10</span>
+  <h1>Проверка ввода</h1>
+  <p class="lead">Если ввели не то</p>
+</div>
+<article class="body">
+<h4>Помнишь «тринадцать»?</h4>
+<p>В модуле 1 ты вводил слово вместо числа, и программа падала с ошибкой. В настоящей игре так нельзя: игрок ошибся клавишей, и всё сломалось. Теперь, когда ты знаешь <code>if</code>, это можно исправить.</p>
+
+<h4>Это цифры?</h4>
+<p>У строк есть команда <code>isdigit()</code>. Она отвечает <code>True</code>, если строка состоит только из цифр.</p>
+<div class="code"><div class="code-bar"><span>m2_urok7.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3</span><code><span class="t-f">print</span>(<span class="t-s">"13"</span>.<span class="t-m">isdigit</span>())
+<span class="t-f">print</span>(<span class="t-s">"тринадцать"</span>.<span class="t-m">isdigit</span>())
+<span class="t-f">print</span>(<span class="t-s">"1 3"</span>.<span class="t-m">isdigit</span>())</code></pre></div>
+<p class="out">Вывод:<br>True<br>False<br>False</p>
+<p>Значит, перед <code>int()</code> можно проверить, что ввели именно число:</p>
+<div class="code"><div class="code-bar"><span>m2_urok7.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7</span><code>age = <span class="t-f">input</span>(<span class="t-s">"Сколько тебе лет? "</span>)
+
+<span class="t-k">if</span> age.<span class="t-m">isdigit</span>():
+    age = <span class="t-f">int</span>(age)
+    <span class="t-f">print</span>(<span class="t-s">"Через 5 лет тебе будет"</span>, age + <span class="t-n">5</span>)
+<span class="t-k">else</span>:
+    <span class="t-f">print</span>(<span class="t-s">"Нужно ввести число цифрами"</span>)</code></pre></div>
+
+<h4>Большие и маленькие буквы</h4>
+<p>Игрок может ответить «Да», «ДА» или «да». Чтобы не проверять все варианты, сделай ответ маленькими буквами через <code>lower()</code>, а потом сравнивай:</p>
+<div class="code"><div class="code-bar"><span>m2_urok7.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6</span><code>answer = <span class="t-f">input</span>(<span class="t-s">"Хочешь сыграть? "</span>).<span class="t-m">lower</span>()
+
+<span class="t-k">if</span> answer == <span class="t-s">"да"</span>:
+    <span class="t-f">print</span>(<span class="t-s">"Начинаем!"</span>)
+<span class="t-k">else</span>:
+    <span class="t-f">print</span>(<span class="t-s">"Ну ладно"</span>)</code></pre></div>
+
+<h4>Лишние пробелы</h4>
+<p>Ещё игрок может случайно нажать пробел. <code>strip()</code> убирает пробелы в начале и конце строки. Можно делать всё сразу: <code>input("...").strip().lower()</code>.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Переделай калькулятор из модуля 1: если ввели не число, программа пишет «Это не число» вместо ошибки.</li>
+  <li>Спроси «Столица России?». Засчитай ответ «москва», «Москва», «МОСКВА» и « Москва ».</li>
+  <li class="star">Спроси число от 1 до 10. Отдельно сообщи, если ввели не число, и если число вне промежутка.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Программа не ломается от неправильного ввода">Программа не ломается от неправильного ввода</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m2-6.html"><small>← урок 6</small><span class="pt">and, or, not</span></a><a class="nx" href="../lessons/m2-8.html"><small>урок 8 →</small><span class="pt">Черепашка выбирает</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

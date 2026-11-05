@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 7. Счёт и текст</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m6-7">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 6 · урок 7 из 12</span>
+  <h1>Счёт и текст</h1>
+  <p class="lead">Очки и надписи в игре</p>
+</div>
+<article class="body">
+<h4>Очки на экране</h4>
+<p>Теперь посчитаем собранные монеты и покажем счёт. Переменную <code>score</code> меняем в <code>update</code>, а рисуем в <code>draw</code>:</p>
+<div class="code"><div class="code-bar"><span>m6_urok7.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35</span><code><span class="t-k">import</span> pgzrun
+<span class="t-k">import</span> random
+
+WIDTH = <span class="t-n">600</span>
+HEIGHT = <span class="t-n">400</span>
+
+hero = Actor(<span class="t-s">"hero"</span>, (<span class="t-n">300</span>, <span class="t-n">200</span>))
+coin = Actor(<span class="t-s">"coin"</span>, (<span class="t-n">100</span>, <span class="t-n">100</span>))
+score = <span class="t-n">0</span>
+
+<span class="t-k">def</span> move_coin():
+    coin.<span class="t-m">x</span> = random.<span class="t-m">randint</span>(<span class="t-n">30</span>, WIDTH - <span class="t-n">30</span>)
+    coin.<span class="t-m">y</span> = random.<span class="t-m">randint</span>(<span class="t-n">30</span>, HEIGHT - <span class="t-n">30</span>)
+
+<span class="t-k">def</span> update():
+    <span class="t-k">global</span> score
+    <span class="t-k">if</span> keyboard.<span class="t-m">left</span>:
+        hero.<span class="t-m">x</span> -= <span class="t-n">5</span>
+    <span class="t-k">if</span> keyboard.<span class="t-m">right</span>:
+        hero.<span class="t-m">x</span> += <span class="t-n">5</span>
+    <span class="t-k">if</span> keyboard.<span class="t-m">up</span>:
+        hero.<span class="t-m">y</span> -= <span class="t-n">5</span>
+    <span class="t-k">if</span> keyboard.<span class="t-m">down</span>:
+        hero.<span class="t-m">y</span> += <span class="t-n">5</span>
+    <span class="t-k">if</span> hero.<span class="t-m">colliderect</span>(coin):
+        score += <span class="t-n">1</span>
+        move_coin()
+
+<span class="t-k">def</span> draw():
+    screen.<span class="t-m">fill</span>(<span class="t-s">"darkgreen"</span>)
+    coin.<span class="t-m">draw</span>()
+    hero.<span class="t-m">draw</span>()
+    screen.<span class="t-m">draw</span>.<span class="t-m">text</span>(<span class="t-s">f"Монеты: </span><span class="t-i">{score}</span><span class="t-s">"</span>, (<span class="t-n">10</span>, <span class="t-n">10</span>), fontsize=<span class="t-n">36</span>, <span class="t-f">color</span>=<span class="t-s">"yellow"</span>)
+
+pgzrun.<span class="t-m">go</span>()</code></pre></div>
+
+<h4>Время</h4>
+<p>Pygame Zero умеет вызывать функцию через заданное время. <code>clock.schedule_interval(tick, 1.0)</code> — «вызывай <code>tick</code> каждую секунду». Так делают таймер:</p>
+<div class="code"><div class="code-bar"><span>m6_urok7.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18</span><code><span class="t-k">import</span> pgzrun
+
+WIDTH = <span class="t-n">600</span>
+HEIGHT = <span class="t-n">400</span>
+
+time_left = <span class="t-n">30</span>
+
+<span class="t-k">def</span> tick():
+    <span class="t-k">global</span> time_left
+    <span class="t-k">if</span> time_left &gt; <span class="t-n">0</span>:
+        time_left -= <span class="t-n">1</span>
+
+<span class="t-k">def</span> draw():
+    screen.<span class="t-m">fill</span>(<span class="t-s">"black"</span>)
+    screen.<span class="t-m">draw</span>.<span class="t-m">text</span>(<span class="t-s">f"Осталось: </span><span class="t-i">{time_left}</span><span class="t-s">"</span>, center=(<span class="t-n">300</span>, <span class="t-n">200</span>), fontsize=<span class="t-n">60</span>, <span class="t-f">color</span>=<span class="t-s">"white"</span>)
+
+clock.<span class="t-m">schedule_interval</span>(tick, <span class="t-n">1.0</span>)
+pgzrun.<span class="t-m">go</span>()</code></pre></div>
+<p><code>center=(300, 200)</code> ставит надпись по центру этой точки.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Соедини обе программы: собирай монеты на время, 30 секунд.</li>
+  <li>Когда время вышло, герой больше не двигается, а по центру экрана надпись «Время вышло! Монет: …».</li>
+  <li class="star">Запоминай рекорд: если набрал больше, чем в прошлый раз, пиши «Новый рекорд!».</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="В игре есть счёт">В игре есть счёт</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m6-6.html"><small>← урок 6</small><span class="pt">Столкновения</span></a><a class="nx" href="../lessons/m6-8.html"><small>урок 8 →</small><span class="pt">Много врагов</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

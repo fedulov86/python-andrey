@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 3. else — иначе</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m2-3">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 2 · урок 3 из 10</span>
+  <h1>else — иначе</h1>
+  <p class="lead">Две дороги</p>
+</div>
+<article class="body">
+<h4>Что делать, если «нет»</h4>
+<p>С одним <code>if</code> программа что-то делает при «да», а при «нет» молчит. Но часто нужно сделать что-то и в другом случае: правильный ответ — похвалить, неправильный — сказать, что ошибся. Для этого есть <code>else</code> — «иначе».</p>
+<div class="code"><div class="code-bar"><span>m2_urok3.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6</span><code>answer = <span class="t-f">input</span>(<span class="t-s">"Столица Франции? "</span>)
+
+<span class="t-k">if</span> answer == <span class="t-s">"Париж"</span>:
+    <span class="t-f">print</span>(<span class="t-s">"Правильно!"</span>)
+<span class="t-k">else</span>:
+    <span class="t-f">print</span>(<span class="t-s">"Нет, это Париж"</span>)</code></pre></div>
+<p class="out">Столица Франции? Лондон<br>Нет, это Париж</p>
+<p>Программа идёт <b>только по одной дороге</b>: либо по той, что под <code>if</code>, либо по той, что под <code>else</code>. Обе сразу не выполнятся никогда.</p>
+<p>У <code>else</code> нет своего вопроса, только двоеточие. Он пишется на одном уровне с <code>if</code>, без отступа.</p>
+
+<h4>Чётное или нечётное</h4>
+<p>Помнишь остаток от деления <code>%</code> из модуля 1? У чётных чисел остаток от деления на 2 равен нулю.</p>
+<div class="code"><div class="code-bar"><span>m2_urok3.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6</span><code>n = <span class="t-f">int</span>(<span class="t-f">input</span>(<span class="t-s">"Введи число: "</span>))
+
+<span class="t-k">if</span> n % <span class="t-n">2</span> == <span class="t-n">0</span>:
+    <span class="t-f">print</span>(<span class="t-s">"Чётное"</span>)
+<span class="t-k">else</span>:
+    <span class="t-f">print</span>(<span class="t-s">"Нечётное"</span>)</code></pre></div>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Спроси возраст. Если 12 или больше, напиши «Можно играть», иначе «Подрасти немного».</li>
+  <li>Спроси, сколько монет у игрока. Меч стоит 100. Если хватает, напиши, сколько останется после покупки. Если нет — сколько не хватает.</li>
+  <li>Задай вопрос «Сколько будет 7 × 8?». Скажи, правильный ли ответ.
+    <details class="hint"><summary>Подсказка</summary><div><p>Ответ из <code>input</code> — это строка. Сравнивай с <code>"56"</code> или превращай ответ в число через <code>int</code>.</p></div></details></li>
+  <li class="star">Спроси два числа и выведи большее из них.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Понял else">Понял else</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m2-2.html"><small>← урок 2</small><span class="pt">if — если</span></a><a class="nx" href="../lessons/m2-4.html"><small>урок 4 →</small><span class="pt">Отступы</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

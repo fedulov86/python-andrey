@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 1. Первая программа: print</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m1-1">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 1 · урок 1 из 11</span>
+  <h1>Первая программа: print</h1>
+  <p class="lead">Вывод текста на экран</p>
+</div>
+<article class="body">
+<h4>Команда print</h4>
+<p><code>print</code> по-английски значит «напечатать». Эта команда показывает на экране то, что стоит в скобках после неё. Именно её ты использовал в прошлом уроке.</p>
+<p>Текст для <code>print</code> всегда пишется в кавычках. Кавычки говорят Python: «это просто слова, их надо показать как есть, а не выполнять». Если кавычки забыть, Python попробует понять слова как команду и выдаст ошибку.</p>
+<p>Программа выполняется <b>сверху вниз</b>, строчка за строчкой. Поэтому то, что написано выше, появится на экране раньше.</p>
+<div class="code"><div class="code-bar"><span>m1_urok1.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5</span><code><span class="t-c"># Строчки с решёткой — это комментарии. Python их пропускает.</span>
+<span class="t-f">print</span>(<span class="t-s">"Привет, мир!"</span>)
+<span class="t-f">print</span>(<span class="t-s">"Меня зовут Андрей"</span>)
+<span class="t-f">print</span>()                      <span class="t-c"># пустая строка</span>
+<span class="t-f">print</span>(<span class="t-s">"2 + 2 ="</span>, <span class="t-n">2</span> + <span class="t-n">2</span>)       <span class="t-c"># 2 + 2 без кавычек: Python посчитает</span></code></pre></div>
+<p class="out">Вывод:<br>Привет, мир!<br>Меня зовут Андрей<br><br>2 + 2 = 4</p>
+<p>Посмотри на последнюю строчку. В <code>print</code> можно передать несколько вещей через запятую, и он выведет их через пробел. <code>"2 + 2 ="</code> в кавычках напечатался как текст, а <code>2 + 2</code> без кавычек Python посчитал.</p>
+<p>Строчка, которая начинается с <code>#</code>, — это <b>комментарий</b>. Python её пропускает. Комментарии пишут для людей: чтобы объяснить, что делает код.</p>
+<h4>Перенос строки и другие хитрости</h4>
+<p>Каждый <code>print</code> сам переходит на новую строку в конце. Но перенос можно поставить и посередине текста: для этого пишут <code>\n</code> (n от слова new line, «новая строка»).</p>
+<div class="code"><div class="code-bar"><span>m1_urok1.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6</span><code><span class="t-f">print</span>(<span class="t-s">"Привет\nмир"</span>)           <span class="t-c"># \n — перенос строки внутри текста</span>
+
+<span class="t-f">print</span>(<span class="t-s">"Загрузка"</span>, end=<span class="t-s">""</span>)     <span class="t-c"># end="" — не переходить на новую строку</span>
+<span class="t-f">print</span>(<span class="t-s">"..."</span>)                   <span class="t-c"># допишется в ту же строку</span>
+
+<span class="t-f">print</span>(<span class="t-s">"Имя"</span>, <span class="t-s">"Уровень"</span>, sep=<span class="t-s">"\n"</span>)  <span class="t-c"># sep — что ставить между значениями</span></code></pre></div>
+<p class="out">Вывод:<br>Привет<br>мир<br>Загрузка...<br>Имя<br>Уровень</p>
+<p>Если текст длинный и в несколько строк, его можно взять в <b>тройные кавычки</b>. Python выведет его ровно так, как ты его написал, со всеми переносами:</p>
+<div class="code"><div class="code-bar"><span>m1_urok1.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6</span><code><span class="t-f">print</span>(<span class="t-s">"""
+  ГЛАВНОЕ МЕНЮ
+  1. Новая игра
+  2. Загрузить
+  3. Выход
+"""</span>)</code></pre></div>
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Напиши программу, которая выводит твоё имя, возраст и любимую игру, каждое на отдельной строчке. Потом сделай то же самое <b>одним</b> <code>print</code> с помощью <code>\n</code>.</li>
+  <li>Нарисуй из символов домик, ёлку или крипера из Minecraft. Каждая строчка рисунка — отдельный <code>print</code>.
+    <details class="hint"><summary>Подсказка</summary><div><div class="code"><div class="code-bar"><span>m1_urok1.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3</span><code><span class="t-f">print</span>(<span class="t-s">"  /\\  "</span>)
+<span class="t-f">print</span>(<span class="t-s">" /  \\ "</span>)
+<span class="t-f">print</span>(<span class="t-s">"|____|"</span>)</code></pre></div><p>Обратная косая черта <code>\</code> в Python особенная (помнишь <code>\n</code>?), поэтому её пишут дважды: <code>\\</code>. Когда получится, попробуй нарисовать то же самое одним <code>print</code> в тройных кавычках.</p></div></details></li>
+  <li>Посчитай с помощью print: сколько секунд в одном часе? А в сутках?</li>
+  <li class="star">Сделай «экран загрузки» игры: название игры в рамке из звёздочек и строчку <code>Нажми F5, чтобы начать</code>.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Решил все задачи урока 1">Решил все задачи урока 1</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m1-0.html"><small>← урок 0</small><span class="pt">Устанавливаем Thonny</span></a><a class="nx" href="../lessons/m1-2.html"><small>урок 2 →</small><span class="pt">Ошибки — это подсказки</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 1. Списки</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m5-1">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 5 · урок 1 из 10</span>
+  <h1>Списки</h1>
+  <p class="lead">Много значений в одной переменной</p>
+</div>
+<article class="body">
+<h4>Когда одной коробки мало</h4>
+<p>В инвентаре героя меч, щит, зелье и ключ. Можно завести четыре переменные: <code>item1</code>, <code>item2</code>… Но предметов может стать сто, и так делать неудобно.</p>
+<p>Для этого есть <b>список</b> — одна переменная, в которой лежит много значений по порядку. Список пишут в квадратных скобках, значения — через запятую:</p>
+<div class="code"><div class="code-bar"><span>m5_urok1.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3</span><code>inventory = [<span class="t-s">"меч"</span>, <span class="t-s">"щит"</span>, <span class="t-s">"зелье"</span>, <span class="t-s">"ключ"</span>]
+<span class="t-f">print</span>(inventory)
+<span class="t-f">print</span>(<span class="t-s">"Предметов:"</span>, <span class="t-f">len</span>(inventory))</code></pre></div>
+<p class="out">Вывод:<br>['меч', 'щит', 'зелье', 'ключ']<br>Предметов: 4</p>
+<p>Представь список как полку с ячейками. В каждой ячейке своя вещь, а у ячеек есть номера.</p>
+
+<h4>Достать по номеру</h4>
+<p>Номера начинаются с нуля, как у букв в строке:</p>
+<div class="code"><div class="code-bar"><span>m5_urok1.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4</span><code>inventory = [<span class="t-s">"меч"</span>, <span class="t-s">"щит"</span>, <span class="t-s">"зелье"</span>, <span class="t-s">"ключ"</span>]
+<span class="t-f">print</span>(inventory[<span class="t-n">0</span>])
+<span class="t-f">print</span>(inventory[<span class="t-n">2</span>])
+<span class="t-f">print</span>(inventory[-<span class="t-n">1</span>])</code></pre></div>
+<p class="out">Вывод:<br>меч<br>зелье<br>ключ</p>
+<p><code>[-1]</code> — последний элемент, как у строк.</p>
+
+<h4>Заменить по номеру</h4>
+<div class="code"><div class="code-bar"><span>m5_urok1.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3</span><code>inventory = [<span class="t-s">"меч"</span>, <span class="t-s">"щит"</span>, <span class="t-s">"зелье"</span>]
+inventory[<span class="t-n">0</span>] = <span class="t-s">"огненный меч"</span>
+<span class="t-f">print</span>(inventory)</code></pre></div>
+<p class="out">Вывод:<br>['огненный меч', 'щит', 'зелье']</p>
+<p>В списке могут лежать и числа: <code>scores = [120, 85, 300]</code>.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай список из 5 своих любимых игр. Выведи первую, третью и последнюю.</li>
+  <li>Сделай список рекордов <code>[50, 120, 80]</code>. Замени второй рекорд на 200 и выведи список.</li>
+  <li>Что будет, если попросить <code>inventory[10]</code> у списка из 4 элементов? Проверь и прочитай ошибку.</li>
+  <li class="star">У списков, как у чисел, есть <code>max</code>, <code>min</code> и <code>sum</code>. Выведи лучший, худший и общий счёт из списка рекордов.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Понял списки">Понял списки</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../module5.html"><small>← назад</small><span class="pt">Модуль 5</span></a><a class="nx" href="../lessons/m5-2.html"><small>урок 2 →</small><span class="pt">Перебор списка</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

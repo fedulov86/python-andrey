@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 9. Черепашка и переменные</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m1-9">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 1 · урок 9 из 11</span>
+  <h1>Черепашка и переменные</h1>
+  <p class="lead">Рисунок, который можно настроить</p>
+</div>
+<article class="body">
+<h4>Зачем тут переменные</h4>
+<p>В прошлом уроке ты рисовал квадрат, и число 100 было написано 4 раза. Чтобы сделать квадрат больше, приходилось менять все четыре числа. Легко где-то забыть, и квадрат получится кривой.</p>
+<p>Если положить размер в переменную, менять надо будет только в одном месте:</p>
+<div class="code"><div class="code-bar"><span>m1_urok9.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</span><code><span class="t-k">from</span> turtle <span class="t-k">import</span> *
+
+size = <span class="t-n">150</span>
+
+<span class="t-f">forward</span>(size)
+<span class="t-f">left</span>(<span class="t-n">90</span>)
+<span class="t-f">forward</span>(size)
+<span class="t-f">left</span>(<span class="t-n">90</span>)
+<span class="t-f">forward</span>(size)
+<span class="t-f">left</span>(<span class="t-n">90</span>)
+<span class="t-f">forward</span>(size)
+<span class="t-f">left</span>(<span class="t-n">90</span>)
+
+<span class="t-f">done</span>()</code></pre></div>
+<p>Поменяй <code>150</code> на <code>50</code> и запусти снова. Квадрат стал маленьким, а ты поменял всего одно число.</p>
+
+<h4>Пусть размер выбирает игрок</h4>
+<p>Размер и цвет можно спросить через <code>input</code>, как в уроке 6. Отвечать надо в нижнем окне Thonny, а потом откроется окно с рисунком.</p>
+<div class="code"><div class="code-bar"><span>m1_urok9.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18</span><code><span class="t-k">from</span> turtle <span class="t-k">import</span> *
+
+size = <span class="t-f">int</span>(<span class="t-f">input</span>(<span class="t-s">"Размер квадрата: "</span>))
+pen_color = <span class="t-f">input</span>(<span class="t-s">"Цвет (по-английски): "</span>)
+
+<span class="t-f">color</span>(pen_color)
+<span class="t-f">pensize</span>(<span class="t-n">4</span>)
+
+<span class="t-f">forward</span>(size)
+<span class="t-f">left</span>(<span class="t-n">90</span>)
+<span class="t-f">forward</span>(size)
+<span class="t-f">left</span>(<span class="t-n">90</span>)
+<span class="t-f">forward</span>(size)
+<span class="t-f">left</span>(<span class="t-n">90</span>)
+<span class="t-f">forward</span>(size)
+<span class="t-f">left</span>(<span class="t-n">90</span>)
+
+<span class="t-f">done</span>()</code></pre></div>
+<p>Переменную назвали <code>pen_color</code>, а не <code>color</code>, потому что <code>color</code> — это уже команда черепашки.</p>
+
+<h4>Считаем размеры</h4>
+<p>С переменной можно считать. Например, нарисовать квадрат, а потом квадрат в два раза больше:</p>
+<div class="code"><div class="code-bar"><span>m1_urok9.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</span><code><span class="t-k">from</span> turtle <span class="t-k">import</span> *
+
+size = <span class="t-n">50</span>
+
+<span class="t-f">color</span>(<span class="t-s">"red"</span>)
+<span class="t-f">forward</span>(size)
+<span class="t-f">left</span>(<span class="t-n">90</span>)
+<span class="t-f">forward</span>(size)
+<span class="t-f">left</span>(<span class="t-n">90</span>)
+<span class="t-f">forward</span>(size)
+<span class="t-f">left</span>(<span class="t-n">90</span>)
+<span class="t-f">forward</span>(size)
+<span class="t-f">left</span>(<span class="t-n">90</span>)
+
+<span class="t-f">color</span>(<span class="t-s">"blue"</span>)
+<span class="t-f">forward</span>(size * <span class="t-n">2</span>)
+<span class="t-f">left</span>(<span class="t-n">90</span>)
+<span class="t-f">forward</span>(size * <span class="t-n">2</span>)
+<span class="t-f">left</span>(<span class="t-n">90</span>)
+<span class="t-f">forward</span>(size * <span class="t-n">2</span>)
+<span class="t-f">left</span>(<span class="t-n">90</span>)
+<span class="t-f">forward</span>(size * <span class="t-n">2</span>)
+<span class="t-f">left</span>(<span class="t-n">90</span>)
+
+<span class="t-f">done</span>()</code></pre></div>
+
+<h4>Надпись на рисунке</h4>
+<p>Черепашка умеет писать текст командой <code>write</code>. Текст появляется там, где она сейчас стоит.</p>
+<div class="code"><div class="code-bar"><span>m1_urok9.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</span><code><span class="t-k">from</span> turtle <span class="t-k">import</span> *
+
+size = <span class="t-n">100</span>
+
+<span class="t-f">forward</span>(size)
+<span class="t-f">left</span>(<span class="t-n">90</span>)
+<span class="t-f">forward</span>(size)
+<span class="t-f">left</span>(<span class="t-n">90</span>)
+<span class="t-f">forward</span>(size)
+<span class="t-f">left</span>(<span class="t-n">90</span>)
+<span class="t-f">forward</span>(size)
+<span class="t-f">left</span>(<span class="t-n">90</span>)
+
+<span class="t-f">write</span>(<span class="t-s">f"Квадрат </span><span class="t-i">{size}</span><span class="t-s"> на </span><span class="t-i">{size}</span><span class="t-s">"</span>, font=(<span class="t-s">"Arial"</span>, <span class="t-n">16</span>))
+
+<span class="t-f">done</span>()</code></pre></div>
+<p>В <code>write</code> можно передать f-строку из урока 7. <code>font=("Arial", 16)</code> — это шрифт и размер букв. Без него буквы будут очень мелкие.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Спроси у игрока размер и цвет и нарисуй треугольник.</li>
+  <li>Нарисуй домик, где всё зависит от одной переменной <code>size</code>: стены и крыша. Проверь, что при любом размере домик ровный.</li>
+  <li>Нарисуй три квадрата из одной точки: размером <code>size</code>, <code>size * 2</code> и <code>size * 3</code>, каждый своим цветом.</li>
+  <li>Спроси радиус и нарисуй круг. Под ним напиши: «Круг радиусом …».</li>
+  <li class="star">Спроси у игрока его имя и нарисуй домик с надписью «Дом Андрея» (с его именем).</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Рисую с переменными">Рисую с переменными</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m1-8.html"><small>← урок 8</small><span class="pt">Черепашка: первые линии</span></a><a class="nx" href="../lessons/m1-10.html"><small>урок 10 →</small><span class="pt">Проект: создатель персонажа</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

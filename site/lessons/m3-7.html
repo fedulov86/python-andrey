@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 7. Счётчики и суммы</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m3-7">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 3 · урок 7 из 11</span>
+  <h1>Счётчики и суммы</h1>
+  <p class="lead">Считаем очки, попытки и жизни</p>
+</div>
+<article class="body">
+<h4>Переменная, которая растёт</h4>
+<p>В играх всё время что-то накапливается: очки, монеты, количество ходов. Для этого перед циклом заводят переменную с нулём, а в цикле прибавляют к ней.</p>
+<div class="code"><div class="code-bar"><span>m3_urok7.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7</span><code>total = <span class="t-n">0</span>
+
+<span class="t-k">for</span> day <span class="t-k">in</span> <span class="t-f">range</span>(<span class="t-n">1</span>, <span class="t-n">8</span>):
+    coins = <span class="t-f">int</span>(<span class="t-f">input</span>(<span class="t-s">f"Сколько монет собрал в день </span><span class="t-i">{day}</span><span class="t-s">? "</span>))
+    total += coins
+
+<span class="t-f">print</span>(<span class="t-s">"За неделю собрано:"</span>, total)</code></pre></div>
+<p>Важно: <code>total = 0</code> стоит <b>до</b> цикла. Если поставить его внутрь, каждый день счёт будет начинаться заново.</p>
+
+<h4>Жизни</h4>
+<p>Счётчик может и уменьшаться. Вот игра, где у игрока три жизни:</p>
+<div class="code"><div class="code-bar"><span>m3_urok7.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</span><code>lives = <span class="t-n">3</span>
+score = <span class="t-n">0</span>
+
+<span class="t-k">while</span> lives &gt; <span class="t-n">0</span>:
+    answer = <span class="t-f">input</span>(<span class="t-s">"Сколько будет 6 x 7? "</span>)
+    <span class="t-k">if</span> answer == <span class="t-s">"42"</span>:
+        score += <span class="t-n">1</span>
+        <span class="t-f">print</span>(<span class="t-s">"Верно! Очки:"</span>, score)
+    <span class="t-k">else</span>:
+        lives -= <span class="t-n">1</span>
+        <span class="t-f">print</span>(<span class="t-s">"Неверно! Жизней осталось:"</span>, lives)
+
+<span class="t-f">print</span>(<span class="t-s">"Игра окончена. Очки:"</span>, score)</code></pre></div>
+
+<h4>Самое большое число</h4>
+<p>Ещё одна полезная штука: запомнить рекорд.</p>
+<div class="code"><div class="code-bar"><span>m3_urok7.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8</span><code>record = <span class="t-n">0</span>
+
+<span class="t-k">for</span> i <span class="t-k">in</span> <span class="t-f">range</span>(<span class="t-n">5</span>):
+    n = <span class="t-f">int</span>(<span class="t-f">input</span>(<span class="t-s">"Очки за раунд: "</span>))
+    <span class="t-k">if</span> n &gt; record:
+        record = n
+
+<span class="t-f">print</span>(<span class="t-s">"Рекорд:"</span>, record)</code></pre></div>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Посчитай сумму всех чисел от 1 до 100.</li>
+  <li>Спроси 5 оценок и выведи среднюю.</li>
+  <li>Спрашивай числа, пока не введут 0. В конце выведи, сколько чисел было введено и какое самое маленькое.</li>
+  <li class="star">Посчитай, сколько гласных букв в слове, которое ввёл игрок.
+    <details class="hint"><summary>Подсказка</summary><div><p>Циклом можно пройти по буквам строки: <code>for letter in word:</code>. Проверка: <code>if letter in "аеёиоуыэюя":</code></p></div></details></li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Умею считать в цикле">Умею считать в цикле</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m3-6.html"><small>← урок 6</small><span class="pt">break — выход</span></a><a class="nx" href="../lessons/m3-8.html"><small>урок 8 →</small><span class="pt">Случайные числа</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

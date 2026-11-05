@@ -1,0 +1,424 @@
+<!--module {"num": 3, "title": "Циклы и случайность", "weeks": "недели 5–6", "topics": "for, range, while, break, счётчики, модуль random, узоры черепашкой.", "project": "«Угадай число» и камень-ножницы-бумага", "lead": "Как повторять действия, не копируя код, и как добавить в игру неожиданность."} -->
+
+<!--lesson {"num": 1, "title": "for — повторить", "sub": "Цикл на нужное число раз", "done_label": "Понял for"} -->
+<h4>Зачем повторять</h4>
+<p>Помнишь квадрат черепашкой? Ты 4 раза писал одно и то же: <code>forward</code>, <code>left</code>. А если нужно повторить 100 раз? Копировать код долго, и легко ошибиться.</p>
+<p>Для повторений есть <b>цикл</b>. Ты пишешь команды один раз и говоришь, сколько раз их выполнить.</p>
+<div class="code"><pre><span class="t-k">for</span> i <span class="t-k">in</span> range(5):
+    print(<span class="s">"Привет!"</span>)</pre></div>
+<p class="out">Вывод:<br>Привет!<br>Привет!<br>Привет!<br>Привет!<br>Привет!</p>
+<p>Читается так: «повтори 5 раз: напечатай „Привет!“».</p>
+
+<h4>Как это записывается</h4>
+<ul>
+  <li><code>for i in range(5):</code> — повторить 5 раз. Число в скобках — сколько раз.</li>
+  <li>В конце двоеточие, как у <code>if</code>.</li>
+  <li>Всё, что нужно повторять, пишется с отступом. Строчки без отступа выполнятся один раз, после цикла.</li>
+</ul>
+<div class="code"><pre>print(<span class="s">"Начинаем отсчёт"</span>)
+<span class="t-k">for</span> i <span class="t-k">in</span> range(3):
+    print(<span class="s">"Тик"</span>)
+    print(<span class="s">"Так"</span>)
+print(<span class="s">"Бум!"</span>)</pre></div>
+<p class="out">Вывод:<br>Начинаем отсчёт<br>Тик<br>Так<br>Тик<br>Так<br>Тик<br>Так<br>Бум!</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Напечатай своё имя 10 раз.</li>
+  <li>Спроси у игрока число и напечатай «Ура!» столько раз.</li>
+  <li>Нарисуй лесенку из 5 строчек <code>"=="</code>, а под ней надпись «Конец лестницы».</li>
+  <li class="star">Что будет, если написать <code>range(0)</code>? Угадай, потом проверь.</li>
+</ol>
+
+<!--lesson {"num": 2, "title": "Черепашка и for", "sub": "Фигуры в три строчки", "done_label": "Рисую циклами"} -->
+<h4>Квадрат в три строчки</h4>
+<p>Квадрат — это 4 раза «вперёд и повернуть». Теперь это можно записать циклом:</p>
+<div class="code"><pre>from turtle import *
+
+<span class="t-k">for</span> i <span class="t-k">in</span> range(4):
+    forward(100)
+    left(90)
+
+done()</pre></div>
+<p>Было 8 строчек, стало 2 внутри цикла.</p>
+
+<h4>Любой многоугольник</h4>
+<p>Черепашка, обойдя фигуру, всегда поворачивается на 360 градусов в сумме. Поэтому для фигуры с <code>n</code> углами нужно поворачивать на <code>360 / n</code>:</p>
+<div class="code"><pre>from turtle import *
+
+n = int(input(<span class="s">"Сколько углов? "</span>))
+
+<span class="t-k">for</span> i <span class="t-k">in</span> range(n):
+    forward(80)
+    left(360 / n)
+
+done()</pre></div>
+<p>Введи 3 — получится треугольник, 6 — шестиугольник, 50 — почти круг.</p>
+
+<h4>Узор из фигур</h4>
+<p>Если после каждого квадрата чуть-чуть поворачивать, получится узор:</p>
+<div class="code"><pre>from turtle import *
+
+speed(0)
+color(<span class="s">"purple"</span>)
+
+<span class="t-k">for</span> i <span class="t-k">in</span> range(36):
+    circle(80)
+    left(10)
+
+done()</pre></div>
+<p><code>speed(0)</code> — самая быстрая скорость черепашки.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Нарисуй циклом пятиугольник и восьмиугольник.</li>
+  <li>Нарисуй звезду циклом: 5 раз вперёд и поворот на 144.</li>
+  <li>Сделай узор из 12 квадратов, каждый повёрнут на 30 градусов.</li>
+  <li class="star">Спроси число лучей и нарисуй «солнце»: из центра много линий во все стороны.
+    <details class="hint"><summary>Подсказка</summary><div><p>Каждый луч: вперёд, назад, повернуть на <code>360 / n</code>.</p></div></details></li>
+</ol>
+
+<!--lesson {"num": 3, "title": "Счётчик цикла", "sub": "Что такое i", "done_label": "Понял, что такое i"} -->
+<h4>Что такое i</h4>
+<p>В <code>for i in range(5)</code> есть буква <code>i</code>. Это переменная. На каждом повторе в ней лежит номер этого повтора. Отсчёт идёт <b>с нуля</b>, как номера букв в строке.</p>
+<div class="code"><pre><span class="t-k">for</span> i <span class="t-k">in</span> range(5):
+    print(<span class="s">"Повтор номер"</span>, i)</pre></div>
+<p class="out">Вывод:<br>Повтор номер 0<br>Повтор номер 1<br>Повтор номер 2<br>Повтор номер 3<br>Повтор номер 4</p>
+<p>Буква <code>i</code> — привычка программистов, имя может быть любым: <code>for level in range(5)</code>.</p>
+
+<h4>range с началом и концом</h4>
+<p>В <code>range</code> можно написать два числа: откуда начинать и до какого числа идти. Последнее число <b>не входит</b>.</p>
+<div class="code"><pre><span class="t-k">for</span> level <span class="t-k">in</span> range(1, 6):
+    print(f<span class="s">"Уровень {level} пройден"</span>)</pre></div>
+<p class="out">Вывод:<br>Уровень 1 пройден<br>Уровень 2 пройден<br>Уровень 3 пройден<br>Уровень 4 пройден<br>Уровень 5 пройден</p>
+<p>Третье число — шаг. <code>range(10, 0, -1)</code> идёт от 10 вниз до 1:</p>
+<div class="code"><pre><span class="t-k">for</span> n <span class="t-k">in</span> range(10, 0, -1):
+    print(n)
+print(<span class="s">"Старт!"</span>)</pre></div>
+
+<h4>Спираль</h4>
+<p>Если длину линии брать из счётчика, черепашка нарисует спираль: каждая следующая линия длиннее.</p>
+<div class="code"><pre>from turtle import *
+
+speed(0)
+
+<span class="t-k">for</span> i <span class="t-k">in</span> range(100):
+    forward(i * 2)
+    left(91)
+
+done()</pre></div>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Напечатай таблицу умножения на 7: от <code>7 x 1 = 7</code> до <code>7 x 10 = 70</code>.</li>
+  <li>Напечатай все чётные числа от 2 до 20.
+    <details class="hint"><summary>Подсказка</summary><div><p>Подойдёт шаг 2: <code>range(2, 21, 2)</code>.</p></div></details></li>
+  <li>Нарисуй спираль, поменяй угол на 89, 120, 144. Что получается?</li>
+  <li class="star">Нарисуй лесенку из звёздочек: в первой строчке одна <code>*</code>, во второй две, и так до десяти.</li>
+</ol>
+
+<!--lesson {"num": 4, "title": "Цикл в цикле", "sub": "Узоры и таблицы", "done_label": "Понял цикл в цикле"} -->
+<h4>Повторить повторение</h4>
+<p>Внутри цикла может быть ещё один цикл. Тогда внутренний выполняется целиком на каждом шаге внешнего.</p>
+<div class="code"><pre><span class="t-k">for</span> row <span class="t-k">in</span> range(3):
+    <span class="t-k">for</span> col <span class="t-k">in</span> range(5):
+        print(<span class="s">"#"</span>, end=<span class="s">""</span>)
+    print()</pre></div>
+<p class="out">Вывод:<br>#####<br>#####<br>#####</p>
+<p>Внешний цикл делает 3 строчки. На каждой строчке внутренний печатает 5 решёток подряд. Пустой <code>print()</code> переходит на новую строку.</p>
+
+<h4>Узор из квадратов</h4>
+<p>Внутренний цикл рисует квадрат, внешний — повторяет квадрат с поворотом:</p>
+<div class="code"><pre>from turtle import *
+
+speed(0)
+color(<span class="s">"orange"</span>)
+
+<span class="t-k">for</span> i <span class="t-k">in</span> range(18):
+    <span class="t-k">for</span> j <span class="t-k">in</span> range(4):
+        forward(100)
+        left(90)
+    left(20)
+
+done()</pre></div>
+
+<h4>Ряд домиков</h4>
+<div class="code"><pre>from turtle import *
+
+speed(0)
+penup()
+goto(-250, 0)
+pendown()
+
+<span class="t-k">for</span> house <span class="t-k">in</span> range(5):
+    <span class="t-k">for</span> side <span class="t-k">in</span> range(4):
+        forward(60)
+        left(90)
+    penup()
+    forward(100)
+    pendown()
+
+done()</pre></div>
+<p><code>goto(-250, 0)</code> переносит черепашку в точку левее центра. Центр окна — это <code>(0, 0)</code>.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Нарисуй решётками прямоугольник: спроси ширину и высоту.</li>
+  <li>Напечатай полную таблицу умножения от 1 до 9.</li>
+  <li>Нарисуй узор из 36 треугольников, каждый повёрнут на 10 градусов.</li>
+  <li class="star">Нарисуй шахматную доску 8 на 8 из закрашенных и пустых квадратов.
+    <details class="hint"><summary>Подсказка</summary><div><p>Квадрат закрашивается так: <code>begin_fill()</code>, нарисовать квадрат, <code>end_fill()</code>. Чёрный он, когда <code>(row + col) % 2 == 0</code>.</p></div></details></li>
+</ol>
+
+<!--lesson {"num": 5, "title": "while — пока", "sub": "Повторять, пока условие верно", "done_label": "Понял while"} -->
+<h4>Когда неизвестно, сколько раз</h4>
+<p><code>for</code> подходит, когда заранее знаешь, сколько повторять. Но часто это неизвестно. Бой идёт, пока у монстра есть здоровье. Игра спрашивает пароль, пока не введут правильный.</p>
+<p>Для этого есть <code>while</code> — «пока». Цикл повторяется, пока ответ на вопрос «да».</p>
+<div class="code"><pre>monster = 50
+
+<span class="t-k">while</span> monster &gt; 0:
+    print(<span class="s">"Бьёшь монстра! Здоровье монстра:"</span>, monster)
+    monster = monster - 15
+
+print(<span class="s">"Монстр побеждён!"</span>)</pre></div>
+<p class="out">Вывод:<br>Бьёшь монстра! Здоровье монстра: 50<br>Бьёшь монстра! Здоровье монстра: 35<br>Бьёшь монстра! Здоровье монстра: 20<br>Бьёшь монстра! Здоровье монстра: 5<br>Монстр побеждён!</p>
+<p>Перед каждым повтором Python заново задаёт вопрос <code>monster &gt; 0</code>. Как только ответ «нет», цикл заканчивается.</p>
+
+<h4>Пароль</h4>
+<div class="code"><pre>password = input(<span class="s">"Пароль: "</span>)
+
+<span class="t-k">while</span> password != <span class="s">"дракон"</span>:
+    print(<span class="s">"Неверно, попробуй ещё"</span>)
+    password = input(<span class="s">"Пароль: "</span>)
+
+print(<span class="s">"Добро пожаловать!"</span>)</pre></div>
+
+<h4>Вечный цикл</h4>
+<p>Если ответ на вопрос всегда «да», цикл никогда не закончится. Например, если забыть уменьшать здоровье монстра. Программа зависнет. В Thonny её можно остановить красной кнопкой «Стоп» или клавишами Ctrl+F2.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Обратный отсчёт: спроси число и печатай его, уменьшая на 1, пока оно больше нуля.</li>
+  <li>Спрашивай числа и складывай их, пока игрок не введёт 0. Потом напечатай сумму.</li>
+  <li>Копилка: у тебя 0 монет, каждый день добавляется 15. Сколько дней копить на велосипед за 1000? Посчитай циклом.</li>
+  <li class="star">Напиши вечный цикл нарочно и останови его кнопкой «Стоп».</li>
+</ol>
+
+<!--lesson {"num": 6, "title": "break — выход", "sub": "Игра, пока игрок не скажет стоп", "done_label": "Понял break"} -->
+<h4>Выйти из цикла в любой момент</h4>
+<p>Иногда удобнее сделать бесконечный цикл и выходить из него, когда нужно. Так устроены почти все игры: они работают, пока игрок не нажмёт «выход».</p>
+<p>Бесконечный цикл — это <code>while True:</code>. Вопрос всегда «да», поэтому он сам не закончится. Выйти из него можно командой <code>break</code> — «прервать».</p>
+<div class="code"><pre><span class="t-k">while</span> <span class="t-k">True</span>:
+    command = input(<span class="s">"Команда (идти / осмотреться / выход): "</span>).strip().lower()
+
+    <span class="t-k">if</span> command == <span class="s">"выход"</span>:
+        print(<span class="s">"Пока!"</span>)
+        <span class="t-k">break</span>
+    <span class="t-k">elif</span> command == <span class="s">"идти"</span>:
+        print(<span class="s">"Ты идёшь по тёмному лесу..."</span>)
+    <span class="t-k">elif</span> command == <span class="s">"осмотреться"</span>:
+        print(<span class="s">"Вокруг деревья. Где-то воет волк."</span>)
+    <span class="t-k">else</span>:
+        print(<span class="s">"Не понимаю"</span>)</pre></div>
+<p>Как только выполняется <code>break</code>, цикл сразу заканчивается, и программа идёт дальше.</p>
+
+<h4>Три попытки</h4>
+<p><code>break</code> работает и в <code>for</code>. Например, у игрока три попытки угадать пароль:</p>
+<div class="code"><pre><span class="t-k">for</span> attempt <span class="t-k">in</span> range(3):
+    password = input(<span class="s">"Пароль: "</span>)
+    <span class="t-k">if</span> password == <span class="s">"дракон"</span>:
+        print(<span class="s">"Верно!"</span>)
+        <span class="t-k">break</span>
+    print(<span class="s">"Неверно"</span>)
+
+print(<span class="s">"Конец"</span>)</pre></div>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай меню, которое повторяется, пока не выбрали «3. Выход».</li>
+  <li>Попугай: программа повторяет всё, что ввёл игрок, пока он не напишет «хватит».</li>
+  <li>Добавь в программу «три попытки» сообщение «Попытки закончились», если пароль так и не угадали.
+    <details class="hint"><summary>Подсказка</summary><div><p>Заведи переменную <code>found = False</code>, а при правильном пароле делай <code>found = True</code>. После цикла проверь её.</p></div></details></li>
+  <li class="star">Добавь в лес команду «гриб»: каждый найденный гриб +1, команда «корзина» показывает, сколько грибов.</li>
+</ol>
+
+<!--lesson {"num": 7, "title": "Счётчики и суммы", "sub": "Считаем очки, попытки и жизни", "done_label": "Умею считать в цикле"} -->
+<h4>Переменная, которая растёт</h4>
+<p>В играх всё время что-то накапливается: очки, монеты, количество ходов. Для этого перед циклом заводят переменную с нулём, а в цикле прибавляют к ней.</p>
+<div class="code"><pre>total = 0
+
+<span class="t-k">for</span> day <span class="t-k">in</span> range(1, 8):
+    coins = int(input(f<span class="s">"Сколько монет собрал в день {day}? "</span>))
+    total += coins
+
+print(<span class="s">"За неделю собрано:"</span>, total)</pre></div>
+<p>Важно: <code>total = 0</code> стоит <b>до</b> цикла. Если поставить его внутрь, каждый день счёт будет начинаться заново.</p>
+
+<h4>Жизни</h4>
+<p>Счётчик может и уменьшаться. Вот игра, где у игрока три жизни:</p>
+<div class="code"><pre>lives = 3
+score = 0
+
+<span class="t-k">while</span> lives &gt; 0:
+    answer = input(<span class="s">"Сколько будет 6 x 7? "</span>)
+    <span class="t-k">if</span> answer == <span class="s">"42"</span>:
+        score += 1
+        print(<span class="s">"Верно! Очки:"</span>, score)
+    <span class="t-k">else</span>:
+        lives -= 1
+        print(<span class="s">"Неверно! Жизней осталось:"</span>, lives)
+
+print(<span class="s">"Игра окончена. Очки:"</span>, score)</pre></div>
+
+<h4>Самое большое число</h4>
+<p>Ещё одна полезная штука: запомнить рекорд.</p>
+<div class="code"><pre>record = 0
+
+<span class="t-k">for</span> i <span class="t-k">in</span> range(5):
+    n = int(input(<span class="s">"Очки за раунд: "</span>))
+    <span class="t-k">if</span> n &gt; record:
+        record = n
+
+print(<span class="s">"Рекорд:"</span>, record)</pre></div>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Посчитай сумму всех чисел от 1 до 100.</li>
+  <li>Спроси 5 оценок и выведи среднюю.</li>
+  <li>Спрашивай числа, пока не введут 0. В конце выведи, сколько чисел было введено и какое самое маленькое.</li>
+  <li class="star">Посчитай, сколько гласных букв в слове, которое ввёл игрок.
+    <details class="hint"><summary>Подсказка</summary><div><p>Циклом можно пройти по буквам строки: <code>for letter in word:</code>. Проверка: <code>if letter in "аеёиоуыэюя":</code></p></div></details></li>
+</ol>
+
+<!--lesson {"num": 8, "title": "Случайные числа", "sub": "Модуль random", "done_label": "Умею делать случайности"} -->
+<h4>Неожиданность в игре</h4>
+<p>Если в игре всё всегда одинаково, играть скучно. Нужна случайность: кубик, случайный враг, неожиданный клад. В Python для этого есть модуль <code>random</code>.</p>
+<p>Модуль — это набор готовых команд. Чтобы ими пользоваться, модуль подключают в начале программы командой <code>import</code>:</p>
+<div class="code"><pre>import random
+
+dice = random.randint(1, 6)
+print(<span class="s">"Выпало:"</span>, dice)</pre></div>
+<p><code>random.randint(1, 6)</code> — случайное целое число от 1 до 6, оба края входят. Запусти программу несколько раз: число каждый раз разное.</p>
+
+<h4>Случайный выбор</h4>
+<p><code>random.choice</code> выбирает случайный вариант из строки или списка. Списки будут в модуле 5, пока просто посмотри:</p>
+<div class="code"><pre>import random
+
+monster = random.choice([<span class="s">"гоблин"</span>, <span class="s">"скелет"</span>, <span class="s">"дракон"</span>])
+print(<span class="s">"На тебя напал"</span>, monster)</pre></div>
+
+<h4>Удача в бою</h4>
+<div class="code"><pre>import random
+
+monster = 40
+
+<span class="t-k">while</span> monster &gt; 0:
+    input(<span class="s">"Нажми Enter, чтобы ударить"</span>)
+    hit = random.randint(5, 15)
+    <span class="t-k">if</span> random.randint(1, 10) == 10:
+        hit = hit * 2
+        print(<span class="s">"Критический удар!"</span>)
+    monster -= hit
+    print(f<span class="s">"Урон {hit}, у монстра осталось {max(monster, 0)}"</span>)
+
+print(<span class="s">"Победа!"</span>)</pre></div>
+<p><code>max(monster, 0)</code> выбирает большее из двух чисел, чтобы не показывать отрицательное здоровье.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Брось два кубика и выведи сумму.</li>
+  <li>Подбрось монетку 100 раз и посчитай, сколько раз выпал орёл.</li>
+  <li>Случайный пример: компьютер загадывает два числа от 1 до 10 и спрашивает их сумму.</li>
+  <li class="star">Черепашка рисует 50 кругов случайного размера в случайных местах.
+    <details class="hint"><summary>Подсказка</summary><div><p><code>penup()</code>, <code>goto(random.randint(-300, 300), random.randint(-200, 200))</code>, <code>pendown()</code>.</p></div></details></li>
+</ol>
+
+<!--lesson {"num": 9, "title": "Проект: «Угадай число»", "sub": "Компьютер загадывает, ты угадываешь", "done_label": "«Угадай число» работает"} -->
+<h4>Правила игры</h4>
+<p>Компьютер загадывает число от 1 до 100. Игрок пытается угадать. После каждой попытки компьютер подсказывает: «больше» или «меньше». Когда игрок угадал — показать, за сколько попыток.</p>
+
+<h4>Что должна уметь программа</h4>
+<ol>
+  <li>Загадать случайное число.</li>
+  <li>Спрашивать, пока не угадают, и подсказывать «больше» или «меньше».</li>
+  <li>Считать попытки и в конце показать их число.</li>
+  <li>Не падать, если ввели не число.</li>
+  <li>Спросить «Сыграть ещё?» и начать заново, если ответили «да».</li>
+</ol>
+
+<h4>Начало, дальше сам</h4>
+<div class="code"><pre>import random
+
+secret = random.randint(1, 100)
+tries = 0
+
+print(<span class="s">"Я загадал число от 1 до 100. Угадай!"</span>)
+
+<span class="t-k">while</span> <span class="t-k">True</span>:
+    guess = int(input(<span class="s">"Твой вариант: "</span>))
+    tries += 1
+    <span class="c"># дальше: сравни guess и secret</span>
+    <span class="t-k">break</span>   <span class="c"># убери эту строчку, когда допишешь</span></pre></div>
+<p>Сделай сначала пункты 1–3 и сыграй. Потом добавляй 4 и 5.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай игру по пунктам 1–5.</li>
+  <li>Добавь уровни сложности: лёгкий — до 10, средний — до 100, сложный — до 1000.</li>
+  <li class="star">Наоборот: ты загадываешь число, а компьютер угадывает. Ты отвечаешь «больше», «меньше» или «да».
+    <details class="hint"><summary>Подсказка</summary><div><p>Компьютер хранит границы <code>low</code> и <code>high</code> и каждый раз называет середину: <code>(low + high) // 2</code>.</p></div></details></li>
+</ol>
+
+<!--lesson {"num": 10, "title": "Проект: камень-ножницы-бумага", "sub": "Игра до трёх побед", "done_label": "Камень-ножницы-бумага готова"} -->
+<h4>Правила</h4>
+<p>Камень бьёт ножницы, ножницы бьют бумагу, бумага бьёт камень. Одинаковый выбор — ничья. Играем против компьютера, пока кто-то не наберёт 3 победы.</p>
+
+<h4>Что должна уметь программа</h4>
+<ol>
+  <li>Спросить выбор игрока и проверить, что такое слово есть.</li>
+  <li>Компьютер выбирает случайно.</li>
+  <li>Показать оба выбора и кто выиграл раунд.</li>
+  <li>Считать победы и играть до трёх.</li>
+  <li>В конце объявить победителя.</li>
+</ol>
+
+<h4>Как решить, кто выиграл</h4>
+<p>Сначала проверь ничью. Потом перечисли три случая, когда выигрывает игрок. Во всех остальных случаях выиграл компьютер.</p>
+<div class="code"><pre>import random
+
+player = input(<span class="s">"камень, ножницы или бумага? "</span>).strip().lower()
+computer = random.choice([<span class="s">"камень"</span>, <span class="s">"ножницы"</span>, <span class="s">"бумага"</span>])
+print(<span class="s">"Компьютер выбрал:"</span>, computer)
+
+<span class="t-k">if</span> player == computer:
+    print(<span class="s">"Ничья"</span>)
+<span class="t-k">elif</span> player == <span class="s">"камень"</span> <span class="t-k">and</span> computer == <span class="s">"ножницы"</span>:
+    print(<span class="s">"Ты выиграл!"</span>)
+<span class="c"># ещё два случая, когда выигрывает игрок</span>
+<span class="t-k">else</span>:
+    print(<span class="s">"Компьютер выиграл"</span>)</pre></div>
+<p>Это один раунд. Оберни его в цикл и добавь счёт.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай игру по пунктам 1–5.</li>
+  <li>Пусть можно вводить коротко: «к», «н», «б».</li>
+  <li class="star">Добавь «ящерицу» и «Спока» (поищи правила «камень-ножницы-бумага-ящерица-Спок»).</li>
+</ol>
+
+<!--lesson {"num": 11, "title": "Проверь себя", "sub": "Мини-тест по модулю 3", "done_label": "Ответил правильно на 5 из 6"} -->
+<p>Отвечай в уме или на бумажке, без Thonny. Потом открой ответ.</p>
+<ol class="tasks">
+  <li>Сколько раз напечатается «Привет»: <code>for i in range(4): print("Привет")</code>?<details class="hint"><summary>Ответ</summary><div><p>4 раза.</p></div></details></li>
+  <li>Какие числа напечатает <code>for i in range(2, 6): print(i)</code>?<details class="hint"><summary>Ответ</summary><div><p>2, 3, 4, 5. Последнее число не входит.</p></div></details></li>
+  <li>Что выведет программа?
+    <div class="code"><pre>n = 1
+<span class="t-k">while</span> n &lt; 20:
+    n = n * 2
+print(n)</pre></div>
+    <details class="hint"><summary>Ответ</summary><div><p><code>32</code>: 1, 2, 4, 8, 16, 32. На 32 вопрос «меньше 20?» даёт «нет».</p></div></details></li>
+  <li>Что делает <code>break</code>?<details class="hint"><summary>Ответ</summary><div><p>Сразу заканчивает цикл.</p></div></details></li>
+  <li>Какие числа может выдать <code>random.randint(1, 3)</code>?<details class="hint"><summary>Ответ</summary><div><p>1, 2 или 3.</p></div></details></li>
+  <li>Почему <code>total = 0</code> пишут до цикла, а не внутри?<details class="hint"><summary>Ответ</summary><div><p>Иначе на каждом повторе сумма будет снова обнуляться.</p></div></details></li>
+  <li class="star">Нарисуй черепашкой узор, которого не было в уроках, и покажи папе.</li>
+</ol>

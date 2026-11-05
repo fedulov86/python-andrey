@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 10. Проверь себя</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m4-10">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 4 · урок 10 из 10</span>
+  <h1>Проверь себя</h1>
+  <p class="lead">Мини-тест по модулю 4</p>
+</div>
+<article class="body">
+<p>Отвечай в уме или на бумажке, без Thonny. Потом открой ответ.</p>
+<ol class="tasks">
+  <li>Что делает строчка <code>def hello():</code> сама по себе?<details class="hint"><summary>Ответ</summary><div><p>Ничего не выполняет. Только запоминает новую команду. Сработает она при вызове <code>hello()</code>.</p></div></details></li>
+  <li>Что выведет программа?
+    <div class="code"><div class="code-bar"><span>m4_urok10.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4</span><code><span class="t-k">def</span> double(n):
+    <span class="t-k">return</span> n * <span class="t-n">2</span>
+
+<span class="t-f">print</span>(double(<span class="t-n">3</span>) + double(<span class="t-n">4</span>))</code></pre></div>
+    <details class="hint"><summary>Ответ</summary><div><p><code>14</code>: 6 + 8.</p></div></details></li>
+  <li>Чем отличаются <code>forward(10)</code> и <code>hero.forward(10)</code>?<details class="hint"><summary>Ответ</summary><div><p>Первая команда для главной черепашки, вторая — для черепашки <code>hero</code>.</p></div></details></li>
+  <li>Почему в <code>onkey(go_up, "Up")</code> у <code>go_up</code> нет скобок?<details class="hint"><summary>Ответ</summary><div><p>Мы не вызываем функцию сейчас, а говорим, какую вызвать потом, при нажатии.</p></div></details></li>
+  <li>Зачем в функции пишут <code>global score</code>?<details class="hint"><summary>Ответ</summary><div><p>Чтобы функция могла менять переменную <code>score</code>, которая создана снаружи.</p></div></details></li>
+  <li>Как сделать, чтобы функция вызывалась снова и снова, 20 раз в секунду?<details class="hint"><summary>Ответ</summary><div><p>В конце функции написать <code>ontimer(имя_функции, 50)</code>.</p></div></details></li>
+  <li class="star">Покажи папе свою игру и объясни, как черепашка понимает, что поймала звезду.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Ответил правильно на 5 из 6">Ответил правильно на 5 из 6</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m4-9.html"><small>← урок 9</small><span class="pt">Проект: «Собери звёзды»</span></a><a class="nx" href="../module5.html"><small>модуль 4 закончен →</small><span class="pt">Модуль 5. Списки и словари</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

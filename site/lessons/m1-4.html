@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 4. Числа и математика</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m1-4">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 1 · урок 4 из 11</span>
+  <h1>Числа и математика</h1>
+  <p class="lead">Python как калькулятор урона</p>
+</div>
+<article class="body">
+<h4>Зачем программе считать</h4>
+<p>В любой игре всё время что-то считается. Монстр ударил — здоровье уменьшилось. Подобрал монету — золота стало больше. Купил зелье — золото потратилось. Без математики игра не будет работать.</p>
+<p>Python умеет считать сам. Ты пишешь пример, он считает ответ.</p>
+<div class="code"><div class="code-bar"><span>m1_urok4.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4</span><code><span class="t-f">print</span>(<span class="t-n">2</span> + <span class="t-n">3</span>)
+<span class="t-f">print</span>(<span class="t-n">10</span> - <span class="t-n">4</span>)
+<span class="t-f">print</span>(<span class="t-n">3</span> * <span class="t-n">4</span>)       <span class="t-c"># умножение — это звёздочка</span>
+<span class="t-f">print</span>(<span class="t-n">10</span> / <span class="t-n">4</span>)      <span class="t-c"># деление — это косая черта</span></code></pre></div>
+<p class="out">Вывод:<br>5<br>6<br>12<br>2.5</p>
+<p>Умножение пишется звёздочкой <code>*</code>, а деление — косой чертой <code>/</code>, потому что на клавиатуре нет знаков × и ÷. Как в математике, сначала выполняются умножение и деление, а потом сложение и вычитание. Если нужен другой порядок, ставь скобки: <code>(2 + 3) * 4</code>.</p>
+
+<h4>Считаем с переменными</h4>
+<p>Числа можно хранить в переменных и считать с ними так же:</p>
+<div class="code"><div class="code-bar"><span>m1_urok4.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3</span><code>damage = <span class="t-n">17</span>
+crit = <span class="t-n">2</span>
+<span class="t-f">print</span>(damage * crit)</code></pre></div>
+<p class="out">Вывод:<br>34</p>
+
+<h4>Как поменять переменную: health = health - damage</h4>
+<p>Эта строчка поначалу выглядит странно. Как <code>health</code> может быть равно <code>health - damage</code>? Вспомни урок 3: знак <code>=</code> не значит «равно», он значит «положить в коробку». Python выполняет такую строчку в два шага:</p>
+<ol>
+  <li>Сначала считает то, что <b>справа</b>: берёт из коробки <code>health</code> старое значение и вычитает урон.</li>
+  <li>Потом кладёт ответ в коробку <code>health</code>, которая написана <b>слева</b>. Старое значение пропадает.</li>
+</ol>
+<div class="code"><div class="code-bar"><span>m1_urok4.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4</span><code>health = <span class="t-n">100</span>
+damage = <span class="t-n">17</span>
+health = health - damage     <span class="t-c"># справа 100 - 17 = 83, кладём 83 в health</span>
+<span class="t-f">print</span>(health)</code></pre></div>
+<p class="out">Вывод:<br>83</p>
+<p>Так делают очень часто, поэтому есть короткая запись: <code>health -= damage</code> значит то же самое. Точно так же <code>gold += 10</code> — «добавить к золоту 10».</p>
+
+<h4>Деление нацело и остаток</h4>
+<p>Представь: у тебя 250 монет, зелье стоит 60. Сколько зелий можно купить? Обычное деление даст <code>4.1666…</code>, а купить четыре целых и одну шестую зелья нельзя. Для таких задач есть два особых знака:</p>
+<ul>
+  <li><code>//</code> — <b>деление нацело</b>. Отбрасывает дробную часть: <code>250 // 60</code> это <code>4</code>. Столько зелий ты купишь.</li>
+  <li><code>%</code> — <b>остаток от деления</b>. Сколько не хватило на ещё одно целое: <code>250 % 60</code> это <code>10</code>. Столько монет останется.</li>
+</ul>
+<div class="code"><div class="code-bar"><span>m1_urok4.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4</span><code>coins = <span class="t-n">250</span>
+price = <span class="t-n">60</span>
+<span class="t-f">print</span>(<span class="t-s">"Можно купить зелий:"</span>, coins // price)
+<span class="t-f">print</span>(<span class="t-s">"Останется монет:"</span>, coins % price)</code></pre></div>
+<p class="out">Вывод:<br>Можно купить зелий: 4<br>Останется монет: 10</p>
+<p>И ещё один знак: <code>**</code> — возведение в степень. <code>2 ** 3</code> — это 2 × 2 × 2 = 8.</p>
+
+<h4>Шпаргалка</h4>
+<div class="tbl"><table style="min-width:360px">
+  <thead><tr><th>знак</th><th>что делает</th><th>пример</th><th>ответ</th></tr></thead>
+  <tbody>
+    <tr><td><code>+ - *</code></td><td>плюс, минус, умножить</td><td><code>3 * 4</code></td><td>12</td></tr>
+    <tr><td><code>/</code></td><td>делить (ответ всегда дробный)</td><td><code>7 / 2</code></td><td>3.5</td></tr>
+    <tr><td><code>//</code></td><td>делить нацело</td><td><code>7 // 2</code></td><td>3</td></tr>
+    <tr><td><code>%</code></td><td>остаток от деления</td><td><code>7 % 2</code></td><td>1</td></tr>
+    <tr><td><code>**</code></td><td>степень</td><td><code>2 ** 10</code></td><td>1024</td></tr>
+  </tbody>
+</table></div>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>У героя 120 здоровья. Монстр бьёт 3 раза по 25. Сколько здоровья осталось? Посчитай через переменные.</li>
+  <li>В игре 1 алмаз можно обменять на 64 изумруда. У тебя 1000 изумрудов. Сколько это целых алмазов и сколько изумрудов останется?</li>
+  <li>Число <code>n = 7</code>. Как с помощью <code>%</code> узнать, чётное оно или нет?
+    <details class="hint"><summary>Подсказка</summary><div><p>Посмотри, какой остаток от деления на 2 у чётных чисел, а какой у нечётных.</p></div></details></li>
+  <li class="star">Посчитай, сколько тебе лет в днях, часах и минутах. Високосные годы можно не учитывать.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Умею считать в Python">Умею считать в Python</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m1-3.html"><small>← урок 3</small><span class="pt">Переменные</span></a><a class="nx" href="../lessons/m1-5.html"><small>урок 5 →</small><span class="pt">Строки</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

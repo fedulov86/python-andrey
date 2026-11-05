@@ -1,0 +1,420 @@
+<!--module {"num": 5, "title": "Списки и словари", "weeks": "недели 9–11", "topics": "Списки, перебор, добавление и удаление, словари, хранение данных игры.", "project": "текстовая RPG с комнатами, инвентарём и боем", "lead": "Как хранить много всего сразу: инвентарь, врагов, карту мира."} -->
+
+<!--lesson {"num": 1, "title": "Списки", "sub": "Много значений в одной переменной", "done_label": "Понял списки"} -->
+<h4>Когда одной коробки мало</h4>
+<p>В инвентаре героя меч, щит, зелье и ключ. Можно завести четыре переменные: <code>item1</code>, <code>item2</code>… Но предметов может стать сто, и так делать неудобно.</p>
+<p>Для этого есть <b>список</b> — одна переменная, в которой лежит много значений по порядку. Список пишут в квадратных скобках, значения — через запятую:</p>
+<div class="code"><pre>inventory = [<span class="s">"меч"</span>, <span class="s">"щит"</span>, <span class="s">"зелье"</span>, <span class="s">"ключ"</span>]
+print(inventory)
+print(<span class="s">"Предметов:"</span>, len(inventory))</pre></div>
+<p class="out">Вывод:<br>['меч', 'щит', 'зелье', 'ключ']<br>Предметов: 4</p>
+<p>Представь список как полку с ячейками. В каждой ячейке своя вещь, а у ячеек есть номера.</p>
+
+<h4>Достать по номеру</h4>
+<p>Номера начинаются с нуля, как у букв в строке:</p>
+<div class="code"><pre>inventory = [<span class="s">"меч"</span>, <span class="s">"щит"</span>, <span class="s">"зелье"</span>, <span class="s">"ключ"</span>]
+print(inventory[0])
+print(inventory[2])
+print(inventory[-1])</pre></div>
+<p class="out">Вывод:<br>меч<br>зелье<br>ключ</p>
+<p><code>[-1]</code> — последний элемент, как у строк.</p>
+
+<h4>Заменить по номеру</h4>
+<div class="code"><pre>inventory = [<span class="s">"меч"</span>, <span class="s">"щит"</span>, <span class="s">"зелье"</span>]
+inventory[0] = <span class="s">"огненный меч"</span>
+print(inventory)</pre></div>
+<p class="out">Вывод:<br>['огненный меч', 'щит', 'зелье']</p>
+<p>В списке могут лежать и числа: <code>scores = [120, 85, 300]</code>.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай список из 5 своих любимых игр. Выведи первую, третью и последнюю.</li>
+  <li>Сделай список рекордов <code>[50, 120, 80]</code>. Замени второй рекорд на 200 и выведи список.</li>
+  <li>Что будет, если попросить <code>inventory[10]</code> у списка из 4 элементов? Проверь и прочитай ошибку.</li>
+  <li class="star">У списков, как у чисел, есть <code>max</code>, <code>min</code> и <code>sum</code>. Выведи лучший, худший и общий счёт из списка рекордов.</li>
+</ol>
+
+<!--lesson {"num": 2, "title": "Перебор списка", "sub": "for по всем элементам", "done_label": "Умею перебирать список"} -->
+<h4>Пройти по всем</h4>
+<p>Часто нужно что-то сделать с каждым элементом: показать каждый предмет, проверить каждого врага. Для этого <code>for</code> пишут прямо со списком:</p>
+<div class="code"><pre>inventory = [<span class="s">"меч"</span>, <span class="s">"щит"</span>, <span class="s">"зелье"</span>]
+
+print(<span class="s">"В рюкзаке:"</span>)
+<span class="t-k">for</span> item <span class="t-k">in</span> inventory:
+    print(<span class="s">"-"</span>, item)</pre></div>
+<p class="out">Вывод:<br>В рюкзаке:<br>- меч<br>- щит<br>- зелье</p>
+<p>На каждом повторе в переменной <code>item</code> лежит очередной элемент списка: сначала меч, потом щит, потом зелье.</p>
+
+<h4>С номерами</h4>
+<p>Если нужен ещё и номер, используют <code>enumerate</code>. Он даёт сразу две вещи: номер и элемент.</p>
+<div class="code"><pre>inventory = [<span class="s">"меч"</span>, <span class="s">"щит"</span>, <span class="s">"зелье"</span>]
+
+<span class="t-k">for</span> number, item <span class="t-k">in</span> enumerate(inventory, 1):
+    print(f<span class="s">"{number}. {item}"</span>)</pre></div>
+<p class="out">Вывод:<br>1. меч<br>2. щит<br>3. зелье</p>
+<p>Единица в <code>enumerate(inventory, 1)</code> значит «нумеровать с 1».</p>
+
+<h4>Посчитать по списку</h4>
+<div class="code"><pre>prices = [30, 120, 15, 60]
+total = 0
+
+<span class="t-k">for</span> price <span class="t-k">in</span> prices:
+    total += price
+
+print(<span class="s">"Всё вместе стоит:"</span>, total)</pre></div>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай список друзей и поздоровайся с каждым: «Привет, Петя!».</li>
+  <li>Выведи из списка чисел только те, что больше 50.</li>
+  <li>Список цветов <code>["red", "orange", "yellow", "green", "blue"]</code>: нарисуй черепашкой линию каждого цвета.</li>
+  <li class="star">Посчитай, сколько в списке слов длиннее 5 букв.</li>
+</ol>
+
+<!--lesson {"num": 3, "title": "Инвентарь", "sub": "Добавлять, убирать, искать", "done_label": "Умею менять список"} -->
+<h4>Список, который меняется</h4>
+<p>Инвентарь в игре не стоит на месте: подобрал предмет — добавился, выпил зелье — пропало. У списков для этого есть команды.</p>
+<div class="code"><pre>inventory = [<span class="s">"меч"</span>]
+
+inventory.append(<span class="s">"щит"</span>)       <span class="c"># добавить в конец</span>
+inventory.append(<span class="s">"зелье"</span>)
+print(inventory)
+
+inventory.remove(<span class="s">"зелье"</span>)     <span class="c"># убрать предмет</span>
+print(inventory)</pre></div>
+<p class="out">Вывод:<br>['меч', 'щит', 'зелье']<br>['меч', 'щит']</p>
+<p>Можно начинать и с пустого списка: <code>inventory = []</code>.</p>
+
+<h4>Есть ли в списке</h4>
+<p>Слово <code>in</code> отвечает, есть ли элемент в списке. Это удобно в <code>if</code>:</p>
+<div class="code"><pre>inventory = [<span class="s">"меч"</span>, <span class="s">"ключ"</span>]
+
+<span class="t-k">if</span> <span class="s">"ключ"</span> <span class="t-k">in</span> inventory:
+    print(<span class="s">"Ты открываешь дверь"</span>)
+<span class="t-k">else</span>:
+    print(<span class="s">"Дверь заперта"</span>)</pre></div>
+<p>Если попробовать <code>remove</code> предмет, которого нет, будет ошибка. Поэтому перед удалением проверяй через <code>in</code>.</p>
+
+<h4>Магазин</h4>
+<div class="code"><pre>inventory = []
+coins = 100
+
+<span class="t-k">while</span> <span class="t-k">True</span>:
+    print(f<span class="s">"Монет: {coins}. Рюкзак: {inventory}"</span>)
+    choice = input(<span class="s">"Купить: меч (60), зелье (20) или выход? "</span>).strip().lower()
+    <span class="t-k">if</span> choice == <span class="s">"выход"</span>:
+        <span class="t-k">break</span>
+    <span class="t-k">elif</span> choice == <span class="s">"меч"</span> <span class="t-k">and</span> coins &gt;= 60:
+        inventory.append(<span class="s">"меч"</span>)
+        coins -= 60
+    <span class="t-k">elif</span> choice == <span class="s">"зелье"</span> <span class="t-k">and</span> coins &gt;= 20:
+        inventory.append(<span class="s">"зелье"</span>)
+        coins -= 20
+    <span class="t-k">else</span>:
+        print(<span class="s">"Не получится"</span>)</pre></div>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Список покупок: спрашивай продукты, пока не введут пустую строку, и добавляй их в список. Потом выведи весь список с номерами.</li>
+  <li>Добавь в магазин команду «выпить»: если в рюкзаке есть зелье — убрать его и написать «Здоровье восстановлено».</li>
+  <li>Сделай так, чтобы в рюкзак помещалось не больше 5 предметов.</li>
+  <li class="star">Добавь в магазин продажу: предмет убирается из рюкзака, а монет становится больше на половину цены.</li>
+</ol>
+
+<!--lesson {"num": 4, "title": "Случайное из списка", "sub": "random.choice и перемешивание", "done_label": "Умею выбирать случайно"} -->
+<h4>Случайный элемент</h4>
+<p>В модуле 3 ты уже видел <code>random.choice</code>. Теперь понятно, что в скобках у неё был список. Она выбирает из него случайный элемент.</p>
+<div class="code"><pre>import random
+
+monsters = [<span class="s">"гоблин"</span>, <span class="s">"скелет"</span>, <span class="s">"волк"</span>, <span class="s">"дракон"</span>]
+loot = [<span class="s">"монета"</span>, <span class="s">"зелье"</span>, <span class="s">"старый ботинок"</span>, <span class="s">"алмаз"</span>]
+
+print(<span class="s">"На тебя напал"</span>, random.choice(monsters))
+print(<span class="s">"Ты нашёл:"</span>, random.choice(loot))</pre></div>
+
+<h4>Перемешать</h4>
+<p><code>random.shuffle</code> перемешивает список, как колоду карт:</p>
+<div class="code"><pre>import random
+
+cards = [<span class="s">"туз"</span>, <span class="s">"король"</span>, <span class="s">"дама"</span>, <span class="s">"валет"</span>]
+random.shuffle(cards)
+print(cards)</pre></div>
+
+<h4>Викторина со случайным порядком</h4>
+<p>Вопросы и ответы можно хранить в двух списках с одинаковыми номерами: вопрос номер 0 — ответ номер 0.</p>
+<div class="code"><pre>import random
+
+questions = [<span class="s">"Самая большая планета?"</span>, <span class="s">"Ближайшая к Солнцу планета?"</span>, <span class="s">"Красная планета?"</span>]
+answers = [<span class="s">"юпитер"</span>, <span class="s">"меркурий"</span>, <span class="s">"марс"</span>]
+
+order = [0, 1, 2]
+random.shuffle(order)
+
+<span class="t-k">for</span> n <span class="t-k">in</span> order:
+    reply = input(questions[n] + <span class="s">" "</span>).strip().lower()
+    <span class="t-k">if</span> reply == answers[n]:
+        print(<span class="s">"Верно!"</span>)
+    <span class="t-k">else</span>:
+        print(<span class="s">"Нет, это"</span>, answers[n])</pre></div>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Генератор имён героев: два списка, «Огненный, Тёмный, Быстрый…» и «Волк, Рыцарь, Маг…». Выведи 5 случайных имён.</li>
+  <li>Переделай свою викторину из модуля 2 на списки и случайный порядок.</li>
+  <li>Сундук: каждый раз выдаёт случайный предмет и кладёт его в рюкзак. Открой сундук 5 раз и покажи рюкзак.</li>
+  <li class="star">Сделай так, чтобы алмаз выпадал редко. Подсказка: предмет можно положить в список несколько раз.</li>
+</ol>
+
+<!--lesson {"num": 5, "title": "Словари", "sub": "Значения с названиями", "done_label": "Понял словари"} -->
+<h4>Номер — неудобно</h4>
+<p>Хранить героя в списке можно: <code>["Торин", 120, 15, 50]</code>. Но через неделю не вспомнишь, что лежит под номером 2: сила или ловкость?</p>
+<p>Для этого есть <b>словарь</b>. В нём у каждого значения не номер, а <b>название</b>. Как в настоящем словаре: слово и его значение.</p>
+<div class="code"><pre>hero = {
+    <span class="s">"name"</span>: <span class="s">"Торин"</span>,
+    <span class="s">"health"</span>: 120,
+    <span class="s">"strength"</span>: 15,
+    <span class="s">"gold"</span>: 50,
+}
+
+print(hero[<span class="s">"name"</span>])
+print(<span class="s">"Золото:"</span>, hero[<span class="s">"gold"</span>])</pre></div>
+<p class="out">Вывод:<br>Торин<br>Золото: 50</p>
+
+<h4>Как это записывается</h4>
+<ul>
+  <li>Словарь пишут в фигурных скобках <code>{ }</code>.</li>
+  <li>Внутри пары: <b>название</b>, двоеточие, <b>значение</b>. Пары разделяют запятыми.</li>
+  <li>Название пары называют <b>ключом</b>. Значение достают по ключу в квадратных скобках: <code>hero["gold"]</code>.</li>
+</ul>
+
+<h4>Менять и добавлять</h4>
+<div class="code"><pre>hero = {<span class="s">"name"</span>: <span class="s">"Торин"</span>, <span class="s">"gold"</span>: 50}
+
+hero[<span class="s">"gold"</span>] += 30           <span class="c"># изменить</span>
+hero[<span class="s">"weapon"</span>] = <span class="s">"топор"</span>     <span class="c"># добавить новую пару</span>
+
+print(hero)</pre></div>
+<p class="out">Вывод:<br>{'name': 'Торин', 'gold': 80, 'weapon': 'топор'}</p>
+<p>Проверить, есть ли ключ, можно через <code>in</code>: <code>if "weapon" in hero:</code></p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай словарь про себя: имя, возраст, любимая игра, город. Выведи каждое значение с подписью.</li>
+  <li>Сделай словарь монстра: имя, здоровье, урон. Ударь его: уменьши здоровье на 25 и выведи, сколько осталось.</li>
+  <li>Спроси у игрока его любимый цвет и добавь его в словарь новым ключом.</li>
+  <li class="star">Что будет, если попросить ключ, которого нет? Прочитай ошибку. Потом попробуй <code>hero.get("armor", 0)</code>.</li>
+</ol>
+
+<!--lesson {"num": 6, "title": "Словари в деле", "sub": "Перебор, цены и сохранение героя", "done_label": "Использую словари"} -->
+<h4>Перебрать словарь</h4>
+<p>Цикл по словарю идёт по ключам. А <code>items()</code> даёт сразу ключ и значение:</p>
+<div class="code"><pre>prices = {<span class="s">"меч"</span>: 60, <span class="s">"щит"</span>: 40, <span class="s">"зелье"</span>: 20}
+
+print(<span class="s">"Магазин:"</span>)
+<span class="t-k">for</span> item, price <span class="t-k">in</span> prices.items():
+    print(f<span class="s">"  {item} — {price} монет"</span>)</pre></div>
+<p class="out">Вывод:<br>Магазин:<br>&nbsp;&nbsp;меч — 60 монет<br>&nbsp;&nbsp;щит — 40 монет<br>&nbsp;&nbsp;зелье — 20 монет</p>
+
+<h4>Магазин на словаре</h4>
+<p>С таким словарём магазину больше не нужен длинный <code>elif</code> для каждого товара. Новые товары добавляются одной строчкой.</p>
+<div class="code"><pre>prices = {<span class="s">"меч"</span>: 60, <span class="s">"щит"</span>: 40, <span class="s">"зелье"</span>: 20, <span class="s">"лук"</span>: 50}
+coins = 100
+inventory = []
+
+<span class="t-k">while</span> <span class="t-k">True</span>:
+    choice = input(f<span class="s">"Монет {coins}. Что купить? (выход — уйти) "</span>).strip().lower()
+    <span class="t-k">if</span> choice == <span class="s">"выход"</span>:
+        <span class="t-k">break</span>
+    <span class="t-k">if</span> choice <span class="t-k">not</span> <span class="t-k">in</span> prices:
+        print(<span class="s">"Такого нет"</span>)
+    <span class="t-k">elif</span> coins &lt; prices[choice]:
+        print(<span class="s">"Не хватает монет"</span>)
+    <span class="t-k">else</span>:
+        coins -= prices[choice]
+        inventory.append(choice)
+        print(<span class="s">"Куплено:"</span>, choice)
+
+print(<span class="s">"Рюкзак:"</span>, inventory)</pre></div>
+
+<h4>Список словарей</h4>
+<p>Если монстров много, удобно хранить список, где каждый монстр — словарь:</p>
+<div class="code"><pre>monsters = [
+    {<span class="s">"name"</span>: <span class="s">"гоблин"</span>, <span class="s">"health"</span>: 30, <span class="s">"damage"</span>: 5},
+    {<span class="s">"name"</span>: <span class="s">"волк"</span>, <span class="s">"health"</span>: 40, <span class="s">"damage"</span>: 8},
+    {<span class="s">"name"</span>: <span class="s">"дракон"</span>, <span class="s">"health"</span>: 200, <span class="s">"damage"</span>: 30},
+]
+
+<span class="t-k">for</span> m <span class="t-k">in</span> monsters:
+    print(f<span class="s">"{m['name']}: здоровье {m['health']}, урон {m['damage']}"</span>)</pre></div>
+<p>Внутри f-строки ключ пишут в одинарных кавычках, чтобы не спутать с кавычками самой строки.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Добавь в магазин 3 новых товара.</li>
+  <li>Выведи из списка монстров только тех, у кого урон больше 6.</li>
+  <li>Выбери случайного монстра из списка и выведи его характеристики.</li>
+  <li class="star">Словарь-переводчик: 10 слов «русское: английское». Программа спрашивает перевод случайного слова и считает правильные ответы.</li>
+</ol>
+
+<!--lesson {"num": 7, "title": "Карта мира", "sub": "Комнаты, по которым можно ходить", "done_label": "Сделал карту из комнат"} -->
+<h4>Мир из комнат</h4>
+<p>В текстовых играх мир состоит из комнат. В каждой комнате есть описание и выходы в другие комнаты. Это удобно хранить словарём, где каждая комната — тоже словарь.</p>
+<div class="code"><pre>rooms = {
+    <span class="s">"зал"</span>: {
+        <span class="s">"text"</span>: <span class="s">"Большой зал замка. На стенах факелы."</span>,
+        <span class="s">"exits"</span>: {<span class="s">"север"</span>: <span class="s">"библиотека"</span>, <span class="s">"восток"</span>: <span class="s">"кухня"</span>},
+    },
+    <span class="s">"библиотека"</span>: {
+        <span class="s">"text"</span>: <span class="s">"Пыльные книги до потолка."</span>,
+        <span class="s">"exits"</span>: {<span class="s">"юг"</span>: <span class="s">"зал"</span>},
+    },
+    <span class="s">"кухня"</span>: {
+        <span class="s">"text"</span>: <span class="s">"Пахнет супом. Повар куда-то ушёл."</span>,
+        <span class="s">"exits"</span>: {<span class="s">"запад"</span>: <span class="s">"зал"</span>},
+    },
+}
+
+current = <span class="s">"зал"</span>
+
+<span class="t-k">while</span> <span class="t-k">True</span>:
+    room = rooms[current]
+    print()
+    print(room[<span class="s">"text"</span>])
+    print(<span class="s">"Выходы:"</span>, <span class="s">", "</span>.join(room[<span class="s">"exits"</span>]))
+
+    command = input(<span class="s">"&gt; "</span>).strip().lower()
+    <span class="t-k">if</span> command == <span class="s">"выход"</span>:
+        <span class="t-k">break</span>
+    <span class="t-k">elif</span> command <span class="t-k">in</span> room[<span class="s">"exits"</span>]:
+        current = room[<span class="s">"exits"</span>][command]
+    <span class="t-k">else</span>:
+        print(<span class="s">"Туда не пройти"</span>)</pre></div>
+
+<h4>Как это работает</h4>
+<ul>
+  <li>В переменной <code>current</code> лежит название комнаты, где сейчас игрок.</li>
+  <li><code>rooms[current]</code> достаёт словарь этой комнаты: текст и выходы.</li>
+  <li>Выходы — тоже словарь: направление и куда оно ведёт. Если игрок ввёл направление, которое есть в выходах, <code>current</code> меняется на новую комнату.</li>
+  <li><code>", ".join(...)</code> склеивает названия выходов через запятую.</li>
+</ul>
+<p>Нарисуй карту на бумаге: квадратики-комнаты и стрелки между ними. С ней гораздо проще писать словарь.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Добавь ещё 3 комнаты: подвал, башню, сад.</li>
+  <li>Добавь комнату «сокровищница». Когда игрок туда попадает, программа пишет «Ты победил!» и заканчивается.</li>
+  <li class="star">Сделай так, чтобы можно было писать коротко: «с», «ю», «з», «в».</li>
+</ol>
+
+<!--lesson {"num": 8, "title": "Проект RPG: мир и предметы", "sub": "2 дня · часть 1", "done_label": "Мир с предметами готов"} -->
+<h4>Что делаем</h4>
+<p>Следующие два урока ты делаешь свою текстовую RPG. Сегодня — мир и предметы. В следующем уроке — бой.</p>
+<p>Придумай сюжет. Например: ты просыпаешься в подземелье и надо выбраться. Или: найти потерянный амулет в заброшенном замке. Нарисуй карту на бумаге: 6–8 комнат.</p>
+
+<h4>Что должна уметь программа</h4>
+<ol>
+  <li>Комнаты с описаниями и выходами (как в прошлом уроке).</li>
+  <li>В некоторых комнатах лежат предметы. Команда «взять» кладёт предмет в рюкзак, и он пропадает из комнаты.</li>
+  <li>Команда «рюкзак» показывает, что у тебя есть.</li>
+  <li>Одна дверь заперта: пройти можно, только если в рюкзаке ключ.</li>
+  <li>Есть цель: дойти до выхода с нужным предметом.</li>
+</ol>
+
+<h4>Подсказка: предметы в комнате</h4>
+<p>Добавь в словарь каждой комнаты ключ <code>"items"</code> со списком предметов:</p>
+<div class="code"><pre>rooms = {
+    <span class="s">"подвал"</span>: {
+        <span class="s">"text"</span>: <span class="s">"Сыро и темно."</span>,
+        <span class="s">"exits"</span>: {<span class="s">"вверх"</span>: <span class="s">"зал"</span>},
+        <span class="s">"items"</span>: [<span class="s">"ключ"</span>, <span class="s">"факел"</span>],
+    },
+    <span class="s">"зал"</span>: {
+        <span class="s">"text"</span>: <span class="s">"Пустой зал."</span>,
+        <span class="s">"exits"</span>: {<span class="s">"вниз"</span>: <span class="s">"подвал"</span>},
+        <span class="s">"items"</span>: [],
+    },
+}
+
+inventory = []
+current = <span class="s">"подвал"</span>
+room = rooms[current]
+
+<span class="t-k">if</span> room[<span class="s">"items"</span>]:
+    print(<span class="s">"Здесь лежит:"</span>, <span class="s">", "</span>.join(room[<span class="s">"items"</span>]))
+
+<span class="c"># команда «взять»: перенести все предметы из комнаты в рюкзак</span>
+inventory += room[<span class="s">"items"</span>]
+room[<span class="s">"items"</span>] = []
+print(<span class="s">"Рюкзак:"</span>, inventory)</pre></div>
+<p><code>if room["items"]:</code> — короткая проверка «список не пустой».</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай мир по пунктам 1–5.</li>
+  <li>Вынеси показ комнаты в функцию <code>show_room()</code>, а показ рюкзака — в <code>show_inventory()</code>.</li>
+  <li class="star">Добавь команду «осмотреть предмет», которая показывает описание предмета. Описания храни в словаре.</li>
+</ol>
+
+<!--lesson {"num": 9, "title": "Проект RPG: бой", "sub": "2 дня · часть 2", "done_label": "RPG готова и показана"} -->
+<h4>Добавляем врагов</h4>
+<p>В некоторых комнатах сидят монстры. Пока монстр жив, пройти дальше нельзя. Нужно сражаться.</p>
+
+<h4>Что должна уметь программа</h4>
+<ol>
+  <li>У героя словарь: здоровье, сила, золото.</li>
+  <li>В некоторых комнатах есть монстр (словарь: имя, здоровье, урон).</li>
+  <li>Команда «атаковать»: герой бьёт монстра (случайный урон от силы), монстр бьёт в ответ.</li>
+  <li>Если у героя закончилось здоровье — игра окончена. Если у монстра — он пропадает и оставляет золото.</li>
+  <li>Зелье из рюкзака восстанавливает здоровье.</li>
+  <li>Найденный меч увеличивает силу.</li>
+</ol>
+
+<h4>Подсказка: один удар</h4>
+<div class="code"><pre>import random
+
+hero = {<span class="s">"health"</span>: 100, <span class="s">"strength"</span>: 10, <span class="s">"gold"</span>: 0}
+monster = {<span class="s">"name"</span>: <span class="s">"гоблин"</span>, <span class="s">"health"</span>: 30, <span class="s">"damage"</span>: 6, <span class="s">"gold"</span>: 15}
+
+<span class="t-k">def</span> attack(hero, monster):
+    hit = random.randint(hero[<span class="s">"strength"</span>] // 2, hero[<span class="s">"strength"</span>])
+    monster[<span class="s">"health"</span>] -= hit
+    print(f<span class="s">"Ты ударил {monster['name']} на {hit}"</span>)
+    <span class="t-k">if</span> monster[<span class="s">"health"</span>] &gt; 0:
+        hero[<span class="s">"health"</span>] -= monster[<span class="s">"damage"</span>]
+        print(f<span class="s">"{monster['name']} бьёт тебя на {monster['damage']}"</span>)
+
+<span class="t-k">while</span> monster[<span class="s">"health"</span>] &gt; 0 <span class="t-k">and</span> hero[<span class="s">"health"</span>] &gt; 0:
+    input(<span class="s">"Enter — атаковать"</span>)
+    attack(hero, monster)
+    print(f<span class="s">"Твоё здоровье: {hero['health']}"</span>)
+
+<span class="t-k">if</span> hero[<span class="s">"health"</span>] &gt; 0:
+    hero[<span class="s">"gold"</span>] += monster[<span class="s">"gold"</span>]
+    print(<span class="s">"Победа! Золото:"</span>, hero[<span class="s">"gold"</span>])
+<span class="t-k">else</span>:
+    print(<span class="s">"Ты погиб..."</span>)</pre></div>
+<p>Заметь: функция <code>attack</code> меняет словари без <code>global</code>. Словари и списки можно менять внутри функции, если передать их параметром.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Добавь бой в свою RPG по пунктам 1–6.</li>
+  <li>Дай поиграть двум людям. Найди и почини всё, что ломается.</li>
+  <li class="star">Добавь финального босса со своей особенностью: например, каждые 3 хода он лечится.</li>
+</ol>
+
+<!--lesson {"num": 10, "title": "Проверь себя", "sub": "Мини-тест по модулю 5", "done_label": "Ответил правильно на 5 из 6"} -->
+<p>Отвечай в уме или на бумажке, без Thonny. Потом открой ответ.</p>
+<ol class="tasks">
+  <li>Что выведет <code>print(["а", "б", "в"][1])</code>?<details class="hint"><summary>Ответ</summary><div><p><code>б</code>: номера начинаются с нуля.</p></div></details></li>
+  <li>Как добавить «лук» в конец списка <code>inventory</code>?<details class="hint"><summary>Ответ</summary><div><p><code>inventory.append("лук")</code></p></div></details></li>
+  <li>Как проверить, есть ли «ключ» в рюкзаке?<details class="hint"><summary>Ответ</summary><div><p><code>if "ключ" in inventory:</code></p></div></details></li>
+  <li>Чем словарь отличается от списка?<details class="hint"><summary>Ответ</summary><div><p>В списке значения достают по номеру, в словаре — по названию (ключу).</p></div></details></li>
+  <li>Что выведет программа?
+    <div class="code"><pre>hero = {<span class="s">"gold"</span>: 10}
+hero[<span class="s">"gold"</span>] += 5
+hero[<span class="s">"level"</span>] = 2
+print(hero)</pre></div>
+    <details class="hint"><summary>Ответ</summary><div><p><code>{'gold': 15, 'level': 2}</code></p></div></details></li>
+  <li>Сколько раз выполнится тело цикла <code>for x in [3, 7, 1, 9]:</code>?<details class="hint"><summary>Ответ</summary><div><p>4 раза, по одному на каждый элемент.</p></div></details></li>
+  <li class="star">Дай папе пройти свою RPG без подсказок. Получилось?</li>
+</ol>

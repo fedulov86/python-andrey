@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 5. Словари</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m5-5">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 5 · урок 5 из 10</span>
+  <h1>Словари</h1>
+  <p class="lead">Значения с названиями</p>
+</div>
+<article class="body">
+<h4>Номер — неудобно</h4>
+<p>Хранить героя в списке можно: <code>["Торин", 120, 15, 50]</code>. Но через неделю не вспомнишь, что лежит под номером 2: сила или ловкость?</p>
+<p>Для этого есть <b>словарь</b>. В нём у каждого значения не номер, а <b>название</b>. Как в настоящем словаре: слово и его значение.</p>
+<div class="code"><div class="code-bar"><span>m5_urok5.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9</span><code>hero = {
+    <span class="t-s">"name"</span>: <span class="t-s">"Торин"</span>,
+    <span class="t-s">"health"</span>: <span class="t-n">120</span>,
+    <span class="t-s">"strength"</span>: <span class="t-n">15</span>,
+    <span class="t-s">"gold"</span>: <span class="t-n">50</span>,
+}
+
+<span class="t-f">print</span>(hero[<span class="t-s">"name"</span>])
+<span class="t-f">print</span>(<span class="t-s">"Золото:"</span>, hero[<span class="t-s">"gold"</span>])</code></pre></div>
+<p class="out">Вывод:<br>Торин<br>Золото: 50</p>
+
+<h4>Как это записывается</h4>
+<ul>
+  <li>Словарь пишут в фигурных скобках <code>{ }</code>.</li>
+  <li>Внутри пары: <b>название</b>, двоеточие, <b>значение</b>. Пары разделяют запятыми.</li>
+  <li>Название пары называют <b>ключом</b>. Значение достают по ключу в квадратных скобках: <code>hero["gold"]</code>.</li>
+</ul>
+
+<h4>Менять и добавлять</h4>
+<div class="code"><div class="code-bar"><span>m5_urok5.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6</span><code>hero = {<span class="t-s">"name"</span>: <span class="t-s">"Торин"</span>, <span class="t-s">"gold"</span>: <span class="t-n">50</span>}
+
+hero[<span class="t-s">"gold"</span>] += <span class="t-n">30</span>           <span class="t-c"># изменить</span>
+hero[<span class="t-s">"weapon"</span>] = <span class="t-s">"топор"</span>     <span class="t-c"># добавить новую пару</span>
+
+<span class="t-f">print</span>(hero)</code></pre></div>
+<p class="out">Вывод:<br>{'name': 'Торин', 'gold': 80, 'weapon': 'топор'}</p>
+<p>Проверить, есть ли ключ, можно через <code>in</code>: <code>if "weapon" in hero:</code></p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай словарь про себя: имя, возраст, любимая игра, город. Выведи каждое значение с подписью.</li>
+  <li>Сделай словарь монстра: имя, здоровье, урон. Ударь его: уменьши здоровье на 25 и выведи, сколько осталось.</li>
+  <li>Спроси у игрока его любимый цвет и добавь его в словарь новым ключом.</li>
+  <li class="star">Что будет, если попросить ключ, которого нет? Прочитай ошибку. Потом попробуй <code>hero.get("armor", 0)</code>.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Понял словари">Понял словари</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m5-4.html"><small>← урок 4</small><span class="pt">Случайное из списка</span></a><a class="nx" href="../lessons/m5-6.html"><small>урок 6 →</small><span class="pt">Словари в деле</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

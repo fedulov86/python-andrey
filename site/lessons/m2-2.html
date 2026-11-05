@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 2. if — если</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m2-2">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 2 · урок 2 из 10</span>
+  <h1>if — если</h1>
+  <p class="lead">Программа выбирает</p>
+</div>
+<article class="body">
+<h4>Если…, то…</h4>
+<p>Теперь программа умеет ответить «да» или «нет». Осталось научить её что-то <b>делать</b>, когда ответ «да». Для этого есть слово <code>if</code> — по-английски «если».</p>
+<div class="code"><div class="code-bar"><span>m2_urok2.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4</span><code>health = <span class="t-n">0</span>
+
+<span class="t-k">if</span> health == <span class="t-n">0</span>:
+    <span class="t-f">print</span>(<span class="t-s">"Игра окончена"</span>)</code></pre></div>
+<p class="out">Вывод:<br>Игра окончена</p>
+<p>Читается так: «<b>если</b> здоровье равно нулю, <b>то</b> напечатай „Игра окончена“».</p>
+
+<h4>Как это записывается</h4>
+<ul>
+  <li>Сначала слово <code>if</code>, потом вопрос, потом <b>двоеточие</b> <code>:</code>.</li>
+  <li>Следующая строчка начинается с <b>4 пробелов</b>. Так Python понимает, что эта команда выполняется только если ответ «да». Thonny сам ставит пробелы после двоеточия, когда нажимаешь Enter.</li>
+</ul>
+<p>Поменяй <code>health = 0</code> на <code>health = 30</code> и запусти. Ничего не напечатается: ответ на вопрос «нет», и строчка с отступом пропускается.</p>
+
+<h4>Несколько команд внутри if</h4>
+<p>Все строчки с отступом выполняются только при «да». Строчка без отступа выполняется всегда.</p>
+<div class="code"><div class="code-bar"><span>m2_urok2.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8</span><code>coins = <span class="t-f">int</span>(<span class="t-f">input</span>(<span class="t-s">"Сколько у тебя монет? "</span>))
+
+<span class="t-k">if</span> coins &gt;= <span class="t-n">100</span>:
+    <span class="t-f">print</span>(<span class="t-s">"Ты купил меч!"</span>)
+    coins = coins - <span class="t-n">100</span>
+    <span class="t-f">print</span>(<span class="t-s">"Осталось монет:"</span>, coins)
+
+<span class="t-f">print</span>(<span class="t-s">"Пока!"</span>)</code></pre></div>
+<p class="out">Сколько у тебя монет? 150<br>Ты купил меч!<br>Осталось монет: 50<br>Пока!</p>
+<p class="out">Сколько у тебя монет? 40<br>Пока!</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Спроси у игрока пароль. Если он равен <code>"дракон"</code>, напиши «Дверь открыта».</li>
+  <li>Спроси число. Если оно больше 100, напиши «Большое число!».</li>
+  <li>Спроси, сколько очков набрал игрок. Если 1000 или больше, напиши «Новый рекорд!» и «Ты получаешь медаль». В конце всегда пиши «Спасибо за игру».</li>
+  <li class="star">Убери двоеточие после <code>if</code> и запусти. Потом верни двоеточие и убери пробелы в следующей строчке. Прочитай обе ошибки.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Понял if">Понял if</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m2-1.html"><small>← урок 1</small><span class="pt">Да или нет</span></a><a class="nx" href="../lessons/m2-3.html"><small>урок 3 →</small><span class="pt">else — иначе</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

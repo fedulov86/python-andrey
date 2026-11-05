@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 10. Проверь себя</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m5-10">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 5 · урок 10 из 10</span>
+  <h1>Проверь себя</h1>
+  <p class="lead">Мини-тест по модулю 5</p>
+</div>
+<article class="body">
+<p>Отвечай в уме или на бумажке, без Thonny. Потом открой ответ.</p>
+<ol class="tasks">
+  <li>Что выведет <code>print(["а", "б", "в"][1])</code>?<details class="hint"><summary>Ответ</summary><div><p><code>б</code>: номера начинаются с нуля.</p></div></details></li>
+  <li>Как добавить «лук» в конец списка <code>inventory</code>?<details class="hint"><summary>Ответ</summary><div><p><code>inventory.append("лук")</code></p></div></details></li>
+  <li>Как проверить, есть ли «ключ» в рюкзаке?<details class="hint"><summary>Ответ</summary><div><p><code>if "ключ" in inventory:</code></p></div></details></li>
+  <li>Чем словарь отличается от списка?<details class="hint"><summary>Ответ</summary><div><p>В списке значения достают по номеру, в словаре — по названию (ключу).</p></div></details></li>
+  <li>Что выведет программа?
+    <div class="code"><div class="code-bar"><span>m5_urok10.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4</span><code>hero = {<span class="t-s">"gold"</span>: <span class="t-n">10</span>}
+hero[<span class="t-s">"gold"</span>] += <span class="t-n">5</span>
+hero[<span class="t-s">"level"</span>] = <span class="t-n">2</span>
+<span class="t-f">print</span>(hero)</code></pre></div>
+    <details class="hint"><summary>Ответ</summary><div><p><code>{'gold': 15, 'level': 2}</code></p></div></details></li>
+  <li>Сколько раз выполнится тело цикла <code>for x in [3, 7, 1, 9]:</code>?<details class="hint"><summary>Ответ</summary><div><p>4 раза, по одному на каждый элемент.</p></div></details></li>
+  <li class="star">Дай папе пройти свою RPG без подсказок. Получилось?</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Ответил правильно на 5 из 6">Ответил правильно на 5 из 6</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m5-9.html"><small>← урок 9</small><span class="pt">Проект RPG: бой</span></a><a class="nx" href="../module6.html"><small>модуль 5 закончен →</small><span class="pt">Модуль 6. Настоящие игры</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

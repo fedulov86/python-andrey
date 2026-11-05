@@ -1,0 +1,454 @@
+<!--module {"num": 4, "title": "Функции и управляемая черепашка", "weeks": "недели 7–8", "topics": "def, параметры, return, несколько черепашек, управление клавишами и мышью, таймер.", "project": "игра «Собери звёзды»", "lead": "Свои команды и первая игра, которой управляешь с клавиатуры."} -->
+
+<!--lesson {"num": 1, "title": "Свои команды", "sub": "Что такое функция", "done_label": "Понял, что такое функция"} -->
+<h4>Зачем свои команды</h4>
+<p>Ты уже пользовался готовыми командами: <code>print</code>, <code>input</code>, <code>forward</code>. Такие команды называются <b>функциями</b>. А ещё можно делать свои.</p>
+<p>Представь: в игре в нескольких местах нужно нарисовать рамку из звёздочек. Можно каждый раз копировать три строчки. А можно один раз научить Python новой команде <code>frame</code> и потом просто её вызывать.</p>
+<div class="code"><pre><span class="t-k">def</span> frame():
+    print(<span class="s">"*"</span> * 20)
+    print(<span class="s">"*      ИГРА      *"</span>)
+    print(<span class="s">"*"</span> * 20)
+
+frame()
+print(<span class="s">"Добро пожаловать!"</span>)
+frame()</pre></div>
+<p class="out">Вывод:<br>********************<br>*      ИГРА      *<br>********************<br>Добро пожаловать!<br>********************<br>*      ИГРА      *<br>********************</p>
+
+<h4>Как это записывается</h4>
+<ul>
+  <li><code>def</code> (от define — «определить») говорит: «сейчас я объясню новую команду».</li>
+  <li>Потом имя команды, пустые скобки и двоеточие.</li>
+  <li>С отступом — что команда делает.</li>
+</ul>
+<p>Важно: сама строчка <code>def</code> ничего не выполняет. Она только запоминает, что делать. Команда срабатывает, когда ты её <b>вызываешь</b>: пишешь имя и скобки, <code>frame()</code>.</p>
+<p>Поэтому <code>def</code> пишут в начале программы. Вызвать команду, которую ещё не объяснили, нельзя: будет <code>NameError</code>.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай функцию <code>hello()</code>, которая печатает приветствие из трёх строчек. Вызови её 3 раза.</li>
+  <li>Сделай функцию <code>line()</code>, которая печатает линию из 30 знаков <code>=</code>. Нарисуй ею рамку вокруг своего имени.</li>
+  <li>Поставь вызов функции <b>выше</b> её <code>def</code> и посмотри, какая будет ошибка.</li>
+  <li class="star">Сделай функцию <code>menu()</code>, которая показывает меню игры, и вызывай её в цикле <code>while True</code>, пока игрок не выберет «выход».</li>
+</ol>
+
+<!--lesson {"num": 2, "title": "Параметры", "sub": "Команда с настройками", "done_label": "Понял параметры"} -->
+<h4>Команда с настройкой</h4>
+<p>У <code>forward(100)</code> в скобках число — сколько шагов пройти. Это <b>параметр</b>: настройка, которую передают команде. Своим функциям тоже можно давать параметры.</p>
+<div class="code"><pre><span class="t-k">def</span> greet(name):
+    print(<span class="s">"Привет,"</span>, name)
+    print(<span class="s">"Рад тебя видеть!"</span>)
+
+greet(<span class="s">"Андрей"</span>)
+greet(<span class="s">"папа"</span>)</pre></div>
+<p class="out">Вывод:<br>Привет, Андрей<br>Рад тебя видеть!<br>Привет, папа<br>Рад тебя видеть!</p>
+<p><code>name</code> в скобках — это переменная внутри функции. При вызове <code>greet("Андрей")</code> в неё кладётся <code>"Андрей"</code>.</p>
+
+<h4>Квадрат любого размера</h4>
+<div class="code"><pre>from turtle import *
+
+<span class="t-k">def</span> square(size):
+    <span class="t-k">for</span> i <span class="t-k">in</span> range(4):
+        forward(size)
+        left(90)
+
+square(50)
+square(100)
+square(150)
+
+done()</pre></div>
+
+<h4>Несколько параметров</h4>
+<p>Параметров может быть несколько, через запятую. Передавать их нужно в том же порядке.</p>
+<div class="code"><pre>from turtle import *
+
+<span class="t-k">def</span> square(size, pen_color):
+    color(pen_color)
+    <span class="t-k">for</span> i <span class="t-k">in</span> range(4):
+        forward(size)
+        left(90)
+
+square(60, <span class="s">"red"</span>)
+square(120, <span class="s">"blue"</span>)
+
+done()</pre></div>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай функцию <code>triangle(size)</code> и нарисуй три треугольника разного размера.</li>
+  <li>Сделай функцию <code>polygon(n, size)</code>, которая рисует фигуру с <code>n</code> углами.</li>
+  <li>Сделай функцию <code>stars(n)</code>, которая печатает <code>n</code> звёздочек в строчку. Нарисуй ею лесенку.</li>
+  <li class="star">Сделай функцию <code>move(x, y)</code>, которая переносит черепашку в точку, не оставляя линии. Нарисуй ею 4 квадрата в разных углах экрана.</li>
+</ol>
+
+<!--lesson {"num": 3, "title": "return — ответ функции", "sub": "Функция считает и отдаёт результат", "done_label": "Понял return"} -->
+<h4>Функция, которая отвечает</h4>
+<p>До сих пор функции что-то делали: печатали, рисовали. Но бывает нужно, чтобы функция что-то <b>посчитала и отдала ответ</b>. Как <code>len("Андрей")</code> отдаёт 6, а <code>input()</code> отдаёт то, что ввёл игрок.</p>
+<p>Для этого есть <code>return</code> — «вернуть».</p>
+<div class="code"><pre><span class="t-k">def</span> damage(power, weapon):
+    <span class="t-k">return</span> power * 2 + weapon
+
+hit = damage(10, 5)
+print(<span class="s">"Урон:"</span>, hit)
+print(<span class="s">"Урон с мечом получше:"</span>, damage(10, 12))</pre></div>
+<p class="out">Вывод:<br>Урон: 25<br>Урон с мечом получше: 32</p>
+<p>Вызов <code>damage(10, 5)</code> как будто превращается в число 25. Его можно положить в переменную, напечатать или посчитать с ним дальше.</p>
+
+<h4>Ответ «да» или «нет»</h4>
+<p>Функция может возвращать <code>True</code> или <code>False</code>. Такие функции удобно ставить прямо в <code>if</code>:</p>
+<div class="code"><pre><span class="t-k">def</span> can_buy(coins, price):
+    <span class="t-k">return</span> coins &gt;= price
+
+coins = 80
+
+<span class="t-k">if</span> can_buy(coins, 50):
+    print(<span class="s">"Покупаем щит"</span>)
+<span class="t-k">if</span> <span class="t-k">not</span> can_buy(coins, 100):
+    print(<span class="s">"На меч не хватает"</span>)</pre></div>
+
+<h4>return заканчивает функцию</h4>
+<p>Как только выполняется <code>return</code>, функция сразу заканчивается. Строчки после него не выполнятся.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай функцию <code>area(width, height)</code>, которая возвращает площадь прямоугольника.</li>
+  <li>Сделай функцию <code>is_even(n)</code>: возвращает <code>True</code>, если число чётное.</li>
+  <li>Сделай функцию <code>rank(score)</code>, которая возвращает звание по очкам (как в викторине). Проверь её на разных числах.</li>
+  <li class="star">Сделай функцию <code>ask_number(question)</code>: задаёт вопрос, пока не введут число, и возвращает его уже как число. Используй её в «Угадай число».</li>
+</ol>
+
+<!--lesson {"num": 4, "title": "Рисуем функциями", "sub": "Сцена из своих команд", "done_label": "Нарисовал сцену функциями"} -->
+<h4>Большой рисунок из маленьких команд</h4>
+<p>Сложный рисунок трудно нарисовать одним куском. Но его можно разбить на части: дом, дерево, солнце. Для каждой части — своя функция. Потом собираем из них сцену.</p>
+<div class="code"><pre>from turtle import *
+
+speed(0)
+
+<span class="t-k">def</span> move(x, y):
+    penup()
+    goto(x, y)
+    pendown()
+
+<span class="t-k">def</span> square(size):
+    <span class="t-k">for</span> i <span class="t-k">in</span> range(4):
+        forward(size)
+        left(90)
+
+<span class="t-k">def</span> triangle(size):
+    <span class="t-k">for</span> i <span class="t-k">in</span> range(3):
+        forward(size)
+        left(120)
+
+<span class="t-k">def</span> house(x, y, size):
+    move(x, y)
+    color(<span class="s">"brown"</span>)
+    square(size)
+    move(x, y + size)
+    color(<span class="s">"red"</span>)
+    triangle(size)
+
+<span class="t-k">def</span> sun(x, y):
+    move(x, y)
+    dot(80, <span class="s">"gold"</span>)
+
+house(-200, -100, 100)
+house(0, -100, 60)
+sun(200, 150)
+
+hideturtle()
+done()</pre></div>
+<p>Посмотри: функция <code>house</code> внутри себя вызывает другие функции — <code>move</code>, <code>square</code>, <code>triangle</code>. Так и строят большие программы: из маленьких понятных кусочков.</p>
+
+<h4>Закрашенные фигуры</h4>
+<p>Чтобы фигура была закрашена, перед рисованием пишут <code>begin_fill()</code>, а после — <code>end_fill()</code>. Цвет заливки задаёт <code>fillcolor</code>:</p>
+<div class="code"><pre>from turtle import *
+
+fillcolor(<span class="s">"yellow"</span>)
+begin_fill()
+<span class="t-k">for</span> i <span class="t-k">in</span> range(4):
+    forward(100)
+    left(90)
+end_fill()
+
+done()</pre></div>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Добавь в сцену функцию <code>tree(x, y)</code>: коричневый ствол и зелёная крона.</li>
+  <li>Сделай дома закрашенными.</li>
+  <li>Нарисуй улицу: 5 домов разного размера в ряд, используя цикл и функцию <code>house</code>.</li>
+  <li class="star">Сделай функцию <code>cloud(x, y)</code> из нескольких белых кругов и поставь на небо голубой фон: <code>bgcolor("skyblue")</code>.</li>
+</ol>
+
+<!--lesson {"num": 5, "title": "Несколько черепашек", "sub": "У каждой свои команды", "done_label": "Управляю несколькими черепашками"} -->
+<h4>Больше одной черепашки</h4>
+<p>До сих пор на экране была одна черепашка. Для игры понадобится несколько: одна — игрок, другая — звезда, третья пишет счёт. Новую черепашку создают так:</p>
+<div class="code"><pre>from turtle import *
+
+hero = Turtle()
+hero.shape(<span class="s">"turtle"</span>)
+hero.color(<span class="s">"green"</span>)
+
+enemy = Turtle()
+enemy.shape(<span class="s">"circle"</span>)
+enemy.color(<span class="s">"red"</span>)
+
+hero.forward(100)
+enemy.left(180)
+enemy.forward(100)
+
+done()</pre></div>
+<p><code>Turtle()</code> создаёт новую черепашку, и мы кладём её в переменную <code>hero</code>. Чтобы дать команду именно ей, пишем имя, точку и команду: <code>hero.forward(100)</code>. Точку ты уже видел у строк: <code>name.upper()</code>.</p>
+
+<h4>Формы и место</h4>
+<p>Форма может быть <code>"turtle"</code>, <code>"circle"</code>, <code>"square"</code>, <code>"triangle"</code>, <code>"arrow"</code>. Чтобы поставить черепашку в другое место без линии, сначала поднимают карандаш:</p>
+<div class="code"><pre>from turtle import *
+
+star = Turtle()
+star.shape(<span class="s">"circle"</span>)
+star.color(<span class="s">"gold"</span>)
+star.penup()
+star.goto(150, 100)
+
+done()</pre></div>
+
+<h4>Черепашка-писатель</h4>
+<p>Удобно завести отдельную невидимую черепашку, которая только пишет текст:</p>
+<div class="code"><pre>from turtle import *
+
+writer = Turtle()
+writer.hideturtle()
+writer.penup()
+writer.goto(-200, 150)
+writer.write(<span class="s">"Очки: 0"</span>, font=(<span class="s">"Arial"</span>, 20))
+
+done()</pre></div>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Создай трёх черепашек разных цветов и устрой гонку: каждая проползает вперёд случайное расстояние.</li>
+  <li>Повтори гонку циклом 20 раз, по чуть-чуть, чтобы было видно движение.</li>
+  <li class="star">После гонки напиши черепашкой-писателем, кто победил.
+    <details class="hint"><summary>Подсказка</summary><div><p><code>hero.xcor()</code> возвращает, где черепашка сейчас по горизонтали. У кого больше — тот впереди.</p></div></details></li>
+</ol>
+
+<!--lesson {"num": 6, "title": "Управление клавишами", "sub": "Черепашка слушается стрелок", "done_label": "Черепашка ездит по стрелкам"} -->
+<h4>Программа ждёт нажатий</h4>
+<p>До сих пор программа выполнялась сверху вниз и заканчивалась. В игре по-другому: программа ждёт, что сделает игрок, и отвечает на его действия.</p>
+<p>Для этого черепашке говорят: «когда нажмут такую клавишу, выполни такую функцию».</p>
+<div class="code"><pre>from turtle import *
+
+shape(<span class="s">"turtle"</span>)
+penup()
+
+<span class="t-k">def</span> go_up():
+    setheading(90)
+    forward(20)
+
+<span class="t-k">def</span> go_down():
+    setheading(270)
+    forward(20)
+
+<span class="t-k">def</span> go_left():
+    setheading(180)
+    forward(20)
+
+<span class="t-k">def</span> go_right():
+    setheading(0)
+    forward(20)
+
+onkey(go_up, <span class="s">"Up"</span>)
+onkey(go_down, <span class="s">"Down"</span>)
+onkey(go_left, <span class="s">"Left"</span>)
+onkey(go_right, <span class="s">"Right"</span>)
+listen()
+
+done()</pre></div>
+<p>Запусти, щёлкни по окну черепашки и нажимай стрелки.</p>
+
+<h4>Что тут нового</h4>
+<ul>
+  <li><code>setheading(90)</code> разворачивает черепашку в нужную сторону: 0 — вправо, 90 — вверх, 180 — влево, 270 — вниз.</li>
+  <li><code>onkey(go_up, "Up")</code> — «когда нажмут стрелку вверх, вызови <code>go_up</code>». Обрати внимание: имя функции пишется <b>без скобок</b>. Мы не вызываем её сейчас, а говорим, что вызвать потом.</li>
+  <li><code>listen()</code> — «начни слушать клавиатуру».</li>
+</ul>
+<p>Клавиши-буквы пишут как есть: <code>"a"</code>, <code>"w"</code>. Пробел — <code>"space"</code>.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай так, чтобы черепашка рисовала след, когда едет.</li>
+  <li>Добавь клавиши: <code>"r"</code> — красный карандаш, <code>"b"</code> — синий, <code>"space"</code> — поднять или опустить карандаш.</li>
+  <li>Добавь клавишу <code>"c"</code>, которая стирает рисунок командой <code>clear()</code>.</li>
+  <li class="star">Сделай управление клавишами W, A, S, D вместо стрелок.</li>
+</ol>
+
+<!--lesson {"num": 7, "title": "Клик мышью", "sub": "Черепашка идёт туда, куда щёлкнул", "done_label": "Черепашка слушается мышь"} -->
+<h4>Где щёлкнули</h4>
+<p>Мышь работает так же, как клавиши: говоришь, какую функцию вызвать при щелчке. Отличие одно: функция получает два параметра — координаты места, куда щёлкнули.</p>
+<div class="code"><pre>from turtle import *
+
+shape(<span class="s">"turtle"</span>)
+color(<span class="s">"blue"</span>)
+
+<span class="t-k">def</span> go_there(x, y):
+    goto(x, y)
+
+onscreenclick(go_there)
+
+done()</pre></div>
+<p>Щёлкай по окну: черепашка будет ползти к каждому месту и рисовать линию. Получается рисовалка.</p>
+
+<h4>Координаты</h4>
+<p>Центр окна — точка <code>(0, 0)</code>. <code>x</code> растёт вправо, <code>y</code> — вверх. Слева от центра <code>x</code> отрицательный, внизу отрицательный <code>y</code>.</p>
+
+<h4>Штамп</h4>
+<div class="code"><pre>from turtle import *
+
+speed(0)
+hideturtle()
+
+<span class="t-k">def</span> stamp_star(x, y):
+    penup()
+    goto(x, y)
+    dot(30, <span class="s">"gold"</span>)
+
+onscreenclick(stamp_star)
+
+done()</pre></div>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай рисовалку, в которой по щелчку черепашка переходит без линии, а клавишами можно включать и выключать карандаш.</li>
+  <li>Поменяй штамп: пусть в месте щелчка рисуется квадратик случайного цвета.
+    <details class="hint"><summary>Подсказка</summary><div><p><code>random.choice(["red", "blue", "green"])</code></p></div></details></li>
+  <li class="star">Напечатай координаты каждого щелчка через <code>print</code>. Найди, какие координаты у углов окна.</li>
+</ol>
+
+<!--lesson {"num": 8, "title": "Таймер", "sub": "Что-то двигается само", "done_label": "Понял таймер"} -->
+<h4>Движение без нажатий</h4>
+<p>В играх многое двигается само: падают предметы, ходят враги. Для этого нужен <b>таймер</b>: «через столько-то миллисекунд вызови функцию».</p>
+<div class="code"><pre>from turtle import *
+
+shape(<span class="s">"turtle"</span>)
+penup()
+
+<span class="t-k">def</span> tick():
+    forward(5)
+    <span class="t-k">if</span> xcor() &gt; 300:
+        goto(-300, 0)
+    ontimer(tick, 50)
+
+tick()
+
+done()</pre></div>
+<p><code>ontimer(tick, 50)</code> значит: «через 50 миллисекунд вызови <code>tick</code>». А <code>tick</code> в конце снова заводит таймер. Получается, что она вызывается 20 раз в секунду, и черепашка ползёт сама. Так устроены все игры: много раз в секунду программа чуть-чуть двигает всё на экране.</p>
+
+<h4>Переменная, которую меняет функция</h4>
+<p>Хочется считать, сколько кругов проползла черепашка. Но если внутри функции написать <code>laps = laps + 1</code>, Python выдаст ошибку. Он считает, что внутри функции свои переменные.</p>
+<p>Чтобы функция могла менять переменную снаружи, в начале функции пишут <code>global</code> и имя переменной:</p>
+<div class="code"><pre>from turtle import *
+
+shape(<span class="s">"turtle"</span>)
+penup()
+laps = 0
+
+<span class="t-k">def</span> tick():
+    <span class="t-k">global</span> laps
+    forward(5)
+    <span class="t-k">if</span> xcor() &gt; 300:
+        goto(-300, 0)
+        laps += 1
+        print(<span class="s">"Кругов:"</span>, laps)
+    ontimer(tick, 50)
+
+tick()
+
+done()</pre></div>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай, чтобы черепашка ехала быстрее: меньше миллисекунд или больше шагов.</li>
+  <li>Сделай «мячик»: черепашка едет вправо, у края разворачивается и едет влево, и так всё время.</li>
+  <li>Соедини с уроком 6: черепашка всё время ползёт вперёд сама, а стрелки только меняют направление. Это начало «Змейки».</li>
+  <li class="star">После 5 кругов черепашка останавливается и пишет «Финиш!».</li>
+</ol>
+
+<!--lesson {"num": 9, "title": "Проект: «Собери звёзды»", "sub": "2–3 дня · первая настоящая игра", "done_label": "Игра «Собери звёзды» готова"} -->
+<h4>Что за игра</h4>
+<p>Игрок управляет черепашкой стрелками. На поле появляется звезда. Если черепашка доползла до звезды, игрок получает очко, и звезда прыгает в новое случайное место. На всё есть 30 секунд.</p>
+
+<h4>Что должна уметь программа</h4>
+<ol>
+  <li>Тёмный фон, черепашка-игрок, звезда в случайном месте.</li>
+  <li>Управление стрелками.</li>
+  <li>Если черепашка близко к звезде — +1 очко, звезда переезжает.</li>
+  <li>Счёт сверху экрана.</li>
+  <li>Таймер 30 секунд. Когда время вышло — «Игра окончена» и итоговый счёт.</li>
+</ol>
+
+<h4>Как узнать, что черепашка поймала звезду</h4>
+<p><code>hero.distance(star)</code> возвращает расстояние между двумя черепашками. Если оно меньше 20, значит они встретились.</p>
+
+<h4>Начало, дальше сам</h4>
+<div class="code"><pre>from turtle import *
+import random
+
+bgcolor(<span class="s">"black"</span>)
+score = 0
+
+hero = Turtle()
+hero.shape(<span class="s">"turtle"</span>)
+hero.color(<span class="s">"lime"</span>)
+hero.penup()
+
+star = Turtle()
+star.shape(<span class="s">"circle"</span>)
+star.color(<span class="s">"gold"</span>)
+star.penup()
+
+<span class="t-k">def</span> move_star():
+    star.goto(random.randint(-250, 250), random.randint(-200, 200))
+
+<span class="t-k">def</span> check():
+    <span class="t-k">global</span> score
+    <span class="t-k">if</span> hero.distance(star) &lt; 20:
+        score += 1
+        print(<span class="s">"Очки:"</span>, score)
+        move_star()
+
+<span class="t-k">def</span> go_up():
+    hero.setheading(90)
+    hero.forward(20)
+    check()
+
+<span class="c"># дальше: go_down, go_left, go_right</span>
+
+onkey(go_up, <span class="s">"Up"</span>)
+listen()
+move_star()
+
+done()</pre></div>
+<p>Сначала доделай управление и сбор звёзд (пункты 1–3), поиграй. Потом выведи счёт на экран черепашкой-писателем и добавь таймер.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай игру по пунктам 1–5.</li>
+  <li>Дай поиграть двум людям. Узнай, что им понравилось и что мешало.</li>
+  <li class="star">Добавь врага: красный круг, который сам ездит по полю на таймере. Если черепашка его коснулась — минус 3 очка.</li>
+</ol>
+
+<!--lesson {"num": 10, "title": "Проверь себя", "sub": "Мини-тест по модулю 4", "done_label": "Ответил правильно на 5 из 6"} -->
+<p>Отвечай в уме или на бумажке, без Thonny. Потом открой ответ.</p>
+<ol class="tasks">
+  <li>Что делает строчка <code>def hello():</code> сама по себе?<details class="hint"><summary>Ответ</summary><div><p>Ничего не выполняет. Только запоминает новую команду. Сработает она при вызове <code>hello()</code>.</p></div></details></li>
+  <li>Что выведет программа?
+    <div class="code"><pre><span class="t-k">def</span> double(n):
+    <span class="t-k">return</span> n * 2
+
+print(double(3) + double(4))</pre></div>
+    <details class="hint"><summary>Ответ</summary><div><p><code>14</code>: 6 + 8.</p></div></details></li>
+  <li>Чем отличаются <code>forward(10)</code> и <code>hero.forward(10)</code>?<details class="hint"><summary>Ответ</summary><div><p>Первая команда для главной черепашки, вторая — для черепашки <code>hero</code>.</p></div></details></li>
+  <li>Почему в <code>onkey(go_up, "Up")</code> у <code>go_up</code> нет скобок?<details class="hint"><summary>Ответ</summary><div><p>Мы не вызываем функцию сейчас, а говорим, какую вызвать потом, при нажатии.</p></div></details></li>
+  <li>Зачем в функции пишут <code>global score</code>?<details class="hint"><summary>Ответ</summary><div><p>Чтобы функция могла менять переменную <code>score</code>, которая создана снаружи.</p></div></details></li>
+  <li>Как сделать, чтобы функция вызывалась снова и снова, 20 раз в секунду?<details class="hint"><summary>Ответ</summary><div><p>В конце функции написать <code>ontimer(имя_функции, 50)</code>.</p></div></details></li>
+  <li class="star">Покажи папе свою игру и объясни, как черепашка понимает, что поймала звезду.</li>
+</ol>

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 9. Проект: «Угадай число»</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m3-9">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 3 · урок 9 из 11</span>
+  <h1>Проект: «Угадай число»</h1>
+  <p class="lead">Компьютер загадывает, ты угадываешь</p>
+</div>
+<article class="body">
+<h4>Правила игры</h4>
+<p>Компьютер загадывает число от 1 до 100. Игрок пытается угадать. После каждой попытки компьютер подсказывает: «больше» или «меньше». Когда игрок угадал — показать, за сколько попыток.</p>
+
+<h4>Что должна уметь программа</h4>
+<ol>
+  <li>Загадать случайное число.</li>
+  <li>Спрашивать, пока не угадают, и подсказывать «больше» или «меньше».</li>
+  <li>Считать попытки и в конце показать их число.</li>
+  <li>Не падать, если ввели не число.</li>
+  <li>Спросить «Сыграть ещё?» и начать заново, если ответили «да».</li>
+</ol>
+
+<h4>Начало, дальше сам</h4>
+<div class="code"><div class="code-bar"><span>m3_urok9.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</span><code><span class="t-k">import</span> random
+
+secret = random.<span class="t-m">randint</span>(<span class="t-n">1</span>, <span class="t-n">100</span>)
+tries = <span class="t-n">0</span>
+
+<span class="t-f">print</span>(<span class="t-s">"Я загадал число от 1 до 100. Угадай!"</span>)
+
+<span class="t-k">while</span> <span class="t-k">True</span>:
+    guess = <span class="t-f">int</span>(<span class="t-f">input</span>(<span class="t-s">"Твой вариант: "</span>))
+    tries += <span class="t-n">1</span>
+    <span class="t-c"># дальше: сравни guess и secret</span>
+    <span class="t-k">break</span>   <span class="t-c"># убери эту строчку, когда допишешь</span></code></pre></div>
+<p>Сделай сначала пункты 1–3 и сыграй. Потом добавляй 4 и 5.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Сделай игру по пунктам 1–5.</li>
+  <li>Добавь уровни сложности: лёгкий — до 10, средний — до 100, сложный — до 1000.</li>
+  <li class="star">Наоборот: ты загадываешь число, а компьютер угадывает. Ты отвечаешь «больше», «меньше» или «да».
+    <details class="hint"><summary>Подсказка</summary><div><p>Компьютер хранит границы <code>low</code> и <code>high</code> и каждый раз называет середину: <code>(low + high) // 2</code>.</p></div></details></li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="«Угадай число» работает">«Угадай число» работает</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m3-8.html"><small>← урок 8</small><span class="pt">Случайные числа</span></a><a class="nx" href="../lessons/m3-10.html"><small>урок 10 →</small><span class="pt">Проект: камень-ножницы-бумага</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 2. Рисуем фигуры</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m6-2">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 6 · урок 2 из 12</span>
+  <h1>Рисуем фигуры</h1>
+  <p class="lead">Круги, прямоугольники, текст</p>
+</div>
+<article class="body">
+<h4>Координаты в Pygame Zero</h4>
+<p>У черепашки центр окна был <code>(0, 0)</code>. В Pygame Zero не так: <code>(0, 0)</code> — это <b>левый верхний угол</b>. <code>x</code> растёт вправо, а <code>y</code> растёт <b>вниз</b>. Так устроены почти все игры.</p>
+<p>В окне 600 на 400 центр — <code>(300, 200)</code>, а правый нижний угол — <code>(600, 400)</code>.</p>
+
+<h4>Фигуры</h4>
+<div class="code"><div class="code-bar"><span>m6_urok2.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</span><code><span class="t-k">import</span> pgzrun
+
+WIDTH = <span class="t-n">600</span>
+HEIGHT = <span class="t-n">400</span>
+
+<span class="t-k">def</span> draw():
+    screen.<span class="t-m">fill</span>(<span class="t-s">"skyblue"</span>)
+    screen.<span class="t-m">draw</span>.<span class="t-m">filled_circle</span>((<span class="t-n">500</span>, <span class="t-n">80</span>), <span class="t-n">40</span>, <span class="t-s">"yellow"</span>)
+    screen.<span class="t-m">draw</span>.<span class="t-m">filled_rect</span>(Rect((<span class="t-n">0</span>, <span class="t-n">320</span>), (<span class="t-n">600</span>, <span class="t-n">80</span>)), <span class="t-s">"darkgreen"</span>)
+    screen.<span class="t-m">draw</span>.<span class="t-m">filled_rect</span>(Rect((<span class="t-n">100</span>, <span class="t-n">220</span>), (<span class="t-n">120</span>, <span class="t-n">100</span>)), <span class="t-s">"brown"</span>)
+    screen.<span class="t-m">draw</span>.<span class="t-m">circle</span>((<span class="t-n">300</span>, <span class="t-n">200</span>), <span class="t-n">30</span>, <span class="t-s">"white"</span>)
+    screen.<span class="t-m">draw</span>.<span class="t-m">text</span>(<span class="t-s">"Моя игра"</span>, (<span class="t-n">20</span>, <span class="t-n">20</span>), fontsize=<span class="t-n">40</span>, <span class="t-f">color</span>=<span class="t-s">"white"</span>)
+
+pgzrun.<span class="t-m">go</span>()</code></pre></div>
+
+<h4>Команды рисования</h4>
+<div class="tbl"><table style="min-width:420px">
+  <thead><tr><th>команда</th><th>что рисует</th></tr></thead>
+  <tbody>
+    <tr><td><code>screen.draw.filled_circle((x, y), r, цвет)</code></td><td>закрашенный круг с центром в (x, y) и радиусом r</td></tr>
+    <tr><td><code>screen.draw.circle((x, y), r, цвет)</code></td><td>только контур круга</td></tr>
+    <tr><td><code>screen.draw.filled_rect(Rect((x, y), (w, h)), цвет)</code></td><td>прямоугольник: левый верхний угол (x, y), ширина w, высота h</td></tr>
+    <tr><td><code>screen.draw.line((x1, y1), (x2, y2), цвет)</code></td><td>линия</td></tr>
+    <tr><td><code>screen.draw.text(текст, (x, y), fontsize=…, color=…)</code></td><td>надпись</td></tr>
+  </tbody>
+</table></div>
+<p>Порядок важен: то, что нарисовано позже, оказывается сверху. Поэтому <code>screen.fill</code> всегда первая — она закрашивает всё старое.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Нарисуй домик из прямоугольников: стены, дверь, окно, труба.</li>
+  <li>Нарисуй снеговика из трёх кругов.</li>
+  <li>Нарисуй циклом ряд из 10 кругов вдоль экрана.</li>
+  <li class="star">Нарисуй ночное небо: 100 звёзд-точек в случайных местах.
+    <details class="hint"><summary>Подсказка</summary><div><p>Если выбирать места прямо в <code>draw</code>, звёзды будут мигать. Выбери их один раз до <code>draw</code> и сохрани в список.</p></div></details></li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Рисую в окне игры">Рисую в окне игры</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m6-1.html"><small>← урок 1</small><span class="pt">Ставим Pygame Zero</span></a><a class="nx" href="../lessons/m6-3.html"><small>урок 3 →</small><span class="pt">Движение</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

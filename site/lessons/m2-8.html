@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 8. Черепашка выбирает</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m2-8">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 2 · урок 8 из 10</span>
+  <h1>Черепашка выбирает</h1>
+  <p class="lead">Рисунок зависит от ответа</p>
+</div>
+<article class="body">
+<h4>Рисунок по заказу</h4>
+<p>Соединим черепашку с <code>if</code>. Игрок выбирает фигуру, а программа рисует то, что он выбрал.</p>
+<div class="code"><div class="code-bar"><span>m2_urok8.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</span><code><span class="t-k">from</span> turtle <span class="t-k">import</span> *
+
+figure = <span class="t-f">input</span>(<span class="t-s">"Что нарисовать? (квадрат / треугольник / круг) "</span>).<span class="t-m">lower</span>()
+
+<span class="t-f">pensize</span>(<span class="t-n">4</span>)
+
+<span class="t-k">if</span> figure == <span class="t-s">"квадрат"</span>:
+    <span class="t-f">color</span>(<span class="t-s">"blue"</span>)
+    <span class="t-f">forward</span>(<span class="t-n">100</span>)
+    <span class="t-f">left</span>(<span class="t-n">90</span>)
+    <span class="t-f">forward</span>(<span class="t-n">100</span>)
+    <span class="t-f">left</span>(<span class="t-n">90</span>)
+    <span class="t-f">forward</span>(<span class="t-n">100</span>)
+    <span class="t-f">left</span>(<span class="t-n">90</span>)
+    <span class="t-f">forward</span>(<span class="t-n">100</span>)
+<span class="t-k">elif</span> figure == <span class="t-s">"треугольник"</span>:
+    <span class="t-f">color</span>(<span class="t-s">"green"</span>)
+    <span class="t-f">forward</span>(<span class="t-n">100</span>)
+    <span class="t-f">left</span>(<span class="t-n">120</span>)
+    <span class="t-f">forward</span>(<span class="t-n">100</span>)
+    <span class="t-f">left</span>(<span class="t-n">120</span>)
+    <span class="t-f">forward</span>(<span class="t-n">100</span>)
+<span class="t-k">elif</span> figure == <span class="t-s">"круг"</span>:
+    <span class="t-f">color</span>(<span class="t-s">"red"</span>)
+    <span class="t-f">circle</span>(<span class="t-n">50</span>)
+<span class="t-k">else</span>:
+    <span class="t-f">write</span>(<span class="t-s">"Не знаю такую фигуру"</span>, font=(<span class="t-s">"Arial"</span>, <span class="t-n">16</span>))
+
+<span class="t-f">done</span>()</code></pre></div>
+
+<h4>Светофор</h4>
+<p>Цвет тоже можно выбирать через <code>if</code>. Команда <code>dot(80, "red")</code> рисует закрашенный круг диаметром 80.</p>
+<div class="code"><div class="code-bar"><span>m2_urok8.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</span><code><span class="t-k">from</span> turtle <span class="t-k">import</span> *
+
+signal = <span class="t-f">input</span>(<span class="t-s">"Можно идти? (да / нет) "</span>).<span class="t-m">lower</span>()
+
+<span class="t-f">hideturtle</span>()
+
+<span class="t-k">if</span> signal == <span class="t-s">"да"</span>:
+    <span class="t-f">dot</span>(<span class="t-n">80</span>, <span class="t-s">"green"</span>)
+<span class="t-k">else</span>:
+    <span class="t-f">dot</span>(<span class="t-n">80</span>, <span class="t-s">"red"</span>)
+
+<span class="t-f">done</span>()</code></pre></div>
+<p><code>hideturtle()</code> прячет черепашку, чтобы она не закрывала рисунок.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Добавь в программу с фигурами ещё одну: «звезда».</li>
+  <li>Спроси размер фигуры. Если он больше 300, напиши «Слишком большая» и не рисуй.</li>
+  <li>Спроси настроение: «хорошее» — нарисуй жёлтый круг, «плохое» — серый, остальное — синий.</li>
+  <li class="star">Нарисуй светофор из трёх кругов друг над другом. Тот, что выбрал игрок, горит своим цветом, остальные серые.
+    <details class="hint"><summary>Подсказка</summary><div><p>Между кругами поднимай карандаш и сдвигай черепашку вверх на 100.</p></div></details></li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Черепашка выбирает">Черепашка выбирает</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m2-7.html"><small>← урок 7</small><span class="pt">Проверка ввода</span></a><a class="nx" href="../lessons/m2-9.html"><small>урок 9 →</small><span class="pt">Проект: викторина</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 5. elif — много вариантов</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-root="../" data-lesson="m2-5">
+<header class="top"><div class="top-in"><a class="logo" href="../index.html">python_для_андрея</a><nav><a href="../index.html">главная</a><a href="../karta.html" aria-current="page">модули</a><a href="../scratch.html">scratch→python</a><a href="../dlya-papy.html">для_папы</a></nav></div></header>
+<main class="wrap">
+<div class="head">
+  <span class="eyebrow">модуль 2 · урок 5 из 10</span>
+  <h1>elif — много вариантов</h1>
+  <p class="lead">Больше двух дорог</p>
+</div>
+<article class="body">
+<h4>Когда двух дорог мало</h4>
+<p>Игрок набрал очки. За 0–49 он «Новичок», за 50–99 «Боец», за 100 и больше «Герой». Тут три варианта, а <code>if</code> с <code>else</code> дают только два.</p>
+<p>Для этого есть <code>elif</code> — сокращение от else if, «иначе если».</p>
+<div class="code"><div class="code-bar"><span>m2_urok5.py</span><button class="copy" type="button">Копировать</button></div><pre><span class="gut" aria-hidden="true">1
+2
+3
+4
+5
+6
+7
+8</span><code>score = <span class="t-f">int</span>(<span class="t-f">input</span>(<span class="t-s">"Сколько очков? "</span>))
+
+<span class="t-k">if</span> score &gt;= <span class="t-n">100</span>:
+    <span class="t-f">print</span>(<span class="t-s">"Звание: Герой"</span>)
+<span class="t-k">elif</span> score &gt;= <span class="t-n">50</span>:
+    <span class="t-f">print</span>(<span class="t-s">"Звание: Боец"</span>)
+<span class="t-k">else</span>:
+    <span class="t-f">print</span>(<span class="t-s">"Звание: Новичок"</span>)</code></pre></div>
+
+<h4>Как Python это читает</h4>
+<p>Python проверяет вопросы <b>по очереди, сверху вниз</b>. Как только находит первый ответ «да», выполняет эту часть и пропускает всё остальное.</p>
+<ul>
+  <li>Если очков 120: первый вопрос «да», печатается «Герой». Остальное пропускается.</li>
+  <li>Если 70: первый вопрос «нет», второй «да», печатается «Боец».</li>
+  <li>Если 10: оба вопроса «нет», работает <code>else</code>.</li>
+</ul>
+<p>Поэтому порядок важен. Если поставить проверку <code>score &gt;= 50</code> первой, то и 120 очков дадут звание «Боец».</p>
+<p><code>elif</code> можно писать сколько угодно раз. <code>else</code> в конце можно и не писать.</p>
+
+<h4>Задачи</h4>
+<ol class="tasks">
+  <li>Спроси оценку от 1 до 5. Выведи: 5 — «отлично», 4 — «хорошо», 3 — «нормально», остальное — «надо подтянуть».</li>
+  <li>Спроси температуру на улице. Ниже 0 — «надевай шапку», от 0 до 15 — «куртка», от 16 до 25 — «футболка», выше — «жара!».</li>
+  <li>Меню игры: выведи «1. Новая игра», «2. Загрузить», «3. Выход». Спроси номер и напечатай, что выбрано. Если ввели другое число — «Нет такого пункта».</li>
+  <li class="star">Поменяй местами проверки в программе со званиями и найди такое число очков, при котором звание получается неправильное.</li>
+</ol>
+</article>
+<div class="finish">
+  <button class="btn" id="doneBtn" type="button" data-label="Понял elif">Понял elif</button>
+  <nav class="pager" aria-label="Соседние уроки"><a href="../lessons/m2-4.html"><small>← урок 4</small><span class="pt">Отступы</span></a><a class="nx" href="../lessons/m2-6.html"><small>урок 6 →</small><span class="pt">and, or, not</span></a></nav>
+</div>
+</main>
+<script src="../assets/lessons.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>
